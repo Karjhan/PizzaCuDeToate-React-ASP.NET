@@ -13,6 +13,9 @@
 
     <ItemGroup>
       <Folder Include="Controllers\" />
+      <Folder Include="DataContexts\" />
+      <Folder Include="Models\" />
+      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>
