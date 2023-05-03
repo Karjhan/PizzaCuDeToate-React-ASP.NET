@@ -14,9 +14,9 @@ namespace PizzaCuDeToateAPI.Controllers
     [ApiController]
     public class CategoryController : ControllerBase
     {
-        private readonly CategoryRepository _categoryRepository;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategoryController(CategoryRepository categoryRepository)
+        public CategoryController(ICategoryRepository categoryRepository)
         {
             _categoryRepository = categoryRepository;
         }
@@ -33,7 +33,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("getById/{id}")]
         public async Task<IActionResult> GetCategoryById([FromRoute] int id)
         {
             var result = _categoryRepository.GetSingle(category => category.Id == id);
@@ -44,8 +44,8 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(result);
         }
         
-        [HttpGet("{name}")]
-        public async Task<IActionResult> GetCategoryById([FromRoute] string name)
+        [HttpGet("getByName/{name}")]
+        public async Task<IActionResult> GetCategoryByName([FromRoute] string name)
         {
             var result = _categoryRepository.GetSingle(category => category.Name == name);
             if (result is null)
@@ -59,11 +59,11 @@ namespace PizzaCuDeToateAPI.Controllers
         [Route("add")]
         public async Task<IActionResult> AddCategory(CategoryDTO request)
         {
-            var findCategory = _categoryRepository.GetSingle(category => category.Name == request.Name);
-            if (findCategory is not null)
-            {
-                return BadRequest("Category already exists!");
-            }
+            // var findCategory = _categoryRepository.GetSingle(category => category.Name == request.Name);
+            // if (findCategory is not null)
+            // {
+            //     return BadRequest("Category already exists!");
+            // }
             var categoryToAdd = new Category();
             categoryToAdd.Name = request.Name;
             categoryToAdd.Description = request.Description;
@@ -76,7 +76,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateCategoryById([FromRoute] int id, [FromBody] CategoryDTO request)
         {
             var findCategory = _categoryRepository.GetSingle(category => category.Id == id);
@@ -85,7 +85,7 @@ namespace PizzaCuDeToateAPI.Controllers
                 return NotFound($"Couldn't find category with id {id} in database!");
             }
             var updatedCategory = new Category(id, request.Name, request.Description, request.Logo);
-            var result = _categoryRepository.UpdateSingle(updatedCategory);
+            var result = _categoryRepository.UpdateSingle(findCategory,updatedCategory);
             if (!result)
             {
                 return StatusCode(500, "Server error, please try again later!");
@@ -108,7 +108,7 @@ namespace PizzaCuDeToateAPI.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("delete/{id}")]
         public async Task<IActionResult> DeleteCategoryById([FromRoute] int id)
         {
             var findCategory = _categoryRepository.GetSingle(category => category.Id == id);

@@ -19,7 +19,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public TEntity? GetSingle(Expression<Func<TEntity, bool>> predicate)
     {
-        return (TEntity?)Context.Set<TEntity>().Where(predicate);
+        return (TEntity?)Context.Set<TEntity>().Where(predicate).First();
     }
 
     public TEntity? AddSingle(TEntity elemToAdd)
@@ -59,7 +59,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
         }
     }
 
-    public bool UpdateSingle(TEntity newElem)
+    public bool UpdateSingle(TEntity oldElem, TEntity newElem)
     {
         try
         {

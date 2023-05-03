@@ -62,7 +62,7 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
         }
     }
 
-    public bool UpdateSingle(FoodItem newElem)
+    public bool UpdateSingle(FoodItem oldElem,FoodItem newElem)
     {
         try
         {
