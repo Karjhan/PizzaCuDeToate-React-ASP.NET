@@ -61,7 +61,7 @@ public class StockRepository : IRepository<StockItem>, IStockRepository
         }
     }
 
-    public bool UpdateSingle(StockItem newElem)
+    public bool UpdateSingle(StockItem oldElem,StockItem newElem)
     {
         try
         {
