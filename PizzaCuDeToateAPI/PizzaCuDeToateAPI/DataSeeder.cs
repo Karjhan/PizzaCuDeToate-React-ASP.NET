@@ -16,24 +16,24 @@ public static class DataSeeder
 
     private static void AddCategories(ApplicationContext context)
     {
-        var movie = context.Categories.FirstOrDefault();
-        if (movie != null) return;
+        var cateogry = context.Categories.FirstOrDefault();
+        if (cateogry != null) return;
         
         //add data
     }
 
     private static void AddFoodItems(ApplicationContext context)
     {
-        var movie = context.FoodItems.FirstOrDefault();
-        if (movie != null) return;
+        var fooditem = context.FoodItems.FirstOrDefault();
+        if (fooditem != null) return;
         
         //add data
     }
 
     private static void AddStockItems(ApplicationContext context)
     {
-        var movie = context.StockItems.FirstOrDefault();
-        if (movie != null) return;
+        var stockitem = context.StockItems.FirstOrDefault();
+        if (stockitem != null) return;
         
         //add data
     }
