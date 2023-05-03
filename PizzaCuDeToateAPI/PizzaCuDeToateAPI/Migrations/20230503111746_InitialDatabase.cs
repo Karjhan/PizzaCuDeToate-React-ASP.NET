@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace PizzaCuDeToateAPI.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialDB : Migration
+    public partial class InitialDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,7 +63,7 @@ namespace PizzaCuDeToateAPI.Migrations
                     QuantityPerUnit = table.Column<string>(type: "text", nullable: false),
                     UnitPrice = table.Column<double>(type: "double precision", nullable: false),
                     UnitsInStock = table.Column<int>(type: "integer", nullable: false),
-                    FoodItemId = table.Column<int>(type: "integer", nullable: true)
+                    Logo = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -74,11 +74,30 @@ namespace PizzaCuDeToateAPI.Migrations
                         principalTable: "Categories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FoodItemStockItem",
+                columns: table => new
+                {
+                    IngredientsId = table.Column<int>(type: "integer", nullable: false),
+                    MealsId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FoodItemStockItem", x => new { x.IngredientsId, x.MealsId });
                     table.ForeignKey(
-                        name: "FK_StockItems_FoodItems_FoodItemId",
-                        column: x => x.FoodItemId,
+                        name: "FK_FoodItemStockItem_FoodItems_MealsId",
+                        column: x => x.MealsId,
                         principalTable: "FoodItems",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_FoodItemStockItem_StockItems_IngredientsId",
+                        column: x => x.IngredientsId,
+                        principalTable: "StockItems",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -87,24 +106,27 @@ namespace PizzaCuDeToateAPI.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_FoodItemStockItem_MealsId",
+                table: "FoodItemStockItem",
+                column: "MealsId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_StockItems_CategoryId",
                 table: "StockItems",
                 column: "CategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_StockItems_FoodItemId",
-                table: "StockItems",
-                column: "FoodItemId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "StockItems");
+                name: "FoodItemStockItem");
 
             migrationBuilder.DropTable(
                 name: "FoodItems");
+
+            migrationBuilder.DropTable(
+                name: "StockItems");
 
             migrationBuilder.DropTable(
                 name: "Categories");
