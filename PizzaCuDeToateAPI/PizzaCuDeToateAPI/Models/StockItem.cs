@@ -15,4 +15,6 @@ public class StockItem
     public double UnitPrice { get; set; }
     
     public int UnitsInStock { get; set; }
+    
+    public string Logo { get; set; }
 }

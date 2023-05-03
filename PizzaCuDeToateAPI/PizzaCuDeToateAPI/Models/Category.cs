@@ -8,5 +8,5 @@ public class Category
 
     public string Description { get; set; } = string.Empty;
 
-    public Image Logo { get; set; }
+    public string Logo { get; set; }
 }

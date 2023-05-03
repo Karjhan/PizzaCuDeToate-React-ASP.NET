@@ -1,6 +1,6 @@
 ﻿namespace PizzaCuDeToateAPI.Models;
 
-public abstract class FoodItem
+public class FoodItem
 {
     public int Id { get; set; }
 
@@ -14,7 +14,7 @@ public abstract class FoodItem
 
     public List<StockItem> Ingredients { get; set; }
 
-    public List<Image> Images { get; set; }
+    public List<string> Images { get; set; }
 
-    public Image Logo { get; set; }
+    public string Logo { get; set; }
 }
