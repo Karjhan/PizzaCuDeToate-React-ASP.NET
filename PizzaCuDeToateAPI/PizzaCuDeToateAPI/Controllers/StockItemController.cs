@@ -1,31 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PizzaCuDeToateAPI.Models;
-using PizzaCuDeToateAPI.Repositories.FoodItemRepository;
+using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 
 namespace PizzaCuDeToateAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
 
-public class FoodItemController : Controller
+public class StockItemController : Controller
 {
-    
-    private readonly FoodItemRepository _foodItemRepository;
+    private readonly StockRepository _stockRepository;
 
-    public FoodItemController(FoodItemRepository foodItemRepository)
+    public StockItemController(StockRepository stockRepository)
     {
-        _foodItemRepository = foodItemRepository;
+        _stockRepository = stockRepository;
     }
     
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-    public ActionResult<FoodItem> GetFoodItems()
+    public ActionResult<StockItem> GetStockItems()
     {
         if (true)
         {
-            return Ok(_foodItemRepository.GetAll());
+            return Ok(_stockRepository.GetAll());
         }
         else
         {
@@ -38,11 +37,11 @@ public class FoodItemController : Controller
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     
-    public ActionResult<FoodItem> GetFoodItemById(int id)
+    public ActionResult<StockItem> GetStockItemById(int id)
     {
         if (true)
         {
-            return Ok(_foodItemRepository.GetSingle(foodItem => foodItem.Id == id));
+            return Ok(_stockRepository.GetSingle(stock => stock.Id == id));
         }
         else
         {
@@ -55,11 +54,11 @@ public class FoodItemController : Controller
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-    public ActionResult<FoodItem> AddFoodItem(FoodItem foodItemToAdd)
+    public ActionResult<StockItem> AddStockItem(StockItem stockItemToAdd)
     {
         if (true)
         {
-            return Ok(_foodItemRepository.AddSingle(foodItemToAdd));
+            return Ok(_stockRepository.AddSingle(stockItemToAdd));
         }
         else
         {
@@ -71,11 +70,11 @@ public class FoodItemController : Controller
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-    public ActionResult<bool> UpdateOneFoodItem(FoodItem foodItemUpdated)
+    public ActionResult<bool> UpdateOneStockItem(StockItem stockItem)
     {
         if (true)
         {
-            return Ok(_foodItemRepository.UpdateSingle(foodItemUpdated));
+            return Ok(_stockRepository.UpdateSingle(stockItem));
         }
         else
         {
@@ -90,18 +89,18 @@ public class FoodItemController : Controller
 
     public void DeleteAll()
     {
-        _foodItemRepository.DeleteAll();
+        _stockRepository.DeleteAll();
     }
 
     [HttpDelete]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-    public ActionResult<FoodItem> DeleteSingleFoodItem(FoodItem foodItemToDelete)
+    public ActionResult<StockItem> DeleteSingleStockItem(StockItem stockItemToDelete)
     {
         if (true)
         {
-            return Ok(_foodItemRepository.DeleteSingle(foodItemToDelete));
+            return Ok(_stockRepository.DeleteSingle(stockItemToDelete));
         }
         else
         {
