@@ -2,7 +2,7 @@
 
 namespace PizzaCuDeToateAPI.DTOClasses;
 
-public class CategoryAddDTO
+public class AddCategoryDTO
 {
     [Required]
     public string Name { get; set; } 
