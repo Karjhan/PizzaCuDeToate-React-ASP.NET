@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using PizzaCuDeToateAPI;
 using PizzaCuDeToateAPI.DataContexts;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,4 +27,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+app.Seed();
 app.Run();
