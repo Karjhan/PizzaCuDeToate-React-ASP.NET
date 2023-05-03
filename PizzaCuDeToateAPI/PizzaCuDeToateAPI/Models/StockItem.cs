@@ -7,8 +7,8 @@ public class StockItem
     public string Name { get; set; } = string.Empty;
 
     public Category Category { get; set; }
-    
-    public List<FoodItem> Meals { get; set; }
+
+    public List<FoodItem> Meals { get; set; } = new List<FoodItem>();
 
     public bool IsIngredient { get; set; }
     
