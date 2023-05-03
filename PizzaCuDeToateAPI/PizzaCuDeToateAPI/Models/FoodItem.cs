@@ -17,4 +17,21 @@ public class FoodItem
     public List<string> Images { get; set; }
 
     public string Logo { get; set; }
+
+    public FoodItem()
+    {
+        
+    }
+
+    public FoodItem(int id, string name, Category category, string description, double unitPrice, List<StockItem> ingredients, List<string> images, string logo)
+    {
+        Id = id;
+        Name = name;
+        Category = category;
+        Description = description;
+        UnitPrice = unitPrice;
+        Ingredients = ingredients;
+        Images = images;
+        Logo = logo;
+    }
 }

@@ -8,4 +8,14 @@ public class Image
 {
     [Required]
     public string Path { get; set; } = string.Empty;
+
+    public Image()
+    {
+        
+    }
+    
+    public Image(string path)
+    {
+        Path = path;
+    }
 }
