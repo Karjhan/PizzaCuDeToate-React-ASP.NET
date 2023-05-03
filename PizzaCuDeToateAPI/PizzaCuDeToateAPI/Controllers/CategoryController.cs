@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PizzaCuDeToateAPI.DTOClasses;
 using PizzaCuDeToateAPI.Models;
 using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 
@@ -17,75 +18,67 @@ public class CategoryController : Controller
     }
     
     [HttpGet]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
     public ActionResult<Category> GetCategories()
     {
-        if (true)
+        var result = _categoryRepository.GetAll().ToList();
+        if (result.Count==0)
         {
-            return Ok(_categoryRepository.GetAll());
+            return NotFound($"Categories not found!");
         }
-        else
-        {
-            return BadRequest();
-        }
-        
+        return Ok(result);
     }
 
-    [HttpGet("id")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     
+    [HttpGet("id")]
+
     public ActionResult<Category> GetCategoryById(int id)
     {
-        if (true)
+        var result = _categoryRepository.GetSingle(category => category.Id == id);
+        if (result is null)
         {
-            return Ok(_categoryRepository.GetSingle(category => category.Id == id));
+            return NotFound($"Couldn't find category with id {id} in database!");
         }
-        else
-        {
-            return BadRequest();
-        }
-        
+        return Ok(result);
     }
 
     [HttpPost]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-
-    public ActionResult<Category> AddCategory(Category categoryToAdd)
+    public ActionResult<Category> AddCategory(CategoryDTO categoryToAdd)
     {
-        if (true)
+        var newCategory = new Category();
+        newCategory.Name = categoryToAdd.Name;
+        newCategory.Description = categoryToAdd.Description;
+        newCategory.Logo = categoryToAdd.Logo;
+        var result = _categoryRepository.AddSingle(newCategory);
+        if (result is null)
         {
-            return Ok(_categoryRepository.AddSingle(categoryToAdd));
+            return NotFound($"Category with name {categoryToAdd.Name} can't be added into database!");
         }
-        else
-        {
-            return BadRequest() ;
-        }
+
+        return Ok(result);
     }
 
     [HttpPatch]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
-    public ActionResult<bool> UpdateOneCategory(Category categoryUpdated)
+
+    public ActionResult<bool> UpdateOneCategory(CategoryDTO categoryUpdated)
     {
-        if (true)
+        var newCategory = new Category();
+        newCategory.Name = categoryUpdated.Name;
+        newCategory.Description = categoryUpdated.Description;
+        newCategory.Logo = categoryUpdated.Logo;
+        
+        var result = _categoryRepository.UpdateSingle(newCategory);
+        if (result is false)
         {
-            return Ok(_categoryRepository.UpdateSingle(categoryUpdated));
+            return NotFound($"Category can't be updated!");
         }
-        else
-        {
-            return BadRequest();
-        }
+
+        return Ok(result);
     }
 
 
     [HttpDelete]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
     public void DeleteAll()
     {
@@ -93,18 +86,23 @@ public class CategoryController : Controller
     }
 
     [HttpDelete]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
 
     public ActionResult<Category> DeleteSingleCategory(Category categoryToDelete)
     {
-        if (true)
+        var categories = _categoryRepository.GetAll().ToList();
+        var categoryDel = categories.Find(category => category.Id == categoryToDelete.Id);
+        if (categoryDel is null)
         {
-            return Ok(_categoryRepository.DeleteSingle(categoryToDelete));
+            return NotFound($"Can't find item to delete!");
         }
-        else
+         
+        var result = _categoryRepository.DeleteSingle(categoryDel).ToList();
+        if (result.Count == 0)
         {
-            return BadRequest();
+            return NotFound($"Can't delete item!");
         }
+
+        return Ok(result);
+
     }
 }
