@@ -12,9 +12,9 @@ public class FoodItem
 
     public double UnitPrice { get; set; }
 
-    public List<StockItem> Ingredients { get; set; }
+    public List<StockItem> Ingredients { get; set; } = new List<StockItem>();
 
-    public List<string> Images { get; set; }
+    public List<string> Images { get; set; } = new List<string>();
 
     public string Logo { get; set; }
 

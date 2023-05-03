@@ -24,9 +24,16 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
 
     public TEntity? AddSingle(TEntity elemToAdd)
     {
-        Context.Set<TEntity>().Add(elemToAdd);
-        Context.SaveChanges();
-        return elemToAdd;
+        try
+        {
+            Context.Set<TEntity>().Add(elemToAdd);
+            Context.SaveChanges();
+            return elemToAdd;
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     public void DeleteAll()
@@ -38,11 +45,18 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
         Context.SaveChanges();
     }
 
-    public IEnumerable<TEntity> DeleteSingle(TEntity elemToDelete)
+    public IEnumerable<TEntity>? DeleteSingle(TEntity elemToDelete)
     {
-        Context.Set<TEntity>().Remove(elemToDelete);
-        Context.SaveChanges();
-        return Context.Set<TEntity>();
+        try
+        {
+            Context.Set<TEntity>().Remove(elemToDelete);
+            Context.SaveChanges();
+            return Context.Set<TEntity>();
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
     }
 
     public bool UpdateSingle(TEntity newElem)

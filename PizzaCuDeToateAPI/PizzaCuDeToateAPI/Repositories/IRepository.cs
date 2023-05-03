@@ -12,7 +12,7 @@ public interface IRepository<TEntity> where TEntity : class
 
     void DeleteAll();
 
-    IEnumerable<TEntity> DeleteSingle(TEntity elemToDelete);
+    IEnumerable<TEntity>? DeleteSingle(TEntity elemToDelete);
 
     bool UpdateSingle(TEntity newElem);
 }
