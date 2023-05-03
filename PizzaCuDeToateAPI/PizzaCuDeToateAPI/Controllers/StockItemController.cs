@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
@@ -11,5 +12,6 @@ namespace PizzaCuDeToateAPI.Controllers
     [ApiController]
     public class StockItemController : ControllerBase
     {
+        
     }
 }
