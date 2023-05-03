@@ -6,6 +6,8 @@ public abstract class FoodItem
 
     public string Name { get; set; } = string.Empty;
 
+    public Category Category { get; set; }
+
     public string Description { get; set; } = string.Empty;
 
     public double UnitPrice { get; set; }

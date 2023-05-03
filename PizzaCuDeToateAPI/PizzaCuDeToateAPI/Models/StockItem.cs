@@ -8,6 +8,8 @@ public class StockItem
 
     public Category Category { get; set; }
     
+    public bool IsIngredient { get; set; }
+    
     public string QuantityPerUnit { get; set; } = string.Empty;
     
     public double UnitPrice { get; set; }
