@@ -1,16 +1,18 @@
-﻿namespace PizzaCuDeToateAPI.Repositories;
+﻿using System.Linq.Expressions;
 
-public interface IRepository<T>
+namespace PizzaCuDeToateAPI.Repositories;
+
+public interface IRepository<TEntity> where TEntity : class
 {
-    public IEnumerable<T> GetAll();
+    IEnumerable<TEntity> GetAll();
 
-    public T? GetSingle(int id);
+    TEntity? GetSingle(Expression<Func<TEntity, bool>> predicate);
 
-    public T? AddSingle(T elemToAdd);
+    TEntity? AddSingle(TEntity elemToAdd);
 
-    public void DeleteAll();
+    void DeleteAll();
 
-    public IEnumerable<T> DeleteSingle(int id);
+    IEnumerable<TEntity> DeleteSingle(TEntity elemToDelete);
 
-    public T? UpdateSingle(T newElem);
+    bool UpdateSingle(TEntity newElem);
 }
