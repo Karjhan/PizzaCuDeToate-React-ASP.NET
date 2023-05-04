@@ -203,7 +203,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(findFoodItem);
         }
         
-        [HttpPut("removeIngredient/{foodItemId}")]
+        [HttpPut("removeIngredient/{foodItemId}/{ingredientId}")]
         public async Task<IActionResult> RemoveIngredient([FromRoute] int foodItemId, [FromRoute] int ingredientId)
         {
             var findFoodItem = _foodItemRepository.GetSingle(foodItem => foodItem.Id == foodItemId);
