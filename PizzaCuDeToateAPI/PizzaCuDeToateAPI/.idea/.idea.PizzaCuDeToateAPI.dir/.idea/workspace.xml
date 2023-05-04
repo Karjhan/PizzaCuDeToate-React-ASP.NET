@@ -6,7 +6,14 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="Pulled from development" />
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="modified FoodItemRepository.cs;">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/StockItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/StockItemController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DTOClasses/StockItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/StockItemDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/IRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/StockItemRepository/IStockRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/StockItemRepository/IStockRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Repositories/StockItemRepository/StockRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/StockItemRepository/StockRepository.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +37,7 @@
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
@@ -164,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683197323151</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="modified FoodItemRepository.cs;">
+      <created>1683197440747</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1683197440747</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +217,7 @@
     <MESSAGE value="finnished the DataSeeder.cs class" />
     <MESSAGE value="added saveChanges to DataSeeder.cs" />
     <MESSAGE value="Pulled from development" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pulled from development" />
+    <MESSAGE value="modified FoodItemRepository.cs;" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified FoodItemRepository.cs;" />
   </component>
 </project>

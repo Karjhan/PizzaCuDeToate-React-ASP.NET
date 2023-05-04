@@ -15,4 +15,6 @@ public interface IRepository<TEntity> where TEntity : class
     IEnumerable<TEntity>? DeleteSingle(TEntity elemToDelete);
 
     bool UpdateSingle(TEntity oldElem,TEntity newElem);
+    
+    
 }

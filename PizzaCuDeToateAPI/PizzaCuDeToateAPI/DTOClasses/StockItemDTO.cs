@@ -5,14 +5,14 @@ namespace PizzaCuDeToateAPI.DTOClasses;
 
 public class StockItemDTO
 {
-    [Required]
-
-    public string Name { get; set; } = string.Empty;
+    public string Name { get; set; } 
     
+    public int CategoryId { get; set; }
     public bool IsIngredient { get; set; }
     
-    public string QuantityPerUnit { get; set; } = string.Empty;
+    public string QuantityPerUnit { get; set; } 
     
+    public List<int> MealIds { get; set; } 
     public double UnitPrice { get; set; }
     
     public int UnitsInStock { get; set; }

@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PizzaCuDeToateAPI.DTOClasses;
 using PizzaCuDeToateAPI.Models;
-using PizzaCuDeToateAPI.Repositories.CategoryRepository;
-using PizzaCuDeToateAPI.Repositories.FoodItemRepository;
 using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
@@ -17,33 +15,31 @@ namespace PizzaCuDeToateAPI.Controllers
     public class StockItemController : ControllerBase
     {
         private readonly IStockRepository _stockRepository;
-
-        private readonly IFoodItemRepository _foodItemRepository;
-
-        private readonly ICategoryRepository _categoryRepository;
-
-        public StockItemController(IStockRepository stockRepository, IFoodItemRepository foodItemRepository,ICategoryRepository categoryRepository)
+        public StockItemController(IStockRepository stockRepository)
         {
             _stockRepository = stockRepository;
-            _foodItemRepository = foodItemRepository;
-            _categoryRepository = categoryRepository;
         }
 
         [HttpGet]
-        [Route("allStockItems")]
+        [Route("all")]
 
         public async Task<IActionResult> GetAllStockItems()
         {
-            var result = _stockRepository.GetAll().ToList();
-            if (result.Count == 0)
+            var result = _stockRepository.GetAll();
+            if (result.Count() == 0)
             {
                 return NoContent();
             }
-
-            return Ok(result);
+            var final = result.Select(stockItem =>
+            {
+                var show = new JSONStockItemDTO();
+                show.GetFromStockItem(stockItem);
+                return show;
+            });
+            return Ok(final);
         }
 
-        [HttpGet("getStockItemById/{id}")]
+        [HttpGet("getById/{id}")]
 
         public async Task<IActionResult> GetStockItemById([FromRoute] int id)
         {
@@ -52,87 +48,89 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NotFound($"Couldn't find stock item with id {id}");
             }
-
-            return Ok(result);
+            var final = new JSONStockItemDTO();
+            final.GetFromStockItem(result);
+            return Ok(final);
         }
 
 
         [HttpPost]
-        [Route("addStockItem/{categoryName}")]
+        [Route("add")]
 
-        public async Task<IActionResult> AddStockItem([FromRoute] string categoryName,StockItemDTO stockItemDto)
+        public async Task<IActionResult> AddStockItem(StockItemDTO request)
         {
+            var findStockItem = _stockRepository.GetSingle(stockItem => stockItem.Name == request.Name);
+            if (findStockItem is not null)
+            {
+                return BadRequest("Stock item already exists!");
+            }
             var stockItemToAdd = new StockItem();
-            stockItemToAdd.Name = stockItemDto.Name;
-            stockItemToAdd.UnitsInStock = stockItemDto.UnitsInStock;
-            stockItemToAdd.IsIngredient = stockItemDto.IsIngredient;
-            stockItemToAdd.QuantityPerUnit = stockItemDto.QuantityPerUnit;
-            stockItemToAdd.Logo = stockItemDto.Logo;
-            stockItemToAdd.UnitPrice = stockItemDto.UnitPrice;
-
-            var category = _categoryRepository.GetSingle(category => category.Name == categoryName);
-            if (category is null)
+            stockItemToAdd.Name = request.Name;
+            stockItemToAdd.UnitsInStock = request.UnitsInStock;
+            stockItemToAdd.IsIngredient = request.IsIngredient;
+            stockItemToAdd.QuantityPerUnit = request.QuantityPerUnit;
+            stockItemToAdd.Logo = request.Logo;
+            stockItemToAdd.UnitPrice = request.UnitPrice;
+            stockItemToAdd = _stockRepository.ChangeCategory(stockItemToAdd, request.CategoryId);
+            if (stockItemToAdd.Category is null)
             {
-                return NotFound($"Couldn't find category with name {categoryName}!");
+                return NotFound($"Couldn't find category with id {request.CategoryId}!");
             }
-
-            stockItemToAdd.Category = category;
-            
-            var foodItem = _foodItemRepository.GetSingle(foodItem => foodItem.Category.Id == category.Id);
-            if (foodItem is null)
+            foreach (var id in request.MealIds)
             {
-                return NotFound($"Couldn't find food item with the category needed!");
+                stockItemToAdd = _stockRepository.AddMeal(stockItemToAdd, id);
+                if (stockItemToAdd is null)
+                {
+                    return BadRequest($"Meal item with id {id} doesn't exist!");
+                }
             }
-            stockItemToAdd.Meals.Add(foodItem);
 
             var result = _stockRepository.AddSingle(stockItemToAdd);
-
             if (result is null)
             {
                 return StatusCode(500, "Server error, please try again later!");
             }
-
-            return Ok(result);
+            var final = new JSONStockItemDTO();
+            final.GetFromStockItem(result);
+            return Ok(final);
         }
         
         
-        [HttpPost]
-        [Route("updateStockItem/{id}")]
+        [HttpPut]
+        [Route("update/{id}")]
 
-        public async Task<IActionResult> UpdateStockItem([FromRoute] int id, StockItemDTO stockItemDto)
+        public async Task<IActionResult> UpdateStockItem([FromRoute] int id, [FromBody] UpdateStockItemDTO request)
         {
-            var stockItemToUpdate = _stockRepository.GetSingle(stockItem => stockItem.Id == id);
-            if (stockItemToUpdate is null)
+            var findStockItem = _stockRepository.GetSingle(stockItem => stockItem.Id == id);
+            if (findStockItem is null)
             {
                 return NotFound($"Couldn't find stock item with id {id}!");
             }
             var stockItemUpdated = new StockItem();
-            stockItemUpdated.Name = stockItemDto.Name;
-            stockItemUpdated.UnitsInStock = stockItemDto.UnitsInStock;
-            stockItemUpdated.IsIngredient = stockItemDto.IsIngredient;
-            stockItemUpdated.QuantityPerUnit = stockItemDto.QuantityPerUnit;
-            stockItemUpdated.Logo = stockItemDto.Logo;
-            stockItemUpdated.UnitPrice = stockItemDto.UnitPrice;
+            stockItemUpdated.Id = id;
+            stockItemUpdated.Name = request.Name;
+            stockItemUpdated.UnitsInStock = request.UnitsInStock;
+            stockItemUpdated.IsIngredient = request.IsIngredient;
+            stockItemUpdated.QuantityPerUnit = request.QuantityPerUnit;
+            stockItemUpdated.Logo = request.Logo;
+            stockItemUpdated.UnitPrice = request.UnitPrice;
+            stockItemUpdated.Category = findStockItem.Category;
+            stockItemUpdated.Meals = findStockItem.Meals;
             
-            var foodItem = _foodItemRepository.GetSingle(foodItem => foodItem.Category.Id == stockItemToUpdate.Category.Id);
-            if (foodItem is null)
-            {
-                return NotFound($"Couldn't find food item with the category needed!");
-            }
-            stockItemUpdated.Meals.Add(foodItem);
+            var result = _stockRepository.UpdateSingle(findStockItem, stockItemUpdated);
 
-            var result = _stockRepository.UpdateSingle(stockItemToUpdate, stockItemUpdated);
-
-            if (result is false)
+            if (!result)
             {
                 return StatusCode(500, "Server error, please try again later!");
             }
 
-            return Ok(result);
+            var final = new JSONStockItemDTO();
+            final.GetFromStockItem(stockItemUpdated);
+            return Ok(final);
         }
 
         [HttpDelete]
-        [Route("deleteAllStockItems")]
+        [Route("all")]
 
         public async Task<IActionResult> DeleteAllStockItems()
         {
@@ -147,9 +145,9 @@ namespace PizzaCuDeToateAPI.Controllers
             }
         }
 
-        [HttpDelete("deleteStockItem/{id}")]
+        [HttpDelete("delete/{id}")]
 
-        public async Task<IActionResult> DeleteStockItemById([FromRoute] int id, StockItem stockItemToDelete)
+        public async Task<IActionResult> DeleteStockItemById([FromRoute] int id)
         {
             var stockItem = _stockRepository.GetSingle(stockItem => stockItem.Id == id);
             if (stockItem is null)
@@ -166,9 +164,5 @@ namespace PizzaCuDeToateAPI.Controllers
 
             return Ok(result);
         }
-            
-            
-           
-
     }
 }
