@@ -25,16 +25,16 @@ public class StockItem
         
     }
 
-    public StockItem(int id, string name, Category category, List<FoodItem> meals, bool isIngredient, string quantityPerUnit, double unitPrice, int unitsInStock, string logo)
+    public StockItem(int id, string name, Category category,bool isIngredient, string quantityPerUnit, double unitPrice, int unitsInStock, string logo)
     {
         Id = id;
         Name = name;
         Category = category;
-        Meals = meals;
         IsIngredient = isIngredient;
         QuantityPerUnit = quantityPerUnit;
         UnitPrice = unitPrice;
         UnitsInStock = unitsInStock;
         Logo = logo;
     }
+    
 }
