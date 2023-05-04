@@ -74,5 +74,62 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
         {
             return false;
         }
+        
+        
+    }
+    
+    
+    public void AddImage(FoodItem foodItem, string imagePathToAdd)
+    {
+        if (!foodItem.Images.Contains(imagePathToAdd))
+        {
+            foodItem.Images.Add(imagePathToAdd);
+        }
+        Context.SaveChanges();
+    }
+
+    public void RemoveImage(FoodItem foodItem, string imagePathToRemove)
+    {
+        if (foodItem.Images.Contains(imagePathToRemove))
+        {
+            foodItem.Images.Remove(imagePathToRemove);
+        }
+        Context.SaveChanges();
+    }
+
+    public FoodItem? AddIngredient(FoodItem foodItem, int ingredientIdToAdd)
+    {
+        var ingredientToAdd = Context.StockItems.Where(stockItem => stockItem.Id == ingredientIdToAdd).FirstOrDefault();
+        if (ingredientToAdd is null || !ingredientToAdd.IsIngredient)
+        {
+            return null;
+        }
+        foodItem.Ingredients.Add(ingredientToAdd);
+        Context.SaveChanges();
+        return foodItem;
+    }
+
+    public FoodItem? RemoveIngredient(FoodItem foodItem, int ingredientIdToRemove)
+    {
+        var ingredientToRemove = Context.StockItems.Where(stockItem => stockItem.Id == ingredientIdToRemove).FirstOrDefault();
+        if (ingredientToRemove is null || !ingredientToRemove.IsIngredient)
+        {
+            return null;
+        }
+        foodItem.Ingredients.Remove(ingredientToRemove);
+        Context.SaveChanges();
+        return foodItem;
+    }
+
+    public FoodItem? ChangeCategory(FoodItem foodItem, int newCategoryId)
+    {
+        var newCategory = Context.Categories.Where(category => category.Id == newCategoryId).FirstOrDefault();
+        if (newCategory is null)
+        {
+            return null;
+        }
+        foodItem.Category = newCategory;
+        Context.SaveChanges();
+        return foodItem;
     }
 }
