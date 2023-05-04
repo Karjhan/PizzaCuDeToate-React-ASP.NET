@@ -31,7 +31,13 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NoContent();
             }
-            return Ok(result);
+            var final = result.Select(foodItem =>
+            {
+                var show = new JSONFoodItemDTO();
+                show.GetFromFoodItem(foodItem);
+                return show;
+            });
+            return Ok(final);
         }
         
         [HttpGet("getById/{id}")]
@@ -42,7 +48,9 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NotFound($"Couldn't find food item with id {id} in database!");
             }
-            return Ok(result);
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(result);
+            return Ok(final);
         }
         
         [HttpGet("getByName/{name}")]
@@ -53,7 +61,9 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NotFound($"Couldn't find food item with name {name} in database!");
             }
-            return Ok(result);
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(result);
+            return Ok(final);
         }
         
         [HttpPost]
@@ -89,7 +99,9 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return StatusCode(500, "Server error, please try again later!");
             }
-            return Ok(result);
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(result);
+            return Ok(final);
         }
         
         [HttpPut("update/{id}")]
@@ -103,6 +115,7 @@ namespace PizzaCuDeToateAPI.Controllers
             var updatedFoodItem = new FoodItem();
             updatedFoodItem.Id = id;
             updatedFoodItem.Name = request.Name;
+            updatedFoodItem.Category = findFoodItem.Category;
             updatedFoodItem.Description = request.Description;
             updatedFoodItem.Logo = request.Logo;
             updatedFoodItem.UnitPrice = request.UnitPrice;
@@ -113,7 +126,9 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return StatusCode(500, "Server error, please try again later!");
             }
-            return Ok(updatedFoodItem);
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(updatedFoodItem);
+            return Ok(final);
         }
         
         [HttpDelete]
@@ -144,7 +159,13 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return StatusCode(500, "Server error, please try again later!"); 
             }
-            return Ok(result);
+            var final = result.Select(foodItem =>
+            {
+                var show = new JSONFoodItemDTO();
+                show.GetFromFoodItem(foodItem);
+                return show;
+            });
+            return Ok(final);
         }
         
         [HttpPut("updateCategory/{foodItemId}/{categoryId}")]
@@ -160,7 +181,9 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NotFound($"Couldn't find category with id {categoryId} in database!");
             }
-            return Ok(findFoodItem);
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(findFoodItem);
+            return Ok(final);
         }
         
         [HttpPut("addImage/{id}")]
@@ -172,7 +195,9 @@ namespace PizzaCuDeToateAPI.Controllers
                 return NotFound($"Couldn't find food item with id {id} in database!");
             }
             _foodItemRepository.AddImage(findFoodItem,request.ImagePath);
-            return Ok();
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(findFoodItem);
+            return Ok(final);
         }
         
         [HttpPut("removeImage/{id}")]
@@ -184,7 +209,9 @@ namespace PizzaCuDeToateAPI.Controllers
                 return NotFound($"Couldn't find food item with id {id} in database!");
             }
             _foodItemRepository.RemoveImage(findFoodItem,request.ImagePath);
-            return Ok();
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(findFoodItem);
+            return Ok(final);
         }
         
         [HttpPut("addIngredient/{foodItemId}/{ingredientId}")]
@@ -200,7 +227,9 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return BadRequest($"Couldn't find food ingredient with id {ingredientId} in database, or it's not an ingredient!");
             }
-            return Ok(findFoodItem);
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(findFoodItem);
+            return Ok(final);
         }
         
         [HttpPut("removeIngredient/{foodItemId}/{ingredientId}")]
@@ -216,7 +245,9 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return BadRequest($"Couldn't find food ingredient with id {ingredientId} in database, or it's not an ingredient!");
             }
-            return Ok(findFoodItem);
+            var final = new JSONFoodItemDTO();
+            final.GetFromFoodItem(findFoodItem);
+            return Ok(final);
         }
     }
 }

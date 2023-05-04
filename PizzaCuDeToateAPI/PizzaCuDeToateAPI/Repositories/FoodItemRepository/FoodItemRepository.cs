@@ -17,7 +17,7 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
 
     public IEnumerable<FoodItem> GetAll()
     {
-        return Context.FoodItems.Include(foodItem => foodItem.Ingredients).Include(foodItem => foodItem.Category).ToList();
+        return Context.FoodItems.Include(foodItem => foodItem.Category).Include(foodItem => foodItem.Ingredients).ToList();
     }
 
     public FoodItem? GetSingle(Expression<Func<FoodItem, bool>> predicate)
@@ -68,10 +68,7 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
         {
             oldElem.Name = newElem.Name;
             oldElem.Description = newElem.Description;
-            oldElem.Category = newElem.Category;
             oldElem.UnitPrice = newElem.UnitPrice;
-            oldElem.Ingredients = newElem.Ingredients;
-            oldElem.Images = newElem.Images;
             oldElem.Logo = newElem.Logo;
             Context.SaveChanges();
             return true;
