@@ -64,7 +64,7 @@ public static class DataSeeder
         var foodItemShawarmaComfortShaorma =
             new FoodItem( "Comfort Shawarma", categoryShawarma, "", 25, new List<string>(), "");
         var foodItemShawarmaShaormaCuCeva =
-            new FoodItem( "Shawarma cu ceva", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Shawarma cu ceva", categoryShawarma, "", 25, new List<string>(), "");
         var foodItemShawarmaShaormaSaracului =
             new FoodItem( "Shawarma Saracului", categoryShawarma, "", 25, new List<string>(), "");
 
