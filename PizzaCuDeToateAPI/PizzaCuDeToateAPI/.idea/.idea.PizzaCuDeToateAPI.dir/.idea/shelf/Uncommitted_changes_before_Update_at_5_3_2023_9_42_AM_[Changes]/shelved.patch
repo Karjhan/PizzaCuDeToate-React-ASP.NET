@@ -1,0 +1,42 @@
+Index: Models/Dessert.cs
+===================================================================
+diff --git a/Models/Dessert.cs b/Models/Dessert.cs
+deleted file mode 100644
+--- a/Models/Dessert.cs	(revision 1c6be23d5b0132df6b668c9ddcf7028b0e7096e0)
++++ /dev/null	(revision 1c6be23d5b0132df6b668c9ddcf7028b0e7096e0)
+@@ -1,6 +0,0 @@
+-namespace PizzaCuDeToateAPI.Models;
+-
+-public class Dessert : FoodItem
+-{
+-    
+-}
+\ No newline at end of file
+Index: Models/Pizza.cs
+===================================================================
+diff --git a/Models/Pizza.cs b/Models/Pizza.cs
+deleted file mode 100644
+--- a/Models/Pizza.cs	(revision 1c6be23d5b0132df6b668c9ddcf7028b0e7096e0)
++++ /dev/null	(revision 1c6be23d5b0132df6b668c9ddcf7028b0e7096e0)
+@@ -1,6 +0,0 @@
+-namespace PizzaCuDeToateAPI.Models;
+-
+-public class Pizza : FoodItem
+-{
+-    
+-}
+\ No newline at end of file
+Index: Models/Shaorma.cs
+===================================================================
+diff --git a/Models/Shaorma.cs b/Models/Shaorma.cs
+deleted file mode 100644
+--- a/Models/Shaorma.cs	(revision 1c6be23d5b0132df6b668c9ddcf7028b0e7096e0)
++++ /dev/null	(revision 1c6be23d5b0132df6b668c9ddcf7028b0e7096e0)
+@@ -1,6 +0,0 @@
+-namespace PizzaCuDeToateAPI.Models;
+-
+-public class Shaorma : FoodItem
+-{
+-    
+-}
+\ No newline at end of file

@@ -22,9 +22,20 @@ public class FoodItem
     {
         
     }
-
+    
     public FoodItem(string name, Category category, string description, double unitPrice, List<string> images, string logo)
     {
+        Name = name;
+        Category = category;
+        Description = description;
+        UnitPrice = unitPrice;
+        Images = images;
+        Logo = logo;
+    }
+
+    public FoodItem(int id, string name, Category category, string description, double unitPrice, List<string> images, string logo)
+    {
+        Id = id;
         Name = name;
         Category = category;
         Description = description;

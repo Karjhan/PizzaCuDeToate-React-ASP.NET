@@ -24,9 +24,21 @@ public class StockItem
     {
         
     }
-
+    
     public StockItem(string name, Category category, bool isIngredient, string quantityPerUnit, double unitPrice, int unitsInStock, string logo)
     {
+        Name = name;
+        Category = category;
+        IsIngredient = isIngredient;
+        QuantityPerUnit = quantityPerUnit;
+        UnitPrice = unitPrice;
+        UnitsInStock = unitsInStock;
+        Logo = logo;
+    }
+
+    public StockItem(int id, string name, Category category, bool isIngredient, string quantityPerUnit, double unitPrice, int unitsInStock, string logo)
+    {
+        Id = id;
         Name = name;
         Category = category;
         IsIngredient = isIngredient;
