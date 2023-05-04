@@ -1,8 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.Build.Framework;
 
 namespace PizzaCuDeToateAPI.DTOClasses;
 
-public class AddCategoryDTO
+public class CategoryDTO
 {
     [Required]
     public string Name { get; set; } 

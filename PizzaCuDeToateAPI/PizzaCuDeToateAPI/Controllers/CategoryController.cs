@@ -1,108 +1,127 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using PizzaCuDeToateAPI.DTOClasses;
 using PizzaCuDeToateAPI.Models;
 using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 
-namespace PizzaCuDeToateAPI.Controllers;
-
-[Route("api/[controller]")]
-[ApiController]
-
-public class CategoryController : Controller
+namespace PizzaCuDeToateAPI.Controllers
 {
-    private readonly CategoryRepository _categoryRepository;
-
-    public CategoryController(CategoryRepository categoryRepository)
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CategoryController : ControllerBase
     {
-        _categoryRepository = categoryRepository;
-    }
-    
-    [HttpGet]
+        private readonly ICategoryRepository _categoryRepository;
 
-    public ActionResult<Category> GetCategories()
-    {
-        var result = _categoryRepository.GetAll().ToList();
-        if (result.Count==0)
+        public CategoryController(ICategoryRepository categoryRepository)
         {
-            return NotFound($"Categories not found!");
-        }
-        return Ok(result);
-    }
-
-    
-    [HttpGet("id")]
-
-    public ActionResult<Category> GetCategoryById(int id)
-    {
-        var result = _categoryRepository.GetSingle(category => category.Id == id);
-        if (result is null)
-        {
-            return NotFound($"Couldn't find category with id {id} in database!");
-        }
-        return Ok(result);
-    }
-
-    [HttpPost]
-    public ActionResult<Category> AddCategory(CategoryDTO categoryToAdd)
-    {
-        var newCategory = new Category();
-        newCategory.Name = categoryToAdd.Name;
-        newCategory.Description = categoryToAdd.Description;
-        newCategory.Logo = categoryToAdd.Logo;
-        var result = _categoryRepository.AddSingle(newCategory);
-        if (result is null)
-        {
-            return NotFound($"Category with name {categoryToAdd.Name} can't be added into database!");
+            _categoryRepository = categoryRepository;
         }
 
-        return Ok(result);
-    }
+        [HttpGet]
+        [Route("all")]
+        public async Task<IActionResult> GetAllCategories()
+        {
+            var result = _categoryRepository.GetAll();
+            if (result.Count() == 0)
+            {
+                return NoContent();
+            }
+            return Ok(result);
+        }
 
-    [HttpPatch]
-
-
-    public ActionResult<bool> UpdateOneCategory(CategoryDTO categoryUpdated)
-    {
-        var newCategory = new Category();
-        newCategory.Name = categoryUpdated.Name;
-        newCategory.Description = categoryUpdated.Description;
-        newCategory.Logo = categoryUpdated.Logo;
+        [HttpGet("getById/{id}")]
+        public async Task<IActionResult> GetCategoryById([FromRoute] int id)
+        {
+            var result = _categoryRepository.GetSingle(category => category.Id == id);
+            if (result is null)
+            {
+                return NotFound($"Couldn't find category with id {id} in database!");
+            }
+            return Ok(result);
+        }
         
-        var result = _categoryRepository.UpdateSingle(newCategory);
-        if (result is false)
+        [HttpGet("getByName/{name}")]
+        public async Task<IActionResult> GetCategoryByName([FromRoute] string name)
         {
-            return NotFound($"Category can't be updated!");
+            var result = _categoryRepository.GetSingle(category => category.Name == name);
+            if (result is null)
+            {
+                return NotFound($"Couldn't find category with name {name} in database!");
+            }
+            return Ok(result);
         }
 
-        return Ok(result);
-    }
-
-
-    [HttpDelete]
-
-    public void DeleteAll()
-    {
-        _categoryRepository.DeleteAll();
-    }
-
-    [HttpDelete]
-
-    public ActionResult<Category> DeleteSingleCategory(Category categoryToDelete)
-    {
-        var categories = _categoryRepository.GetAll().ToList();
-        var categoryDel = categories.Find(category => category.Id == categoryToDelete.Id);
-        if (categoryDel is null)
+        [HttpPost]
+        [Route("add")]
+        public async Task<IActionResult> AddCategory(CategoryDTO request)
         {
-            return NotFound($"Can't find item to delete!");
-        }
-         
-        var result = _categoryRepository.DeleteSingle(categoryDel).ToList();
-        if (result.Count == 0)
-        {
-            return NotFound($"Can't delete item!");
+            // var findCategory = _categoryRepository.GetSingle(category => category.Name == request.Name);
+            // if (findCategory is not null)
+            // {
+            //     return BadRequest("Category already exists!");
+            // }
+            var categoryToAdd = new Category();
+            categoryToAdd.Name = request.Name;
+            categoryToAdd.Description = request.Description;
+            categoryToAdd.Logo = request.Logo;
+            var result = _categoryRepository.AddSingle(categoryToAdd);
+            if (result is null)
+            {
+                return StatusCode(500, "Server error, please try again later!");
+            }
+            return Ok(result);
         }
 
-        return Ok(result);
+        [HttpPut("update/{id}")]
+        public async Task<IActionResult> UpdateCategoryById([FromRoute] int id, [FromBody] CategoryDTO request)
+        {
+            var findCategory = _categoryRepository.GetSingle(category => category.Id == id);
+            if (findCategory is null)
+            {
+                return NotFound($"Couldn't find category with id {id} in database!");
+            }
+            var updatedCategory = new Category(id, request.Name, request.Description, request.Logo);
+            var result = _categoryRepository.UpdateSingle(findCategory,updatedCategory);
+            if (!result)
+            {
+                return StatusCode(500, "Server error, please try again later!");
+            }
+            return Ok(updatedCategory);
+        }
 
+        [HttpDelete]
+        [Route("all")]
+        public async Task<IActionResult> DeleteAllCategories()
+        {
+            try
+            {
+                _categoryRepository.DeleteAll();
+                return Ok("Deleted all categories!");
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, "Server error, please try again later!"); 
+            }
+        }
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteCategoryById([FromRoute] int id)
+        {
+            var findCategory = _categoryRepository.GetSingle(category => category.Id == id);
+            if (findCategory is null)
+            {
+                return NotFound($"Couldn't find category with id {id} in database!");
+            }
+            var result = _categoryRepository.DeleteSingle(findCategory);
+            if (result is null)
+            {
+                return StatusCode(500, "Server error, please try again later!"); 
+            }
+            return Ok(result);
+        }
     }
 }
