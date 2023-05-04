@@ -44,7 +44,7 @@ public static class DataSeeder
         //Food Items
 
         var foodItemPizzaCalifornia =
-            new FoodItem( "Californa", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "California", categoryPizza, "", 25, new List<string>(), "");
         var foodItemPizzaVeggieMozzarella =
             new FoodItem( "Veggie & Mozzarella", categoryPizza, "", 25, new List<string>(), "");
         var foodItemPizzaSuprema =

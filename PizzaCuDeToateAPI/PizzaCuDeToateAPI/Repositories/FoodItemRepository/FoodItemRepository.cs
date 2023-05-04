@@ -17,7 +17,7 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
 
     public IEnumerable<FoodItem> GetAll()
     {
-        return Context.FoodItems.Include(foodItem => foodItem.Ingredients).Include(foodItem => foodItem.Logo).ToList();
+        return Context.FoodItems.Include(foodItem => foodItem.Category).Include(foodItem => foodItem.Ingredients).ToList();
     }
 
     public FoodItem? GetSingle(Expression<Func<FoodItem, bool>> predicate)
@@ -66,7 +66,10 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
     {
         try
         {
-            Context.FoodItems.Update(newElem);
+            oldElem.Name = newElem.Name;
+            oldElem.Description = newElem.Description;
+            oldElem.UnitPrice = newElem.UnitPrice;
+            oldElem.Logo = newElem.Logo;
             Context.SaveChanges();
             return true;
         }
@@ -74,11 +77,8 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
         {
             return false;
         }
-        
-        
     }
-    
-    
+
     public void AddImage(FoodItem foodItem, string imagePathToAdd)
     {
         if (!foodItem.Images.Contains(imagePathToAdd))
