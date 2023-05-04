@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using PizzaCuDeToateAPI;
 using PizzaCuDeToateAPI.DataContexts;
 using PizzaCuDeToateAPI.Repositories.CategoryRepository;
+using PizzaCuDeToateAPI.Repositories.FoodItemRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<IFoodItemRepository, FoodItemRepository>();
 builder.Services.AddTransient<DbContext, ApplicationContext>();
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PizzaCuDeToate_Db")));
 

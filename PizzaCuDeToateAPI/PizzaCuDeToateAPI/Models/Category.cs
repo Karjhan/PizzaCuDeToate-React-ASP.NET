@@ -15,9 +15,8 @@ public class Category
         
     }
 
-    public Category(int id, string name, string description, string logo)
+    public Category(string name, string description, string logo)
     {
-        Id = id;
         Name = name;
         Description = description;
         Logo = logo;

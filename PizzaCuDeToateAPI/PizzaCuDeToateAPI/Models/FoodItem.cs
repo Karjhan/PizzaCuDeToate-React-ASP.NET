@@ -23,14 +23,12 @@ public class FoodItem
         
     }
 
-    public FoodItem(int id, string name, Category category, string description, double unitPrice, List<StockItem> ingredients, List<string> images, string logo)
+    public FoodItem(string name, Category category, string description, double unitPrice, List<string> images, string logo)
     {
-        Id = id;
         Name = name;
         Category = category;
         Description = description;
         UnitPrice = unitPrice;
-        Ingredients = ingredients;
         Images = images;
         Logo = logo;
     }

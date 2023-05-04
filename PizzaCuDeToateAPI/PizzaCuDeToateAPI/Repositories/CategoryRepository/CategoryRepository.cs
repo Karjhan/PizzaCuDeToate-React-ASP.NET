@@ -21,7 +21,7 @@ public class CategoryRepository : IRepository<Category>, ICategoryRepository
 
     public Category? GetSingle(Expression<Func<Category, bool>> predicate)
     {
-        return Context.Categories.Where(predicate).First();
+        return Context.Categories.Where(predicate).FirstOrDefault();
     }
 
     public Category? AddSingle(Category elemToAdd)

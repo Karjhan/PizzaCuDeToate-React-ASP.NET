@@ -22,7 +22,7 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
 
     public FoodItem? GetSingle(Expression<Func<FoodItem, bool>> predicate)
     {
-        return Context.FoodItems.Where(predicate).Include(foodItem => foodItem.Ingredients).Include(foodItem => foodItem.Logo).First();
+        return Context.FoodItems.Where(predicate).Include(foodItem => foodItem.Ingredients).Include(foodItem => foodItem.Logo).FirstOrDefault();
     }
 
     public FoodItem? AddSingle(FoodItem elemToAdd)
@@ -66,7 +66,13 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
     {
         try
         {
-            Context.FoodItems.Update(newElem);
+            oldElem.Name = newElem.Name;
+            oldElem.Description = newElem.Description;
+            oldElem.Category = newElem.Category;
+            oldElem.UnitPrice = newElem.UnitPrice;
+            oldElem.Ingredients = newElem.Ingredients;
+            oldElem.Images = newElem.Images;
+            oldElem.Logo = newElem.Logo;
             Context.SaveChanges();
             return true;
         }
@@ -74,5 +80,59 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
         {
             return false;
         }
+    }
+
+    public void AddImage(FoodItem foodItem, string imagePathToAdd)
+    {
+        if (!foodItem.Images.Contains(imagePathToAdd))
+        {
+            foodItem.Images.Add(imagePathToAdd);
+        }
+        Context.SaveChanges();
+    }
+
+    public void RemoveImage(FoodItem foodItem, string imagePathToRemove)
+    {
+        if (foodItem.Images.Contains(imagePathToRemove))
+        {
+            foodItem.Images.Remove(imagePathToRemove);
+        }
+        Context.SaveChanges();
+    }
+
+    public FoodItem? AddIngredient(FoodItem foodItem, int ingredientIdToAdd)
+    {
+        var ingredientToAdd = Context.StockItems.Where(stockItem => stockItem.Id == ingredientIdToAdd).FirstOrDefault();
+        if (ingredientToAdd is null || !ingredientToAdd.IsIngredient)
+        {
+            return null;
+        }
+        foodItem.Ingredients.Add(ingredientToAdd);
+        Context.SaveChanges();
+        return foodItem;
+    }
+
+    public FoodItem? RemoveIngredient(FoodItem foodItem, int ingredientIdToRemove)
+    {
+        var ingredientToRemove = Context.StockItems.Where(stockItem => stockItem.Id == ingredientIdToRemove).FirstOrDefault();
+        if (ingredientToRemove is null || !ingredientToRemove.IsIngredient)
+        {
+            return null;
+        }
+        foodItem.Ingredients.Remove(ingredientToRemove);
+        Context.SaveChanges();
+        return foodItem;
+    }
+
+    public FoodItem? ChangeCategory(FoodItem foodItem, int newCategoryId)
+    {
+        var newCategory = Context.Categories.Where(category => category.Id == newCategoryId).FirstOrDefault();
+        if (newCategory is null)
+        {
+            return null;
+        }
+        foodItem.Category = newCategory;
+        Context.SaveChanges();
+        return foodItem;
     }
 }
