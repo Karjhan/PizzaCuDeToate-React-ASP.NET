@@ -1,12 +1,13 @@
-﻿using PizzaCuDeToateAPI.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace PizzaCuDeToateAPI.DTOClasses;
 
-public class CategoryDTO
+public class AddCategoryDTO
 {
-    public string Name { get; set; } = string.Empty;
+    [Required]
+    public string Name { get; set; } 
 
-    public string Description { get; set; } = string.Empty;
+    public string Description { get; set; } 
 
-    public Image Logo { get; set; }
+    public string Logo { get; set; }
 }
