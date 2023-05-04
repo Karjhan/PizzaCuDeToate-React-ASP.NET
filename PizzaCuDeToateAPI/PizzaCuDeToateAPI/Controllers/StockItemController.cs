@@ -164,5 +164,59 @@ namespace PizzaCuDeToateAPI.Controllers
 
             return Ok(result);
         }
+        
+        [HttpPut("updateCategory/{stockItemId}/{categoryId}")]
+        public async Task<IActionResult> UpdateStockItemCategory([FromRoute] int stockItemId, [FromRoute] int categoryId)
+        {
+            var findStockItem = _stockRepository.GetSingle(foodItem => foodItem.Id == stockItemId);
+            if (findStockItem is null)
+            {
+                return NotFound($"Couldn't find food item with id {stockItemId} in database!");
+            }
+            findStockItem = _stockRepository.ChangeCategory(findStockItem, categoryId);
+            if (findStockItem is null)
+            {
+                return NotFound($"Couldn't find category with id {categoryId} in database!");
+            }
+            var final = new JSONStockItemDTO();
+            final.GetFromStockItem(findStockItem);
+            return Ok(final);
+        }
+        
+        [HttpPut("addMeal/{stockItemId}/{mealId}")]
+        public async Task<IActionResult> AddMeal([FromRoute] int stockItemId, [FromRoute] int mealId)
+        {
+            var findStockItem = _stockRepository.GetSingle(stockItem => stockItem.Id == stockItemId);
+            if (findStockItem is null)
+            {
+                return NotFound($"Couldn't find stock item with id {stockItemId} in database!");
+            }
+            findStockItem = _stockRepository.AddMeal(findStockItem, mealId);
+            if (findStockItem is null)
+            {
+                return BadRequest($"Couldn't find meal with id {mealId} in database!");
+            }
+            var final = new JSONStockItemDTO();
+            final.GetFromStockItem(findStockItem);
+            return Ok(final);
+        }
+        
+        [HttpPut("removeMeal/{stockItemId}/{mealId}")]
+        public async Task<IActionResult> RemoveIngredient([FromRoute] int stockItemId, [FromRoute] int mealId)
+        {
+            var findStockItem = _stockRepository.GetSingle(stockItem => stockItem.Id == stockItemId);
+            if (findStockItem is null)
+            {
+                return NotFound($"Couldn't find stock item with id {stockItemId} in database!");
+            }
+            findStockItem = _stockRepository.RemoveMeal(findStockItem, mealId);
+            if (findStockItem is null)
+            {
+                return BadRequest($"Couldn't find meal with id {mealId} in database!");
+            }
+            var final = new JSONStockItemDTO();
+            final.GetFromStockItem(findStockItem);
+            return Ok(final);
+        }
     }
 }

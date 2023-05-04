@@ -6,13 +6,8 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="modified FoodItemRepository.cs;">
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="Merged with Development;">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/StockItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/StockItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTOClasses/StockItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/StockItemDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/IRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/StockItemRepository/IStockRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/StockItemRepository/IStockRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/StockItemRepository/StockRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/StockItemRepository/StockRepository.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +22,9 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/StockItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DTOClasses/StockItemDTO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DataSeeder.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -45,6 +43,14 @@
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/IRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/StockItemRepository/IStockRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/StockItemRepository/StockRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80ab8fe1877749ac89ccebe2c105e0292097c0/bd/ae8a9a06/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -179,7 +185,28 @@
       <option name="project" value="LOCAL" />
       <updated>1683197440747</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added JSONStockItemDTO.cs and UpdateStockItemDTO.cs;">
+      <created>1683226260056</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1683226260056</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Implemented StockRepository.cs and StockItemController.cs;">
+      <created>1683226282769</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1683226282769</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Merged with Development;">
+      <created>1683226581144</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1683226581144</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,6 +245,9 @@
     <MESSAGE value="added saveChanges to DataSeeder.cs" />
     <MESSAGE value="Pulled from development" />
     <MESSAGE value="modified FoodItemRepository.cs;" />
-    <option name="LAST_COMMIT_MESSAGE" value="modified FoodItemRepository.cs;" />
+    <MESSAGE value="Added JSONStockItemDTO.cs and UpdateStockItemDTO.cs;" />
+    <MESSAGE value="Implemented StockRepository.cs and StockItemController.cs;" />
+    <MESSAGE value="Merged with Development;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merged with Development;" />
   </component>
 </project>
