@@ -405,7 +405,8 @@ public static class DataSeeder
             context.StockItems.Add(stockItemPotatoes);
             context.StockItems.Add(stockItemPickles);
             context.StockItems.Add(stockItemSalad);
-                    
         }
+
+        context.SaveChanges();
     }
 }
