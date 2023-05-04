@@ -17,12 +17,12 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
 
     public IEnumerable<FoodItem> GetAll()
     {
-        return Context.FoodItems.Include(foodItem => foodItem.Ingredients).ToList();
+        return Context.FoodItems.Include(foodItem => foodItem.Ingredients).Include(foodItem => foodItem.Logo).ToList();
     }
 
     public FoodItem? GetSingle(Expression<Func<FoodItem, bool>> predicate)
     {
-        return Context.FoodItems.Where(predicate).Include(foodItem => foodItem.Ingredients).First();
+        return Context.FoodItems.Where(predicate).Include(foodItem => foodItem.Ingredients).FirstOrDefault();
     }
 
     public FoodItem? AddSingle(FoodItem elemToAdd)

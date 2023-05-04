@@ -15,6 +15,13 @@ public class Category
         
     }
 
+    public Category(string name, string description, string logo)
+    {
+        Name = name;
+        Description = description;
+        Logo = logo;
+    }
+    
     public Category(int id, string name, string description, string logo)
     {
         Id = id;

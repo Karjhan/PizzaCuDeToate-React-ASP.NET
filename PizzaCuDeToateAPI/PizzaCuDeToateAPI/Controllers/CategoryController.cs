@@ -59,11 +59,11 @@ namespace PizzaCuDeToateAPI.Controllers
         [Route("add")]
         public async Task<IActionResult> AddCategory(CategoryDTO request)
         {
-            // var findCategory = _categoryRepository.GetSingle(category => category.Name == request.Name);
-            // if (findCategory is not null)
-            // {
-            //     return BadRequest("Category already exists!");
-            // }
+            var findCategory = _categoryRepository.GetSingle(category => category.Name == request.Name);
+            if (findCategory is not null)
+            {
+                return BadRequest("Category already exists!");
+            }
             var categoryToAdd = new Category();
             categoryToAdd.Name = request.Name;
             categoryToAdd.Description = request.Description;
@@ -84,7 +84,8 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NotFound($"Couldn't find category with id {id} in database!");
             }
-            var updatedCategory = new Category(id, request.Name, request.Description, request.Logo);
+            var updatedCategory = new Category(request.Name, request.Description, request.Logo);
+            updatedCategory.Id = id;
             var result = _categoryRepository.UpdateSingle(findCategory,updatedCategory);
             if (!result)
             {
