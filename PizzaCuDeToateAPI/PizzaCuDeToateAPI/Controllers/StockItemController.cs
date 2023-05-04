@@ -58,9 +58,9 @@ namespace PizzaCuDeToateAPI.Controllers
 
 
         [HttpPost]
-        [Route("addStockItem/{CategoryName}")]
+        [Route("addStockItem/{categoryName}")]
 
-        public async Task<IActionResult> AddStockItem([FromRoute] string CategoryName,StockItemDTO stockItemDto)
+        public async Task<IActionResult> AddStockItem([FromRoute] string categoryName,StockItemDTO stockItemDto)
         {
             var stockItemToAdd = new StockItem();
             stockItemToAdd.Name = stockItemDto.Name;
@@ -70,10 +70,10 @@ namespace PizzaCuDeToateAPI.Controllers
             stockItemToAdd.Logo = stockItemDto.Logo;
             stockItemToAdd.UnitPrice = stockItemDto.UnitPrice;
 
-            var category = _categoryRepository.GetSingle(category => category.Name == CategoryName);
+            var category = _categoryRepository.GetSingle(category => category.Name == categoryName);
             if (category is null)
             {
-                return NotFound($"Couldn't find category with name {CategoryName}!");
+                return NotFound($"Couldn't find category with name {categoryName}!");
             }
 
             stockItemToAdd.Category = category;
