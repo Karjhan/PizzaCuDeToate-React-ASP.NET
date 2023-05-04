@@ -22,7 +22,7 @@ public class FoodItemRepository : IRepository<FoodItem>, IFoodItemRepository
 
     public FoodItem? GetSingle(Expression<Func<FoodItem, bool>> predicate)
     {
-        return Context.FoodItems.Where(predicate).Include(foodItem => foodItem.Ingredients).Include(foodItem => foodItem.Category).FirstOrDefault();
+        return Context.FoodItems.Where(predicate).Include(foodItem => foodItem.Ingredients).FirstOrDefault();
     }
 
     public FoodItem? AddSingle(FoodItem elemToAdd)
