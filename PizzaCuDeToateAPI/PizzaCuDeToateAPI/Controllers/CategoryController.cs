@@ -10,7 +10,7 @@ using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/categories")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
@@ -22,7 +22,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("all")]
         public async Task<IActionResult> GetAllCategories()
         {
             var result = _categoryRepository.GetAll();
@@ -33,7 +32,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("getById/{id}")]
+        [HttpGet("id={id}")]
         public async Task<IActionResult> GetCategoryById([FromRoute] int id)
         {
             var result = _categoryRepository.GetSingle(category => category.Id == id);
@@ -44,7 +43,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(result);
         }
         
-        [HttpGet("getByName/{name}")]
+        [HttpGet("name={name}")]
         public async Task<IActionResult> GetCategoryByName([FromRoute] string name)
         {
             var result = _categoryRepository.GetSingle(category => category.Name == name);
@@ -56,7 +55,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpPost]
-        [Route("add")]
         public async Task<IActionResult> AddCategory(CategoryDTO request)
         {
             var findCategory = _categoryRepository.GetSingle(category => category.Name == request.Name);
@@ -76,7 +74,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(result);
         }
 
-        [HttpPut("update/{id}")]
+        [HttpPut("id={id}")]
         public async Task<IActionResult> UpdateCategoryById([FromRoute] int id, [FromBody] CategoryDTO request)
         {
             var findCategory = _categoryRepository.GetSingle(category => category.Id == id);
@@ -95,7 +93,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("all")]
         public async Task<IActionResult> DeleteAllCategories()
         {
             try
@@ -109,7 +106,7 @@ namespace PizzaCuDeToateAPI.Controllers
             }
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("id={id}")]
         public async Task<IActionResult> DeleteCategoryById([FromRoute] int id)
         {
             var findCategory = _categoryRepository.GetSingle(category => category.Id == id);

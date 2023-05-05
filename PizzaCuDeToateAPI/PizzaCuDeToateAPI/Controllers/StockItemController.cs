@@ -10,7 +10,7 @@ using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/stockItems")]
     [ApiController]
     public class StockItemController : ControllerBase
     {
@@ -21,7 +21,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("all")]
 
         public async Task<IActionResult> GetAllStockItems()
         {
@@ -39,7 +38,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(final);
         }
 
-        [HttpGet("getById/{id}")]
+        [HttpGet("id={id}")]
 
         public async Task<IActionResult> GetStockItemById([FromRoute] int id)
         {
@@ -55,7 +54,6 @@ namespace PizzaCuDeToateAPI.Controllers
 
 
         [HttpPost]
-        [Route("add")]
 
         public async Task<IActionResult> AddStockItem(StockItemDTO request)
         {
@@ -97,7 +95,7 @@ namespace PizzaCuDeToateAPI.Controllers
         
         
         [HttpPut]
-        [Route("update/{id}")]
+        [Route("id={id}")]
 
         public async Task<IActionResult> UpdateStockItem([FromRoute] int id, [FromBody] UpdateStockItemDTO request)
         {
@@ -130,7 +128,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpDelete]
-        [Route("all")]
 
         public async Task<IActionResult> DeleteAllStockItems()
         {
@@ -145,7 +142,7 @@ namespace PizzaCuDeToateAPI.Controllers
             }
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("id={id}")]
 
         public async Task<IActionResult> DeleteStockItemById([FromRoute] int id)
         {
