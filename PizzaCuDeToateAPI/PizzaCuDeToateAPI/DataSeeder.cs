@@ -1,4 +1,6 @@
-﻿using PizzaCuDeToateAPI.DataContexts;
+﻿using System.Data.SqlClient;
+using Npgsql;
+using PizzaCuDeToateAPI.DataContexts;
 using PizzaCuDeToateAPI.Models;
 
 namespace PizzaCuDeToateAPI;
@@ -10,7 +12,31 @@ public static class DataSeeder
         using var scope = host.Services.CreateScope();
         using var context = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
         context.Database.EnsureCreated();
+        ResetIdSequences(context);
         AddItems(context);
+    }
+
+    private static void ResetIdSequences(ApplicationContext context)
+    {
+        var condition = context.Categories.FirstOrDefault() is null && context.StockItems.FirstOrDefault() is null && context.FoodItems.FirstOrDefault() is null;
+
+        if (condition)
+        {
+            var connectionSource = NpgsqlDataSource.Create("Server=db.wfgudkstukxtlfqklzrz.supabase.co;Database=postgres;Port=5432;User Id=postgres;Password=alexhoriaioana");
+            string[] queries = new[]
+            {
+                "ALTER SEQUENCE \"StockItems_Id_seq\" RESTART WITH 1", 
+                "ALTER SEQUENCE \"FoodItems_Id_seq\" RESTART WITH 1",
+                "ALTER SEQUENCE \"Categories_Id_seq\" RESTART WITH 1"
+            };
+            foreach (var query in queries)
+            {
+                using (var command = connectionSource.CreateCommand(query))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 
     private static void AddItems(ApplicationContext context)
