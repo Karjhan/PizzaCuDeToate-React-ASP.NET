@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PizzaCuDeToateAPI.Models;
 
 namespace PizzaCuDeToateAPI.DataContexts;
 
-public class ApplicationContext : DbContext
+public class ApplicationContext : IdentityDbContext<IdentityUser>
 {
     public DbSet<FoodItem> FoodItems { get; set; }
 
@@ -19,5 +21,14 @@ public class ApplicationContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.UseSerialColumns();
+        SeedRoles(builder);
+    }
+
+    private void SeedRoles(ModelBuilder builder)
+    {
+        builder.Entity<IdentityRole>().HasData(
+            new IdentityRole() { Id = "1", Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin" },
+            new IdentityRole() { Id = "2", Name = "User", ConcurrencyStamp = "2", NormalizedName = "User" }
+        );
     }
 }
