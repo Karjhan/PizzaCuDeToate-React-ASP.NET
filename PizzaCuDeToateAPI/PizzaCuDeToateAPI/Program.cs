@@ -36,12 +36,12 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(
         options.Password.RequireNonAlphanumeric = true;
     }
 ).AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
-// builder.Services.AddAuthentication(options =>
-// {
-//     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-// });
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+});
 
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();

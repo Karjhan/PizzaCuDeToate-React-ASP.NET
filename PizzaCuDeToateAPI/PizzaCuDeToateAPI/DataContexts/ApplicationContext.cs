@@ -20,6 +20,7 @@ public class ApplicationContext : IdentityDbContext<IdentityUser>
     
     protected override void OnModelCreating(ModelBuilder builder)
     {
+        base.OnModelCreating(builder);
         builder.UseSerialColumns();
         SeedRoles(builder);
     }
@@ -27,8 +28,8 @@ public class ApplicationContext : IdentityDbContext<IdentityUser>
     private void SeedRoles(ModelBuilder builder)
     {
         builder.Entity<IdentityRole>().HasData(
-            new IdentityRole() { Id = "1", Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "Admin" },
-            new IdentityRole() { Id = "2", Name = "User", ConcurrencyStamp = "2", NormalizedName = "User" }
+            new IdentityRole() { Id = "1", Name = "Admin", ConcurrencyStamp = "1", NormalizedName = "ADMIN" },
+            new IdentityRole() { Id = "2", Name = "User", ConcurrencyStamp = "2", NormalizedName = "USER" }
         );
     }
 }

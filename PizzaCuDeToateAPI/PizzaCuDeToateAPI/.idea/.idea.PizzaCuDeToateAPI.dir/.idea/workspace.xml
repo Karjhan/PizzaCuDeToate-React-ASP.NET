@@ -6,9 +6,7 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="Merged with Development;">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,41 +15,18 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/../.." value="Horia" />
+        <entry key="$PROJECT_DIR$/../.." value="testsPlaygroundHoria" />
       </map>
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/StockItemController.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DTOClasses/StockItemDTO.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DataSeeder.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/StockItem.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/IRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/StockItemRepository/IStockRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/StockItemRepository/StockRepository.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80ab8fe1877749ac89ccebe2c105e0292097c0/bd/ae8a9a06/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool Projects/Advanced/TW1/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/CategoryController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool Projects/Advanced/TW1/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/CategoryController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool Projects/Advanced/TW1/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/FoodItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool Projects/Advanced/TW1/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/FoodItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool Projects/Advanced/TW1/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/FoodItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -71,6 +46,7 @@
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Codecool Projects\\Advanced\\TW1\\el-proyecte-grande-sprint-1-csharp-HoriaMitrica\\PizzaCuDeToateAPI\\PizzaCuDeToateAPI\\PizzaCuDeToateAPI-frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -81,6 +57,14 @@
     ]
   }
 }</component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.rcb.reactComponents" value="false" />
+        <entry key="com.haulmont.rcb.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.PizzaCuDeToateAPI: http">
     <configuration name="PizzaCuDeToateAPI: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/PizzaCuDeToateAPI.csproj" />
@@ -206,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683226581144</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[ horia ] deleted extra files from node modules">
+      <created>1683739875634</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1683739875634</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -248,6 +239,7 @@
     <MESSAGE value="Added JSONStockItemDTO.cs and UpdateStockItemDTO.cs;" />
     <MESSAGE value="Implemented StockRepository.cs and StockItemController.cs;" />
     <MESSAGE value="Merged with Development;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merged with Development;" />
+    <MESSAGE value="[ horia ] deleted extra files from node modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ horia ] deleted extra files from node modules" />
   </component>
 </project>
