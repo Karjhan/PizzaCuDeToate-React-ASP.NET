@@ -19,9 +19,12 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
         <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.6" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-preview.3" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+        <PackageReference Include="xunit.assert" Version="2.1.0" />
+        <PackageReference Include="xunit.core" Version="2.5.0-pre.11" />
         <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="8.0.0-preview.3.23174.2-02" />
     </ItemGroup>
 
@@ -29,6 +32,18 @@
       <Folder Include="Controllers\" />
       <Folder Include="Services\" />
       <Folder Include="Models\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="packages\Microsoft.CodeCoverage.17.6.0-preview-20230223-05\build\netstandard2.0\CodeCoverage\amd64\VanguardInstrumentationProfiler_x64.config" />
+      <_ContentIncludedByDefault Remove="packages\Microsoft.CodeCoverage.17.6.0-preview-20230223-05\build\netstandard2.0\CodeCoverage\arm64\VanguardInstrumentationProfiler_arm64.config" />
+      <_ContentIncludedByDefault Remove="packages\Microsoft.CodeCoverage.17.6.0-preview-20230223-05\build\netstandard2.0\CodeCoverage\CodeCoverage.config" />
+      <_ContentIncludedByDefault Remove="packages\Microsoft.CodeCoverage.17.6.0-preview-20230223-05\build\netstandard2.0\CodeCoverage\VanguardInstrumentationProfiler_x86.config" />
+      <_ContentIncludedByDefault Remove="packages\Microsoft.CodeCoverage.17.6.0-preview-20230223-05\build\netstandard2.0\InstrumentationEngine\alpine\x64\VanguardInstrumentationProfiler_x64.config" />
+      <_ContentIncludedByDefault Remove="packages\Microsoft.CodeCoverage.17.6.0-preview-20230223-05\build\netstandard2.0\InstrumentationEngine\macos\x64\VanguardInstrumentationProfiler_x64.config" />
+      <_ContentIncludedByDefault Remove="packages\Microsoft.CodeCoverage.17.6.0-preview-20230223-05\build\netstandard2.0\InstrumentationEngine\ubuntu\x64\VanguardInstrumentationProfiler_x64.config" />
+      <_ContentIncludedByDefault Remove="PizzaCuDeToateAPITest\packages.config" />
+      <_ContentIncludedByDefault Remove="PizzaTest4.8\packages.config" />
     </ItemGroup>
 
 </Project>
