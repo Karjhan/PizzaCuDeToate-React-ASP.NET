@@ -7,22 +7,22 @@ namespace PizzaCuDeToateAPI;
 
 public static class DataSeeder
 {
-    public static void Seed(this IHost host)
+    public static void Seed(this IHost host, string connectionString)
     {
         using var scope = host.Services.CreateScope();
         using var context = scope.ServiceProvider.GetRequiredService<ApplicationContext>();
         context.Database.EnsureCreated();
-        ResetIdSequences(context);
+        ResetIdSequences(context, connectionString);
         AddItems(context);
     }
 
-    private static void ResetIdSequences(ApplicationContext context)
+    private static void ResetIdSequences(ApplicationContext context, string connectionString)
     {
         var condition = context.Categories.FirstOrDefault() is null && context.StockItems.FirstOrDefault() is null && context.FoodItems.FirstOrDefault() is null;
 
         if (condition)
         {
-            var connectionSource = NpgsqlDataSource.Create("Server=db.wfgudkstukxtlfqklzrz.supabase.co;Database=postgres;Port=5432;User Id=postgres;Password=alexhoriaioana");
+            var connectionSource = NpgsqlDataSource.Create(connectionString);
             string[] queries = new[]
             {
                 "ALTER SEQUENCE \"StockItems_Id_seq\" RESTART WITH 1", 

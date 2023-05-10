@@ -35,5 +35,5 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Seed();
+app.Seed(builder.Configuration.GetConnectionString("PizzaCuDeToate_Db"));
 app.Run();
