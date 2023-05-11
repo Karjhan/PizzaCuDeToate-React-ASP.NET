@@ -1,9 +1,11 @@
+using System.Configuration;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using PizzaCuDeToateAPI;
 using PizzaCuDeToateAPI.DataContexts;
+using PizzaCuDeToateAPI.Models;
 using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 using PizzaCuDeToateAPI.Repositories.FoodItemRepository;
 using PizzaCuDeToateAPI.Repositories.StockItemRepository;
@@ -20,10 +22,12 @@ builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IFoodItemRepository, FoodItemRepository>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
 
+//Add entity dbContext for app, option to stop looping over cyclic reference data, add postgresql connection for dbContext
 builder.Services.AddTransient<DbContext, ApplicationContext>();
 builder.Services.AddControllers().AddNewtonsoftJson(option => option.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PizzaCuDeToate_Db")));
 
+//Add identity service
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(
     options =>
     {
@@ -36,6 +40,8 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(
         options.Password.RequireNonAlphanumeric = true;
     }
 ).AddEntityFrameworkStores<ApplicationContext>().AddDefaultTokenProviders();
+
+//Add authentication with jwt (later)
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -43,6 +49,11 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
 });
 
+//Add email configuration
+var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
+
+//Add provider configuration for frontend
 var provider = builder.Services.BuildServiceProvider();
 var configuration = provider.GetRequiredService<IConfiguration>();
 builder.Services.AddCors(options =>
