@@ -9,6 +9,7 @@ using PizzaCuDeToateAPI.Models;
 using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 using PizzaCuDeToateAPI.Repositories.FoodItemRepository;
 using PizzaCuDeToateAPI.Repositories.StockItemRepository;
+using PizzaCuDeToateAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -52,6 +53,7 @@ builder.Services.AddAuthentication(options =>
 //Add email configuration
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
 builder.Services.AddSingleton(emailConfig);
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 //Add provider configuration for frontend
 var provider = builder.Services.BuildServiceProvider();
