@@ -42,8 +42,8 @@ public class JWTService : IJWTService
     private JwtSecurityToken CreateJwtToken(List<Claim> claims, SigningCredentials credentials, DateTime expiration)
     {
         return new JwtSecurityToken(
-            _configuration["Jwt:Issuer"],
-            _configuration["Jwt:Audience"],
+            _configuration["Jwt:ValidIssuer"],
+            _configuration["Jwt:ValidAudience"],
             claims,
             expires: expiration,
             signingCredentials: credentials

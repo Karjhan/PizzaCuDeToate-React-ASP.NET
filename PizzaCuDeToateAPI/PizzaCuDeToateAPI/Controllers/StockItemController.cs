@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PizzaCuDeToateAPI.DTOClasses;
@@ -10,6 +11,7 @@ using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
+    [Authorize(Roles = "Admin,User")]
     [Route("api/stockItems")]
     [ApiController]
     public class StockItemController : ControllerBase
