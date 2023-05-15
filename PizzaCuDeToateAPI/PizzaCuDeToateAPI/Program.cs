@@ -58,7 +58,7 @@ builder.Services.AddControllers().AddNewtonsoftJson(option => option.SerializerS
 builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("PizzaCuDeToate_Db")));
 
 //Add identity service
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(
     options =>
     {
         options.SignIn.RequireConfirmedAccount = true;
@@ -106,11 +106,12 @@ builder.Services.AddAuthentication(options =>
             return Task.CompletedTask;
         }
     };
-}).AddGoogle(options =>
-{
-    options.ClientId = builder.Configuration["Google:ClientId"];
-    options.ClientSecret = builder.Configuration["Google:ClientSecret"];
 });
+//     .AddGoogle(options =>
+// {
+//     options.ClientId = builder.Configuration["Google:ClientId"];
+//     options.ClientSecret = builder.Configuration["Google:ClientSecret"];
+// });
 builder.Services.AddScoped<IJWTService, JWTService>();
 
 //Add email configuration

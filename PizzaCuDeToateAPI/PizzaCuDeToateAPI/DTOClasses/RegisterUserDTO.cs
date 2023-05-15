@@ -13,4 +13,8 @@ public class RegisterUserDTO
 
     [Required(ErrorMessage = "Password is required")]
     public string? Password { get; set; }
+
+    public string? Address { get; set; }
+
+    public string? PhoneNumber { get; set; }
 }

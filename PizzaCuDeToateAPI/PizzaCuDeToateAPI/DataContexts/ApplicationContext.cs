@@ -5,7 +5,7 @@ using PizzaCuDeToateAPI.Models;
 
 namespace PizzaCuDeToateAPI.DataContexts;
 
-public class ApplicationContext : IdentityDbContext<IdentityUser>
+public class ApplicationContext : IdentityDbContext<ApplicationUser>
 {
     public DbSet<FoodItem> FoodItems { get; set; }
 

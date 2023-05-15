@@ -15,13 +15,13 @@ namespace PizzaCuDeToateAPI.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
         private readonly IJWTService _jwtService;
         private readonly IConfiguration _configuration;
 
-        public AuthController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager,IConfiguration configuration, IEmailService emailService, IJWTService jwtService)
+        public AuthController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager,IConfiguration configuration, IEmailService emailService, IJWTService jwtService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -38,10 +38,12 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return BadRequest("User already exists!");
             }
-            IdentityUser newUser = new IdentityUser()
+            ApplicationUser newUser = new ApplicationUser()
             {
                 Email = request.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
+                PhoneNumber = request.PhoneNumber,
+                Address = request.Address,
                 UserName = request.Username
             };
             if (await _roleManager.RoleExistsAsync(role))

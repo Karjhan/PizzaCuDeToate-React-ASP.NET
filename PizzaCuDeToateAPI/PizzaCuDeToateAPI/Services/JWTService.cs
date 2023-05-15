@@ -13,15 +13,15 @@ public class JWTService : IJWTService
 
     private readonly IConfiguration _configuration;
     
-    private readonly UserManager<IdentityUser> _userManager; 
+    private readonly UserManager<ApplicationUser> _userManager; 
 
-    public JWTService(IConfiguration configuration, UserManager<IdentityUser> userManager)
+    public JWTService(IConfiguration configuration, UserManager<ApplicationUser> userManager)
     {
         _configuration = configuration;
         _userManager = userManager;
     }
     
-    public async Task<AuthenticationResponse> CreateToken(IdentityUser user)
+    public async Task<AuthenticationResponse> CreateToken(ApplicationUser user)
     {
         var expiration = DateTime.UtcNow.AddMinutes(EXPIRATION_MINUTES);
 
@@ -50,7 +50,7 @@ public class JWTService : IJWTService
         );
     }
 
-    private async Task<List<Claim>> CreateClaims(IdentityUser user)
+    private async Task<List<Claim>> CreateClaims(ApplicationUser user)
     {
         var claims = new List<Claim>() {
             new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),

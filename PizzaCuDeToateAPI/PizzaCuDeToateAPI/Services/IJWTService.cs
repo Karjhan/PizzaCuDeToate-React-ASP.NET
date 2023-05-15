@@ -5,5 +5,5 @@ namespace PizzaCuDeToateAPI.Services;
 
 public interface IJWTService
 {
-    Task<AuthenticationResponse> CreateToken(IdentityUser user);
+    Task<AuthenticationResponse> CreateToken(ApplicationUser user);
 }
