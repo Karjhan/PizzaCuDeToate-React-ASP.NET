@@ -12,5 +12,24 @@ public class Order
     
     public DateTime OrderPlacedTime { get; set; }
 
-    public int UserId { get; set; }
+    public ApplicationUser UserId { get; set; }
+
+    public Order(int orderId, string firstName, string lastName, string address, DateTime orderPlacedTime, ApplicationUser userId)
+    {
+        OrderId = orderId;
+        FirstName = firstName;
+        LastName = lastName;
+        Address = address;
+        OrderPlacedTime = orderPlacedTime;
+        UserId = userId;
+    }
+
+    public Order(string firstName, string lastName, string address, DateTime orderPlacedTime, ApplicationUser userId)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+        Address = address;
+        OrderPlacedTime = orderPlacedTime;
+        UserId = userId;
+    }
 }
