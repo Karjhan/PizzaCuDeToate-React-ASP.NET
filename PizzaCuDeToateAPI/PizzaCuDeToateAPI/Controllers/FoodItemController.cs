@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PizzaCuDeToateAPI.DTOClasses;
@@ -12,7 +13,8 @@ using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Authorize(Roles = "Admin,User")]
+    [Route("api/foodItems")]
     [ApiController]
     public class FoodItemController : ControllerBase
     {
@@ -23,7 +25,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
         
         [HttpGet]
-        [Route("all")]
         public async Task<IActionResult> GetAllFoodItems()
         {
             var result = _foodItemRepository.GetAll();
@@ -40,7 +41,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(final);
         }
         
-        [HttpGet("getById/{id}")]
+        [HttpGet("id={id}")]
         public async Task<IActionResult> GetFoodItemById([FromRoute] int id)
         {
             var result = _foodItemRepository.GetSingle(foodItem => foodItem.Id == id);
@@ -53,7 +54,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(final);
         }
         
-        [HttpGet("getByName/{name}")]
+        [HttpGet("name={name}")]
         public async Task<IActionResult> GetFoodItemByName([FromRoute] string name)
         {
             var result = _foodItemRepository.GetSingle(foodItem => foodItem.Name == name);
@@ -67,7 +68,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
         
         [HttpPost]
-        [Route("add")]
         public async Task<IActionResult> AddFoodItem(AddFoodItemDTO request)
         {
             var findFoodItem = _foodItemRepository.GetSingle(foodItem => foodItem.Name == request.Name);
@@ -104,7 +104,7 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(final);
         }
         
-        [HttpPut("update/{id}")]
+        [HttpPut("id={id}")]
         public async Task<IActionResult> UpdateFoodItemById([FromRoute] int id, [FromBody] UpdateFoodItemDTO request)
         {
             var findFoodItem = _foodItemRepository.GetSingle(foodItem => foodItem.Id == id);
@@ -132,7 +132,6 @@ namespace PizzaCuDeToateAPI.Controllers
         }
         
         [HttpDelete]
-        [Route("all")]
         public async Task<IActionResult> DeleteAllFoodItems()
         {
             try
@@ -146,7 +145,7 @@ namespace PizzaCuDeToateAPI.Controllers
             }
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("id={id}")]
         public async Task<IActionResult> DeleteFoodItemById([FromRoute] int id)
         {
             var findFoodItem = _foodItemRepository.GetSingle(foodItem => foodItem.Id == id);
