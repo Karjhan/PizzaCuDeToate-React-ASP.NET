@@ -6,11 +6,9 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_3_2023_2_04_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_3_2023_2_08_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2023_9_42_AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="Added Order.cs and OrderDetails.cs classes;">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +129,7 @@
       <workItem from="1683742963476" duration="102000" />
       <workItem from="1683743092815" duration="234000" />
       <workItem from="1683985832834" duration="5257000" />
-      <workItem from="1684129090638" duration="1386000" />
+      <workItem from="1684129090638" duration="2895000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -203,7 +201,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683739875634</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added Order.cs and OrderDetails.cs classes;">
+      <created>1684131945706</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684131945706</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,6 +251,7 @@
     <MESSAGE value="Implemented StockRepository.cs and StockItemController.cs;" />
     <MESSAGE value="Merged with Development;" />
     <MESSAGE value="[ horia ] deleted extra files from node modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ horia ] deleted extra files from node modules" />
+    <MESSAGE value="Added Order.cs and OrderDetails.cs classes;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Order.cs and OrderDetails.cs classes;" />
   </component>
 </project>
