@@ -7,6 +7,8 @@ public class ApplicationUser : IdentityUser
 {
     [PersonalData]
     public virtual string? Address { get; set; } 
+    
+    public virtual string? Logo { get; set; }
 
     public ApplicationUser()
     {

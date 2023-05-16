@@ -6,12 +6,16 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import './App.css'
+import NavbarMain from './components/NavbarMain';
+import { useState, useEffect } from 'react';
 
 function App() {
+  const [logged, setLogged] = useState(false);
   
   return (
     <>
       <Container fluid>
+        <NavbarMain logged = {logged}/>
         <Row>
           <Col>
             <Routes>

@@ -42,8 +42,8 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 Email = request.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
-                PhoneNumber = request.PhoneNumber,
-                Address = request.Address,
+                PhoneNumber = request.PhoneNumber.Length > 0 ? request.PhoneNumber : null,
+                Address = request.Address.Length > 0 ? request.Address : null,
                 UserName = request.Username
             };
             if (await _roleManager.RoleExistsAsync(role))
@@ -51,13 +51,13 @@ namespace PizzaCuDeToateAPI.Controllers
                 var result = await _userManager.CreateAsync(newUser, request.Password);
                 if (!result.Succeeded)
                 {
-                    return StatusCode(500, "User failed to create!");
+                    return StatusCode(500, result.Errors);
                 }
                 await _userManager.AddToRoleAsync(newUser, role);
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
                 var confirmationLink = Url.Action(nameof(ConfirmEmail), "Auth", new {token, email = newUser.Email}, Request.Scheme);
                 var message = new MailMessage(new[] { newUser.Email }, "Confirmation email link",
-                    $"Thank you for choosing our food services. Please click on the following link to confirm your account:\n{confirmationLink!}");
+                    $"Thank you for choosing our food services. Please click on the following link to confirm your account:\nConfirmation link: {confirmationLink!}");
                 _emailService.SendEmail(message);
                 return Ok($"User created successfully and confirmation email sent to {newUser.Email}!");
             }
