@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import logo1 from "../images/registerloginLogo1.png"
 import { motion, useAnimationControls } from "framer-motion"
 import { Container } from 'react-bootstrap';
+import PizzaCanvas from '../components/PizzaCanvas';
+import KebabSaladCanvas from '../components/KebabSaladCanvas';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -119,10 +121,10 @@ const Register = () => {
 
   return (
     <>
-      <Col style={{ padding: "0" }}>
-      
+      <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
+        <PizzaCanvas/>
       </Col>
-      <Col style={{ padding: "0" }}>
+      <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="px-lg-0 px-4">
         <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1}}>
           <Card
             border="danger"
@@ -253,12 +255,7 @@ const Register = () => {
                 </div>
 
                 <div className="d-flex justify-content-center">
-                  <Button
-                    style={{ marginTop: "1rem", width: "100%" }}
-                    onClick={(event) => handleRegister(event)}
-                    variant="primary"
-                    type="submit"
-                  >
+                  <Button variant="primary" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => handleRegister(event)}>
                     Sign Up
                   </Button>
                 </div>
@@ -267,8 +264,8 @@ const Register = () => {
           </Card>
         </motion.div>
       </Col>
-      <Col style={{ padding: "0" }}>
-      
+      <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
+        <KebabSaladCanvas />                
       </Col>
     </>
   )
