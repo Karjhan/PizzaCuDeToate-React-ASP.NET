@@ -6,44 +6,9 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="Added configurations for token, email validation and google auth;">
-      <change afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DTOClasses/LoginUserDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/DTOClasses/RegisterUserDTO.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20230515062525_InitialCreate.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20230515062525_InitialCreate.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/ApplicationUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/AuthenticationResponse.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/EmailConfiguration.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Models/MailMessage.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Home.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Login.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Register.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/EmailService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/IEmailService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/IJWTService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Services/JWTService.cs" afterDir="false" />
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/CategoryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/CategoryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/FoodItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/FoodItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/StockItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/StockItemController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataContexts/ApplicationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataContexts/ApplicationContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSeeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataSeeder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230503111746_InitialDatabase.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20230503111746_InitialDatabase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/OrderDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/OrderDetails.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/vite.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/assets/react.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -170,7 +135,8 @@
       <workItem from="1683742963476" duration="102000" />
       <workItem from="1683743092815" duration="234000" />
       <workItem from="1683985832834" duration="5257000" />
-      <workItem from="1684129090638" duration="4857000" />
+      <workItem from="1684129090638" duration="11414000" />
+      <workItem from="1684215807777" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -256,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684133660160</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Git pulled from development;">
+      <created>1684135731603</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1684135731603</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -301,6 +274,7 @@
     <MESSAGE value="[ horia ] deleted extra files from node modules" />
     <MESSAGE value="Added Order.cs and OrderDetails.cs classes;" />
     <MESSAGE value="Added configurations for token, email validation and google auth;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added configurations for token, email validation and google auth;" />
+    <MESSAGE value="Git pulled from development;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Git pulled from development;" />
   </component>
 </project>

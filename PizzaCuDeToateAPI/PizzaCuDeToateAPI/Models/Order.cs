@@ -2,26 +2,20 @@
 
 public class Order
 {
-    public int OrderId { get; set; }
+    public int Id { get; set; }
 
-    public string FirstName { get; set; }
+    public string FirstName { get; set; } 
 
     public string LastName { get; set; }
 
-    public string Address { get; set; }
+    public string Address { get; set; } 
     
     public DateTime OrderPlacedTime { get; set; }
 
-    public ApplicationUser UserId { get; set; }
+    public ApplicationUser Customer { get; set; }
 
-    public Order(int orderId, string firstName, string lastName, string address, DateTime orderPlacedTime, ApplicationUser userId)
+    public Order()
     {
-        OrderId = orderId;
-        FirstName = firstName;
-        LastName = lastName;
-        Address = address;
-        OrderPlacedTime = orderPlacedTime;
-        UserId = userId;
     }
 
     public Order(string firstName, string lastName, string address, DateTime orderPlacedTime, ApplicationUser userId)
@@ -30,6 +24,6 @@ public class Order
         LastName = lastName;
         Address = address;
         OrderPlacedTime = orderPlacedTime;
-        UserId = userId;
+        Customer = userId;
     }
 }
