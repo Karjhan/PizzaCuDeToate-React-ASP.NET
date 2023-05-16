@@ -1,8 +1,13 @@
-﻿namespace PizzaCuDeToateAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
+namespace PizzaCuDeToateAPI.Models;
+
+[Keyless]
 public class OrderDetails
 {
-    public Order OrderId { get; set; }
-    
-    public Dictionary<FoodItem,int> ProductsAndQuantity { get; set; } = new Dictionary<FoodItem, int>();
+    public Order Order { get; set; }
+
+    public FoodItem FoodItem { get; set; }
+
+    public int Quantity { get; set; }
 }

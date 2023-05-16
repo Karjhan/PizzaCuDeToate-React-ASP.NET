@@ -10,20 +10,26 @@ public class Order
 
     public string Address { get; set; } 
     
+    public string PhoneNumber { get; set; }
+    
     public DateTime OrderPlacedTime { get; set; }
 
     public ApplicationUser Customer { get; set; }
+
+    public PaymentType PaymentType { get; set; }
 
     public Order()
     {
     }
 
-    public Order(string firstName, string lastName, string address, DateTime orderPlacedTime, ApplicationUser userId)
+    public Order(string firstName, string lastName, string address, string phoneNumber, DateTime orderPlacedTime, ApplicationUser customer, PaymentType paymentType)
     {
         FirstName = firstName;
         LastName = lastName;
         Address = address;
+        PhoneNumber = phoneNumber;
         OrderPlacedTime = orderPlacedTime;
-        Customer = userId;
+        Customer = customer;
+        PaymentType = paymentType;
     }
 }

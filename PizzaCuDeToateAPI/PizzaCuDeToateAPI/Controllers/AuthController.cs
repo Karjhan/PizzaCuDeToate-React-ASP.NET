@@ -87,7 +87,10 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(new string[]
             {
                 findUser.UserName,
-                findUser.Email
+                findUser.Email,
+                findUser.Address,
+                findUser.PhoneNumber,
+                findUser.Logo
             });
         }
         
@@ -102,7 +105,45 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(new string[]
             {
                 findUser.UserName,
-                findUser.Email
+                findUser.Email,
+                findUser.Address,
+                findUser.PhoneNumber,
+                findUser.Logo
+            });
+        }
+
+        [HttpPut("email={email}")]
+        public async Task<IActionResult> AddProfileImage([FromRoute] string email, [FromBody] UpdateUserDetailsDTO request)
+        {
+            var findUser = await _userManager.FindByEmailAsync(email);
+            if (findUser is null)
+            {
+                return NotFound();
+            }
+            if (request.Username.Length > 0)
+            {
+                findUser.UserName = request.Username;
+            }
+            if (request.Address.Length > 0)
+            {
+                findUser.Address = request.Address;
+            }
+            if (request.PhoneNumber.Length > 0)
+            {
+                findUser.PhoneNumber = request.PhoneNumber;
+            }
+            if (request.LogoPath.Length > 0)
+            {
+                findUser.Logo = request.LogoPath;
+            }
+            await _userManager.UpdateAsync(findUser);
+            return Ok(new string[]
+            {
+                findUser.UserName,
+                findUser.Email,
+                findUser.Address,
+                findUser.PhoneNumber,
+                findUser.Logo
             });
         }
 
