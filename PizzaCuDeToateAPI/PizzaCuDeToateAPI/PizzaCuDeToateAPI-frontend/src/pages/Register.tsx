@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -8,10 +8,11 @@ import registerSuccessLogo from "../images/registerSuccessTick.gif"
 import { motion, useAnimationControls } from "framer-motion"
 import PizzaCanvas from '../components/PizzaCanvas';
 import KebabSaladCanvas from '../components/KebabSaladCanvas';
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
   const [statusMessage, setStatusMessage] = useState("");
-
+  const [successStatus, setSuccessStatus] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
     confirmedPassword: "",
@@ -21,6 +22,27 @@ const Register = () => {
     phoneNumber: ""
   });
   const [logoAngle, setLogoAngle] = useState(0);
+  const [timer, setTimer] = useState(10);
+  
+  const navigate = useNavigate();
+  const handleGoHome = useCallback(
+    () => navigate("/", { replace: true }),
+    [navigate]
+  );
+
+  const reset = function () : void {
+    setFormData({
+      password: "",
+      confirmedPassword: "",
+      email: "",
+      username: "",
+      address: "",
+      phoneNumber: ""
+    });
+    setLogoAngle(0);
+    setStatusMessage("");
+    setTimer(10);
+  }
 
   const changeCredential = function (field: string, credential: string) : void{
     switch (field) {
@@ -121,19 +143,32 @@ const Register = () => {
     .then((response) => response.json())
       .then((data) => {
         if (Object.prototype.toString.call(data) === '[object Array]') {
-          setStatusMessage(data.map((item: { description: any; }) => item.description).join("\r\n"))
+          setStatusMessage(data.map((item: { description: any; }) => item.description).join("\r\n"));
         }
         if ("errors" in data) {
-          setStatusMessage(Object.keys(data.errors).map((key) => data.errors[key][0]).join("\r\n"))
+          setStatusMessage(Object.keys(data.errors).map((key) => data.errors[key][0]).join("\r\n"));
         } else if ("error" in data) {
-          setStatusMessage(data.error)
+          setStatusMessage(data.error);
         }
         if ("success" in data) {
-          setStatusMessage(data.success)
+          console.log("ceva")
+          setStatusMessage(data.success);
+          setSuccessStatus(true);
         }
         console.log(data)
     })
   }
+
+  useEffect(() => {
+    if (successStatus && timer > 0) {
+      const interval = setInterval(() => setTimer(timer - 1), 1000);
+
+      return () => clearInterval(interval);
+    } else if (successStatus && timer === 0) {
+      reset();
+      handleGoHome();
+    }
+  }, [successStatus,timer]);
 
   const controls = useAnimationControls();
   useEffect(() => {
@@ -160,17 +195,9 @@ const Register = () => {
             }}
             className="d-flex flex-column"
           >
-            {statusMessage === `User created successfully and confirmation email sent to ${formData.email}!` && <>
+            {successStatus && <>
               <Card.Body>
-                {/* <motion.div
-                  className="d-flex flex-column align-items-center justify-center"
-                  initial={{ x: 0 }}
-                  animate={{ x: 100 }}
-                  style={{ x: successProgress, width: "63%" }}
-                  transition={{ duration: 1 }}
-                >
-                  <CircularCheck progress={successProgress} />
-                </motion.div> */}
+                <p>{`Redirecting you to home in ${timer} seconds...`}</p>
                 <Card.Img
                   variant="top"
                   src={registerSuccessLogo}
@@ -179,9 +206,10 @@ const Register = () => {
                 <Card.Title style={{ textAlign: "center", marginBottom: "2rem", marginTop: "2rem" }}>
                   <h3>User created successfully</h3>
                 </Card.Title>
+                <p>Confirmation email sent to <i>{formData.email}</i></p>
               </Card.Body>
             </>}
-            {statusMessage !== `User created successfully and confirmation email sent to ${formData.email}!` && <>
+            {!successStatus && <>
               <motion.div animate={controls}>
                 <Card.Img
                   variant="top"
