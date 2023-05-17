@@ -13,6 +13,7 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
 
     public DbSet<Category> Categories { get; set; }
 
+    public DbSet<Order> Orders { get; set; }
     public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
     {
         

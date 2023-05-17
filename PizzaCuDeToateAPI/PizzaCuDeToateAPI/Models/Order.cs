@@ -8,7 +8,9 @@ public class Order
 
     public string LastName { get; set; }
 
-    public string Address { get; set; } 
+    public string Address { get; set; }
+
+    public string PhoneNumber { get; set; }
     
     public DateTime OrderPlacedTime { get; set; }
 
@@ -18,12 +20,13 @@ public class Order
     {
     }
 
-    public Order(string firstName, string lastName, string address, DateTime orderPlacedTime, ApplicationUser userId)
+    public Order(string firstName, string lastName, string address,string phoneNumber, DateTime orderPlacedTime, ApplicationUser customer)
     {
         FirstName = firstName;
         LastName = lastName;
         Address = address;
+        PhoneNumber = phoneNumber;
         OrderPlacedTime = orderPlacedTime;
-        Customer = userId;
+        Customer = customer;
     }
 }
