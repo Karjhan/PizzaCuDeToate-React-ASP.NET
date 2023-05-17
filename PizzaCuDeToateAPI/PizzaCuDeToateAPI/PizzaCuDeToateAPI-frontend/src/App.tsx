@@ -14,10 +14,12 @@ function App() {
   
   return (
     <>
+      <ParticlesBackground />
       <Container fluid>
         <NavbarMain logged={logged} />
-        {/* <ParticlesBackground/> */}
-        <Row style={{ background: "linear-gradient(#E14242, #F7D098)" }}>
+        <Row
+          // style={{ background: "linear-gradient(#E14242, #F7D098)" }}
+        >
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register />} />

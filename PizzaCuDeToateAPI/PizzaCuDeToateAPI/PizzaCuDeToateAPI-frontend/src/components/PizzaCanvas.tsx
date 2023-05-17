@@ -51,6 +51,7 @@ const PizzaCanvas = () => {
                     object={pizza.scene}
                     scale={isMobile ? 1.5 :2.5}
                     rotation={[0, 0, Math.PI / 10]}
+                    position={[0, 0.1, 0]}
                 />
             </Suspense>
         </Canvas>
