@@ -6,8 +6,15 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="[ horia ] landing page work in progress">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_3_2023_2_04_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_3_2023_2_08_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2023_9_42_AM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarLeft.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarRight.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbar.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +29,7 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Codecool Projects/Advanced/TW1/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/CategoryController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -123,6 +131,7 @@
       <workItem from="1683104624911" duration="1594000" />
       <workItem from="1683111828908" duration="1485000" />
       <workItem from="1683181100922" duration="8540000" />
+      <workItem from="1684309707741" duration="2538000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -194,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683739875634</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="[ horia ] landing page work in progress">
+      <created>1684309812695</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1684309812695</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +253,7 @@
     <MESSAGE value="Implemented StockRepository.cs and StockItemController.cs;" />
     <MESSAGE value="Merged with Development;" />
     <MESSAGE value="[ horia ] deleted extra files from node modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ horia ] deleted extra files from node modules" />
+    <MESSAGE value="[ horia ] landing page work in progress" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ horia ] landing page work in progress" />
   </component>
 </project>

@@ -1,58 +1,54 @@
-
-body{
-    overflow: hidden;
+.wrapper {
+	width: 100%;
+	font-family: 'Alfa Slab One', sans-serif;
+	margin: 0 auto;
+	height: 100%;
+	backface-visibility: hidden;
+}
+.wrapper{
+    border:none;
+    background-color: rgba($color: #000000, $alpha: 0);
+}
+.wrapper h1 {
     
-}
-.nav-wrapper-right{
-    border:0;
-    background-color: rgba($color: #000000, $alpha: 0);
-    position: fixed;
-    top: 1;
-    right:0;
-    z-index: 100;
-}
-.nav-wrapper-left{
-    border:0;
-    position: fixed;
-    top: 1;
-    left: 0;
-    z-index: 100;
-    background-color: rgba($color: #000000, $alpha: 0);
-}
-.smth{
-    color:red;
-}
-.nav-body-left {
-    overflow:hidden;
-    position: absolute;
-    left: -100px;
-    width: 50vw;
-    height: 100%;
-    top:0;
-    background: blue;
-}
-.nav-body-right{
-    overflow: hidden;
-    position: absolute;
-    right: -100px;
-    width: 50vw;
-    height: 100%;
-    top:0;
-    background: blue;
-}
+	text-transform: uppercase;
+	transform: translate(-50%, -50%) skew(-10deg, 0); 
+	top: 50%;
+	left: 50%;
+	margin: 0;
+	position: absolute;
+	font-size: 10vw;
+	font-weight: 400;
+	white-space: nowrap;
+	color: #F25826;
+	letter-spacing:2vw;
+	z-index: 1;
 
-.kebapImg {
-
-    position: fixed;
-    width: 12rem;
-    top:0;
-    right:0;
-  }
-  
-  .pizzaImg {
-    position: fixed;
-    //width: 10rem;
-    height:7rem;
-    top:3rem;
-
-  }
+}
+.wrapper h1::after, .wrapper h1::before {
+	transition: all 250ms ease;
+	backface-visibility: hidden;
+	content: attr(data-heading);
+	position: absolute;
+}
+.wrapper h1::after {
+	left: -15px;
+	top:-15px;
+	z-index:2;
+ 	-webkit-text-stroke: 3px #FECE35;
+	-webkit-text-fill-color: transparent;
+}
+.wrapper h1::before {
+	z-index:-1;
+	left: 15px;
+	top: 15px;
+	color: #F68722;
+}
+.wrapper h1:hover::after {
+	left: -20px;
+	top:-20px;
+}
+.wrapper h1:hover::before {
+	left: 20px;
+	top: 20px;
+}

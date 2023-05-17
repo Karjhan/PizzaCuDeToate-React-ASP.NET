@@ -1,12 +1,11 @@
 
-import NavbarLeft from '../Components/NavbarLeft'
-import NavbarRight from '../Components/NavbarRight'
+import NavbarPizza from '../Components/NavbarPizza'
+import NavbarShawarma from '../Components/NavbarShawarma'
 const Home = () => {
   return (
       <>
-        <NavbarLeft/>
-        <NavbarRight/>
-          
+        <NavbarPizza/>
+        <NavbarShawarma/>
       </>
   )
 }
