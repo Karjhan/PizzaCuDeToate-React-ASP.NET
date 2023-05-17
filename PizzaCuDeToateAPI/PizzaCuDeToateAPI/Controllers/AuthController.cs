@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PizzaCuDeToateAPI.DTOClasses;
 using PizzaCuDeToateAPI.Models;
 using PizzaCuDeToateAPI.Services;
@@ -36,7 +37,11 @@ namespace PizzaCuDeToateAPI.Controllers
             var findUser = await _userManager.FindByEmailAsync(request.Email);
             if (findUser is not null)
             {
-                return BadRequest("User already exists!");
+                var response = new
+                {
+                    error = "User already exists!"
+                };
+                return BadRequest(JsonConvert.SerializeObject(response));
             }
             ApplicationUser newUser = new ApplicationUser()
             {
@@ -59,9 +64,17 @@ namespace PizzaCuDeToateAPI.Controllers
                 var message = new MailMessage(new[] { newUser.Email }, "Confirmation email link",
                     $"Thank you for choosing our food services. Please click on the following link to confirm your account:\nConfirmation link: {confirmationLink!}");
                 _emailService.SendEmail(message);
-                return Ok($"User created successfully and confirmation email sent to {newUser.Email}!");
+                var response = new
+                {
+                    success = $"User created successfully and confirmation email sent to {newUser.Email}!"
+                };
+                return Ok(JsonConvert.SerializeObject(response));
             }
-            return StatusCode(500, "This role doesn't exist!");
+            var responseJson = new
+            {
+                error = "This role doesn't exist!"
+            };
+            return StatusCode(500, JsonConvert.SerializeObject(responseJson));
         }
 
         [HttpPost("login")]
@@ -73,7 +86,11 @@ namespace PizzaCuDeToateAPI.Controllers
                 var response = await _jwtService.CreateToken(findUser);
                 return Ok(response);
             }
-            return Unauthorized("Invalid credentials!");
+            var responseJson = new
+            {
+                error = "Invalid credentials!"
+            };
+            return Unauthorized(JsonConvert.SerializeObject(responseJson));
         }
         
         [HttpGet("username={username}")]
@@ -84,14 +101,15 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(new string[]
+            var responseJson = new
             {
-                findUser.UserName,
-                findUser.Email,
-                findUser.Address,
-                findUser.PhoneNumber,
-                findUser.Logo
-            });
+                username = findUser.UserName,
+                email = findUser.Email,
+                address = findUser.Address,
+                phoneNumber = findUser.PhoneNumber,
+                logo = findUser.Logo
+            };
+            return Ok(JsonConvert.SerializeObject(responseJson));
         }
         
         [HttpGet("email={email}")]
@@ -102,14 +120,15 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 return NotFound();
             }
-            return Ok(new string[]
+            var responseJson = new
             {
-                findUser.UserName,
-                findUser.Email,
-                findUser.Address,
-                findUser.PhoneNumber,
-                findUser.Logo
-            });
+                username = findUser.UserName,
+                email = findUser.Email,
+                address = findUser.Address,
+                phoneNumber = findUser.PhoneNumber,
+                logo = findUser.Logo
+            };
+            return Ok(JsonConvert.SerializeObject(responseJson));
         }
 
         [HttpPut("email={email}")]
@@ -137,14 +156,15 @@ namespace PizzaCuDeToateAPI.Controllers
                 findUser.Logo = request.LogoPath;
             }
             await _userManager.UpdateAsync(findUser);
-            return Ok(new string[]
+            var responseJson = new
             {
-                findUser.UserName,
-                findUser.Email,
-                findUser.Address,
-                findUser.PhoneNumber,
-                findUser.Logo
-            });
+                username = findUser.UserName,
+                email = findUser.Email,
+                address = findUser.Address,
+                phoneNumber = findUser.PhoneNumber,
+                logo = findUser.Logo
+            };
+            return Ok(JsonConvert.SerializeObject(responseJson));
         }
 
         [HttpGet("confirmEmail")]
@@ -156,10 +176,18 @@ namespace PizzaCuDeToateAPI.Controllers
                 var result = await _userManager.ConfirmEmailAsync(user, token);
                 if (result.Succeeded)
                 {
-                    return Ok("Email verified successfully!");
+                    var responseJson = new
+                    {
+                        success = "Email verified successfully!"
+                    };
+                    return Ok(JsonConvert.SerializeObject(responseJson));
                 }
             }
-            return BadRequest("This user doesn't exist!");
+            var response = new
+            {
+                error = "This user doesn't exist!"
+            };
+            return BadRequest(JsonConvert.SerializeObject(response));
         }
     }
 }
