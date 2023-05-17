@@ -1,18 +1,17 @@
-import React from 'react'
 import { useState, useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
-import logo1 from "../images/registerloginLogo1.png"
+import formLogo from "../images/registerFormLogo.png"
+import registerSuccessLogo from "../images/registerSuccessTick.gif"
 import { motion, useAnimationControls } from "framer-motion"
-import { Container } from 'react-bootstrap';
 import PizzaCanvas from '../components/PizzaCanvas';
 import KebabSaladCanvas from '../components/KebabSaladCanvas';
 
 const Register = () => {
   const [statusMessage, setStatusMessage] = useState("");
+
   const [formData, setFormData] = useState({
     password: "",
     confirmedPassword: "",
@@ -121,7 +120,17 @@ const Register = () => {
     })
     .then((response) => response.json())
       .then((data) => {
-        
+        if (Object.prototype.toString.call(data) === '[object Array]') {
+          setStatusMessage(data.map((item: { description: any; }) => item.description).join("\r\n"))
+        }
+        if ("errors" in data) {
+          setStatusMessage(Object.keys(data.errors).map((key) => data.errors[key][0]).join("\r\n"))
+        } else if ("error" in data) {
+          setStatusMessage(data.error)
+        }
+        if ("success" in data) {
+          setStatusMessage(data.success)
+        }
         console.log(data)
     })
   }
@@ -136,8 +145,8 @@ const Register = () => {
       <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
         <PizzaCanvas/>
       </Col>
-      <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="px-lg-0 px-4">
-        <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1}}>
+      <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="d-flex justify-content-center px-lg-0 px-4">
+        <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1 }} className="align-self-center">
           <Card
             border="danger"
             bg="dark"
@@ -151,11 +160,32 @@ const Register = () => {
             }}
             className="d-flex flex-column"
           >
+            {statusMessage === `User created successfully and confirmation email sent to ${formData.email}!` && <>
+              <Card.Body>
+                {/* <motion.div
+                  className="d-flex flex-column align-items-center justify-center"
+                  initial={{ x: 0 }}
+                  animate={{ x: 100 }}
+                  style={{ x: successProgress, width: "63%" }}
+                  transition={{ duration: 1 }}
+                >
+                  <CircularCheck progress={successProgress} />
+                </motion.div> */}
+                <Card.Img
+                  variant="top"
+                  src={registerSuccessLogo}
+                  style={{ width: "50%" }}
+                />
+                <Card.Title style={{ textAlign: "center", marginBottom: "2rem", marginTop: "2rem" }}>
+                  <h3>User created successfully</h3>
+                </Card.Title>
+              </Card.Body>
+            </>}
             {statusMessage !== `User created successfully and confirmation email sent to ${formData.email}!` && <>
               <motion.div animate={controls}>
                 <Card.Img
                   variant="top"
-                  src={logo1}
+                  src={formLogo}
                   style={{ width: "50%" }}
                 />
               </motion.div>
@@ -272,7 +302,7 @@ const Register = () => {
                     </Button>
                   </motion.div>
                 </Form>
-                {statusMessage !== "" && <h5 className="mt-4">{statusMessage}</h5>}
+                {statusMessage !== "" && <p className="mt-4" style={{whiteSpace:"pre-wrap", color:"red"}}>{statusMessage}</p>}
               </Card.Body>
             </>}
           </Card>

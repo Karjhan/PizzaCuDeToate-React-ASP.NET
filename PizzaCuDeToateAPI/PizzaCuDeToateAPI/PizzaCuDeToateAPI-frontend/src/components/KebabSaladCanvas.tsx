@@ -60,7 +60,7 @@ const KebabSaladCanvas = () => {
                     object={kebabSalad.scene}
                     scale={isMobile ? 1.5 : 2.5}
                     rotation={[0, 0, Math.PI / 10]}
-                    position={[0,0.35,0]}
+                    position={[0, isMobile ? 0.35 : 0.45,0]}
                 />
             </Suspense>
         </Canvas>

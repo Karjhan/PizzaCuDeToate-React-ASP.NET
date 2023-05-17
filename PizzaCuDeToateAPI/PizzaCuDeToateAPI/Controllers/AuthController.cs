@@ -39,7 +39,7 @@ namespace PizzaCuDeToateAPI.Controllers
             {
                 var response = new
                 {
-                    error = "User already exists!"
+                    error = $"User with email {request.Email} already exists!"
                 };
                 return BadRequest(JsonConvert.SerializeObject(response));
             }
