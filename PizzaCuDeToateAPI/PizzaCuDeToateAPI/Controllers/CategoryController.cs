@@ -11,7 +11,7 @@ using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
-    [Authorize(Roles = "User")]
+    [Authorize(Roles = "Admin,User")]
     [Route("api/categories")]
     [ApiController]
     public class CategoryController : ControllerBase
