@@ -6,15 +6,13 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="[ horia ] landing page work in progress">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_3_2023_2_04_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Checkout_at_5_3_2023_2_08_PM__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/shelf/Uncommitted_changes_before_Update_at_5_3_2023_9_42_AM__Changes_.xml" beforeDir="false" />
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="[ horia ] polished landing page and buttons">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarLeft.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarRight.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarPizza.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarPizza.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarShawarma.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/Components/NavbarShawarma.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbar.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbar.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarPizza.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarPizza.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarShawarma.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarShawarma.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +129,7 @@
       <workItem from="1683104624911" duration="1594000" />
       <workItem from="1683111828908" duration="1485000" />
       <workItem from="1683181100922" duration="8540000" />
-      <workItem from="1684309707741" duration="2538000" />
+      <workItem from="1684309707741" duration="5152000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -210,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684309812695</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="[ horia ] polished landing page and buttons">
+      <created>1684316462535</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1684316462535</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,6 +259,7 @@
     <MESSAGE value="Merged with Development;" />
     <MESSAGE value="[ horia ] deleted extra files from node modules" />
     <MESSAGE value="[ horia ] landing page work in progress" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ horia ] landing page work in progress" />
+    <MESSAGE value="[ horia ] polished landing page and buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ horia ] polished landing page and buttons" />
   </component>
 </project>

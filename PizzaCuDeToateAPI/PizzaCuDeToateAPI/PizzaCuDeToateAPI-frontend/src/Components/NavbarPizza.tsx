@@ -15,18 +15,20 @@ const NavbarPizza = () => {
   return (
     <>
       <motion.button
+
         className="nav-wrapper-left"
         onClick={() => { toggleClass(); }}>
         <motion.img
+        
           className="pizzaImg"
           src="src\Images\pizzaRef.png"
           animate={{ rotate: pressed ? 90 : -90 }}
           transition={{ type: "tween", duration: 1 }}>
         </motion.img>
       </motion.button>
-      <motion.div animate={{ x: !pressed ? -400 : 100 }}
+      <motion.div animate={{ x: !pressed ? "-20rem" : "30rem" }}
         transition={{ type: "tween", duration: 1 }}
-        initial={{ x: -400 }}
+        initial={{ x: "-20rem" }}
         className="nav-body-left">
         <button className="wrapper">
           <h1 data-heading="PIZZA">PIZZA</h1>
