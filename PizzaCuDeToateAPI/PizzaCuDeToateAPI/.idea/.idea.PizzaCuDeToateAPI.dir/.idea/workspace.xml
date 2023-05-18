@@ -6,14 +6,10 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="">
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="[ ioana ] added PizzaCard, PizzaNavBar.tsx">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Controllers/FoodItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/FoodItemController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DTOClasses/JSONFoodItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/JSONFoodItemDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/PizzaNavBar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/PizzaNavBar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Pizza.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Pizza.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repositories/FoodItemRepository/FoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/FoodItemRepository/FoodItemRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Repositories/FoodItemRepository/IFoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/FoodItemRepository/IFoodItemRepository.cs" afterDir="false" />
     </list>
@@ -30,11 +26,15 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/FoodItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DTOClasses/JSONFoodItemDTO.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/FoodItem.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Order.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/OrderDetails.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/IFoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80ab8fe1877749ac89ccebe2c105e0292097c0/bd/ae8a9a06/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -144,7 +144,7 @@
       <workItem from="1684129090638" duration="11414000" />
       <workItem from="1684215807777" duration="6840000" />
       <workItem from="1684308509260" duration="4066000" />
-      <workItem from="1684389038578" duration="2982000" />
+      <workItem from="1684389038578" duration="4501000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -258,7 +258,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684320625055</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="[ ioana ] added PizzaCard, PizzaNavBar.tsx">
+      <created>1684397599070</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1684397599070</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +314,7 @@
     <MESSAGE value="[ ioana ] Modified Order.cs and OrderDetails.cs;&#10;Added a AddOrderDTO.cs and JSONOrderDTO for data extraction;" />
     <MESSAGE value="[ ioana ] Back-Up for navbar;" />
     <MESSAGE value="[ ioana ] added another back up for navbar;" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ ioana ] added another back up for navbar;" />
+    <MESSAGE value="[ ioana ] added PizzaCard, PizzaNavBar.tsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ ioana ] added PizzaCard, PizzaNavBar.tsx" />
   </component>
 </project>
