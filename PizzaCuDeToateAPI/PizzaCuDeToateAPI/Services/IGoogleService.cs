@@ -1,5 +1,4 @@
-﻿using Google.Apis.PeopleService.v1.Data;
-using PizzaCuDeToateAPI.DTOClasses;
+﻿using PizzaCuDeToateAPI.DTOClasses;
 
 namespace PizzaCuDeToateAPI.Services;
 
