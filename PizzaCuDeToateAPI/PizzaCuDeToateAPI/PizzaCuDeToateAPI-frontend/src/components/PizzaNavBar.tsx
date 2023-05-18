@@ -9,7 +9,7 @@ import { BsList } from "react-icons/bs";
 function PizzaNavBar(props: {totalItems:number; totalPrice:number}) {
     const [navToggle, setNavToggle] = useState(false);
     return (
-        <nav className={navToggle ? "show" : ""}  style={{background:'#cf2e2e'}}>
+        <nav className={navToggle ? "show" : ""}  style={{background:'#cf2e2e',width:'100%'}}>
             <ul>
                 <li className="logo" style={{fontSize:'25px'}}>
                     <a id="logo" href="#">

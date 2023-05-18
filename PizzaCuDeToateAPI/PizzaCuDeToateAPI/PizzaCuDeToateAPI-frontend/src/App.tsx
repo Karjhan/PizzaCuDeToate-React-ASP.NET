@@ -12,14 +12,14 @@ function App() {
   
   return (
     <>
-      {/* <Container className="d-flex flex-column"> */}
+      <Container fluid className="d-flex flex-column p-0">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/menu" element={<Pizza/>}/>
             </Routes>
-      {/* </Container> */}
+      </Container>
     </>
   )
 }

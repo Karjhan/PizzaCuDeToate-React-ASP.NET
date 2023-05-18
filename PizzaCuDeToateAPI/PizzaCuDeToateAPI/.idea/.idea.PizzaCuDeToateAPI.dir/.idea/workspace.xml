@@ -6,7 +6,9 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="Added OrderRepository and IOrderRepository;" />
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="[ ioana ] Changed the pizza cards and removed the container from app.tsx;">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -138,7 +140,7 @@
       <workItem from="1684129090638" duration="11414000" />
       <workItem from="1684215807777" duration="6840000" />
       <workItem from="1684308509260" duration="4066000" />
-      <workItem from="1684389038578" duration="4555000" />
+      <workItem from="1684389038578" duration="5966000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -266,7 +268,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684402770595</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="[ ioana ] Changed the pizza cards and removed the container from app.tsx;">
+      <created>1684413052170</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1684413052170</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -317,6 +326,7 @@
     <MESSAGE value="[ ioana ] added another back up for navbar;" />
     <MESSAGE value="[ ioana ] added PizzaCard, PizzaNavBar.tsx" />
     <MESSAGE value="Added OrderRepository and IOrderRepository;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added OrderRepository and IOrderRepository;" />
+    <MESSAGE value="[ ioana ] Changed the pizza cards and removed the container from app.tsx;" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ ioana ] Changed the pizza cards and removed the container from app.tsx;" />
   </component>
 </project>
