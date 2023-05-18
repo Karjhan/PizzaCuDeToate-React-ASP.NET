@@ -6,6 +6,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import { ThreeCircles } from 'react-loader-spinner';
 import { GoogleOAuthProvider } from '@react-oauth/google';
+import Pizza from './pages/Pizza';
 import './App.css'
 
 function App() {
@@ -33,11 +34,11 @@ function App() {
         />
         
         <Container fluid style={{ filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }}>
-          {/* <NavbarMain logged={logged} /> */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading}/>} />
               <Route path="/login" element={<Login setSpinner={setIsLoading} />} />
+              <Route path="/menu" element={<Pizza/>}/>
             </Routes>
         </Container>
       </GoogleOAuthProvider>

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import Row from 'react-bootstrap/Row';
+import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from '@react-oauth/google';
 import ParticlesBackground from "../components/ParticlesBackground";
 
-const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolean}) => {
+const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolean }) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [successStatus, setSuccessStatus] = useState(false);
   const [formData, setFormData] = useState({
@@ -158,14 +158,6 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolea
           setStatusMessage(data.error);
         } else if ("success" in data) {
           setStatusMessage(data.success);
-          setFormData({
-            username: formData.username,
-            email: data.email,
-            password: formData.password,
-            address: formData.address,
-            phoneNumber: formData.phoneNumber,
-            confirmedPassword: formData.confirmedPassword
-          })
           setSuccessStatus(true);
         }
         props.setSpinner(false);
@@ -192,6 +184,14 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolea
           setStatusMessage(data.error);
         } else if ("success" in data) {
           setStatusMessage(data.success);
+          setFormData({
+            username: formData.username,
+            email: data.email,
+            password: formData.password,
+            address: formData.address,
+            phoneNumber: formData.phoneNumber,
+            confirmedPassword: formData.confirmedPassword
+          })
           setSuccessStatus(true);
         }
         props.setSpinner(false);

@@ -6,10 +6,56 @@
     <projectFile profileName="https">PizzaCuDeToateAPI.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="">
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="[ ioana ] merged with Horia's branch;">
+      <change afterPath="$PROJECT_DIR$/DTOClasses/GoogleUserDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DTOClasses/UpdateUserDetailsDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20230516065035_AddOrders.Designer.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Migrations/20230516065035_AddOrders.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/PaymentType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/KebabSaladFormat/license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/KebabSaladFormat/scene.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/KebabSaladFormat/scene.gltf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/KebabSaladFormat/textures/Material0_baseColor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/PizzaFormat/license.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/PizzaFormat/scene.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/PizzaFormat/scene.gltf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/public/3DModels/PizzaFormat/textures/pizz_baseColor.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/CircularCheck.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/HorizLineWithText.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/KebabSaladCanvas.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/Loader.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/NavbarMain.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/ParticlesBackground.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/components/PizzaCanvas.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/images/logoGoogle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/images/registerFormLogo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/images/registerSuccessTick.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scripts/particles-config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/GoogleService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Services/IGoogleService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Controllers/FoodItemController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/FoodItemController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DTOClasses/AddOrderDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/AddOrderDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DataContexts/ApplicationContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataContexts/ApplicationContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Migrations/ApplicationContextModelSnapshot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/ApplicationUser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ApplicationUser.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Models/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/OrderDetails.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/OrderDetails.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/pages/Register.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/home.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/home.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarPizza.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarPizza.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarShawarma.scss" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/src/scss/navbarShawarma.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +70,23 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/FoodItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/FoodItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Controllers/FoodItemController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DTOClasses/JSONFoodItemDTO.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DataContexts/ApplicationContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/DataContexts/ApplicationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/FoodItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/Order.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Order.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/Order.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/OrderDetails.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/OrderDetails.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Models/OrderDetails.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/PizzaCuDeToateAPI-frontend/package-lock.json" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/FoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Codecool/el-proyecte-grande-sprint-1-csharp-HoriaMitrica/PizzaCuDeToateAPI/PizzaCuDeToateAPI/Repositories/FoodItemRepository/IFoodItemRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/appsettings.json" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/80ab8fe1877749ac89ccebe2c105e0292097c0/bd/ae8a9a06/DbContext.cs" root0="SKIP_HIGHLIGHTING" />
@@ -131,12 +189,6 @@
       <workItem from="1683104624911" duration="1594000" />
       <workItem from="1683111828908" duration="1485000" />
       <workItem from="1683181100922" duration="8540000" />
-      <workItem from="1683742890298" duration="53000" />
-      <workItem from="1683742963476" duration="102000" />
-      <workItem from="1683743092815" duration="234000" />
-      <workItem from="1683985832834" duration="5257000" />
-      <workItem from="1684129090638" duration="11414000" />
-      <workItem from="1684215807777" duration="333000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -208,28 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683739875634</updated>
     </task>
-    <task id="LOCAL-00011" summary="Added Order.cs and OrderDetails.cs classes;">
-      <created>1684131945706</created>
+    <task id="LOCAL-00011" summary="[ ioana ] merged with Horia's branch;">
+      <created>1684433586039</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1684131945706</updated>
+      <updated>1684433586039</updated>
     </task>
-    <task id="LOCAL-00012" summary="Added configurations for token, email validation and google auth;">
-      <created>1684133660160</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1684133660160</updated>
-    </task>
-    <task id="LOCAL-00013" summary="Git pulled from development;">
-      <created>1684135731603</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1684135731603</updated>
-    </task>
-    <option name="localTasksCounter" value="14" />
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,9 +310,7 @@
     <MESSAGE value="Implemented StockRepository.cs and StockItemController.cs;" />
     <MESSAGE value="Merged with Development;" />
     <MESSAGE value="[ horia ] deleted extra files from node modules" />
-    <MESSAGE value="Added Order.cs and OrderDetails.cs classes;" />
-    <MESSAGE value="Added configurations for token, email validation and google auth;" />
-    <MESSAGE value="Git pulled from development;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Git pulled from development;" />
+    <MESSAGE value="[ ioana ] merged with Horia's branch;" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ ioana ] merged with Horia's branch;" />
   </component>
 </project>

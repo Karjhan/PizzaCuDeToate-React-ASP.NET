@@ -13,4 +13,5 @@ public interface IFoodItemRepository : IRepository<FoodItem>
     FoodItem? RemoveIngredient(FoodItem foodItem, int ingredientIdToRemove);
 
     FoodItem? ChangeCategory(FoodItem foodItem, int newCategoryId);
+
 }

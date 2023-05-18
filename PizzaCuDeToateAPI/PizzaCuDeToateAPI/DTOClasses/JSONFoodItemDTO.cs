@@ -8,7 +8,7 @@ public class JSONFoodItemDTO
 
     public string Name { get; set; } = string.Empty;
 
-    public int CategoryId { get; set; }
+    public int CategoryId { get; set; } 
 
     public string Description { get; set; } = string.Empty;
 
@@ -18,7 +18,7 @@ public class JSONFoodItemDTO
 
     public List<string> Images { get; set; } = new List<string>();
 
-    public string Logo { get; set; }
+    public string Logo { get; set; } = string.Empty;
 
     public void GetFromFoodItem(FoodItem origin)
     {
