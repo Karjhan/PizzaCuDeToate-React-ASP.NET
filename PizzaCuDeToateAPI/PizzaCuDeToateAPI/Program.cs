@@ -114,6 +114,7 @@ builder.Services.AddAuthentication(options =>
 //     options.ClientSecret = builder.Configuration["Google:ClientSecret"];
 // });
 builder.Services.AddScoped<IJWTService, JWTService>();
+builder.Services.AddScoped<IGoogleService, GoogleService>();
 
 //Add email configuration
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
@@ -152,4 +153,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Seed(builder.Configuration.GetConnectionString("PizzaCuDeToate_Db"));
+
 app.Run();

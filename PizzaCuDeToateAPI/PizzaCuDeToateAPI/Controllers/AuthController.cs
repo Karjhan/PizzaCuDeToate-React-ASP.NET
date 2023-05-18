@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -20,15 +21,72 @@ namespace PizzaCuDeToateAPI.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IEmailService _emailService;
         private readonly IJWTService _jwtService;
+        private readonly IGoogleService _googleService;
         private readonly IConfiguration _configuration;
 
-        public AuthController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager,IConfiguration configuration, IEmailService emailService, IJWTService jwtService)
+        public AuthController(
+            UserManager<ApplicationUser> userManager, 
+            RoleManager<IdentityRole> roleManager,
+            IConfiguration configuration, 
+            IEmailService emailService, 
+            IJWTService jwtService,
+            IGoogleService googleService)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _configuration = configuration;
             _emailService = emailService;
             _jwtService = jwtService;
+            _googleService = googleService;
+        }
+
+        [HttpGet("register/google/{tokenId}")]
+        public async Task<IActionResult> Register([FromRoute]string tokenId)
+        {
+            try
+            {
+                // var payload = await GoogleJsonWebSignature.ValidateAsync(tokenId, new GoogleJsonWebSignature.ValidationSettings());
+                var payload = await _googleService.GetUserData(tokenId);
+                var findUser = await _userManager.FindByEmailAsync(payload.email);
+                if (findUser is not null)
+                {
+                    var response = new
+                    {
+                        error = $"User with email {payload.email} already exists!"
+                    };
+                    return BadRequest(JsonConvert.SerializeObject(response));
+                }
+                ApplicationUser newUser = new ApplicationUser()
+                {
+                    Email = payload.email,
+                    SecurityStamp = Guid.NewGuid().ToString(),
+                    UserName = Regex.Replace(payload.name, "[^a-zA-Z0-9]", String.Empty).Replace(" ", "")
+                };
+                var result = await _userManager.CreateAsync(newUser);
+                if (!result.Succeeded)
+                {
+                    return StatusCode(500, result.Errors);
+                }
+                await _userManager.AddToRoleAsync(newUser, "user");
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
+                var confirmationLink = Url.Action(nameof(ConfirmEmail), "Auth", new {token, email = newUser.Email}, Request.Scheme);
+                var message = new MailMessage(new[] { newUser.Email }, "Confirmation email link",
+                    $"Thank you for choosing our food services. Please click on the following link to confirm your account:\nConfirmation link: {confirmationLink!}");
+                _emailService.SendEmail(message);
+                var responseJson = new
+                {
+                    success = $"User created successfully and confirmation email sent to {newUser.Email}!"
+                };
+                return Ok(JsonConvert.SerializeObject(responseJson));
+            }
+            catch (Exception e)
+            {
+                var response = new
+                {
+                    error = "Something went wrong with Google authentication!"
+                };
+                return BadRequest(JsonConvert.SerializeObject(response));
+            }
         }
 
         [HttpPost("register/{role}")]
