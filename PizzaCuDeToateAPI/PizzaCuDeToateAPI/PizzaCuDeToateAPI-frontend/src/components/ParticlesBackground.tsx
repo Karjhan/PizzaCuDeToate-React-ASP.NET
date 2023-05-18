@@ -1,10 +1,10 @@
 import { loadFull } from "tsparticles"
-import { useCallback } from "react"
+import { CSSProperties, useCallback } from "react"
 import Particles from 'react-tsparticles'
 import particlesConfig from "../scripts/particles-config.js"
 import { Engine } from "tsparticles-engine"
 
-const ParticlesBackground = () => {
+const ParticlesBackground = (props: { style: CSSProperties | undefined }) => {
   const particlesInit = useCallback(async (engine: Engine) => {
     console.log(engine);
     // you can initiate the tsParticles instance (engine) here, adding custom shapes or presets
@@ -22,11 +22,11 @@ const ParticlesBackground = () => {
       id="tsparticles"
       init={particlesInit}
       loaded={particlesLoaded}
-      style={{
-        position: "absolute", top: "0", left: "0" }}
+      style={props.style}
       height="95%"
       width="95%"
       options={particlesConfig}
+      className="position-absolute top-0 left-0"
     >
         
     </Particles>

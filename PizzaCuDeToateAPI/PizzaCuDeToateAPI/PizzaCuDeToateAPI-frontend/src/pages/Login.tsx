@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Login = () => {
+const Login = (props: { setSpinner: (arg0: boolean) => void; }) => {
   return (
     <div>
       Login

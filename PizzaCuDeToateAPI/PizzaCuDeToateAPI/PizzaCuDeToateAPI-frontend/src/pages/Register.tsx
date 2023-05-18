@@ -4,13 +4,16 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import formLogo from "../images/registerFormLogo.png"
+import googleLogo from "../images/logoGoogle.png"
 import registerSuccessLogo from "../images/registerSuccessTick.gif"
 import { motion, useAnimationControls } from "framer-motion"
 import PizzaCanvas from '../components/PizzaCanvas';
 import KebabSaladCanvas from '../components/KebabSaladCanvas';
+import HorizLineWithText from '../components/HorizLineWithText';
 import { useNavigate } from "react-router-dom";
+import { useGoogleLogin } from '@react-oauth/google';
 
-const Register = () => {
+const Register = (props: { setSpinner: (arg0: boolean) => void; }) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [successStatus, setSuccessStatus] = useState(false);
   const [formData, setFormData] = useState({
@@ -117,12 +120,15 @@ const Register = () => {
 
   const handleRegister = function (event: any): any{
     event.preventDefault();
+    props.setSpinner(true);
     if (formData.username.length < 3) {
       setStatusMessage("Username too short: at least 3 characters!");
+      props.setSpinner(false);
       return;
     }
     if (formData.password !== formData.confirmedPassword) {
       setStatusMessage("Passwords don't match!");
+      props.setSpinner(false);
       return;
     }
     setStatusMessage("");
@@ -144,20 +150,45 @@ const Register = () => {
       .then((data) => {
         if (Object.prototype.toString.call(data) === '[object Array]') {
           setStatusMessage(data.map((item: { description: any; }) => item.description).join("\r\n"));
-        }
-        if ("errors" in data) {
+        } else if ("errors" in data) {
           setStatusMessage(Object.keys(data.errors).map((key) => data.errors[key][0]).join("\r\n"));
         } else if ("error" in data) {
           setStatusMessage(data.error);
-        }
-        if ("success" in data) {
-          console.log("ceva")
+        } else if ("success" in data) {
           setStatusMessage(data.success);
           setSuccessStatus(true);
         }
-        console.log(data)
+        props.setSpinner(false);
     })
   }
+
+  const googleRegister = useGoogleLogin({
+    onSuccess: tokenResponse => {
+      props.setSpinner(true)
+      fetch(`https://localhost:44388/api/auth/register/google/${tokenResponse.access_token}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (Object.prototype.toString.call(data) === '[object Array]') {
+          setStatusMessage(data.map((item: { description: any; }) => item.description).join("\r\n"));
+        } else if ("errors" in data) {
+          setStatusMessage(Object.keys(data.errors).map((key) => data.errors[key][0]).join("\r\n"));
+        } else if ("error" in data) {
+          setStatusMessage(data.error);
+        } else if ("success" in data) {
+          setStatusMessage(data.success);
+          setSuccessStatus(true);
+        }
+        props.setSpinner(false);
+      })
+    },
+  });
+
 
   useEffect(() => {
     if (successStatus && timer > 0) {
@@ -327,6 +358,13 @@ const Register = () => {
                   <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
                     <Button variant="primary" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => handleRegister(event)}>
                       Sign Up
+                    </Button>
+                  </motion.div>
+                  <HorizLineWithText text={"Or"} />
+                  <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                    <Button variant="danger" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => { event.preventDefault(); googleRegister(); }}>
+                      <img src={googleLogo} alt="" style={{width:"1.5rem", marginRight:"0.5rem"}}></img>
+                      Register with Google
                     </Button>
                   </motion.div>
                 </Form>

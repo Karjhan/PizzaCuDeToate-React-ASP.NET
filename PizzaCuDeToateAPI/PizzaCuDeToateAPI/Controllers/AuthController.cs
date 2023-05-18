@@ -41,7 +41,7 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpGet("register/google/{tokenId}")]
-        public async Task<IActionResult> Register([FromRoute]string tokenId)
+        public async Task<IActionResult> GoogleRegister([FromRoute]string tokenId)
         {
             try
             {
@@ -90,7 +90,7 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpPost("register/{role}")]
-        public async Task<IActionResult> Register([FromBody] RegisterUserDTO request, [FromRoute] string role)
+        public async Task<IActionResult> NormalRegister([FromBody] RegisterUserDTO request, [FromRoute] string role)
         {
             var findUser = await _userManager.FindByEmailAsync(request.Email);
             if (findUser is not null)
@@ -136,7 +136,7 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> Register([FromBody] LoginUserDTO request)
+        public async Task<IActionResult> Login([FromBody] LoginUserDTO request)
         {
             var findUser = await _userManager.FindByEmailAsync(request.Email);
             if (findUser is not null && await _userManager.CheckPasswordAsync(findUser, request.Password))

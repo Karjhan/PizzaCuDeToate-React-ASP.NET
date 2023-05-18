@@ -1,32 +1,53 @@
-import { Container } from 'react-bootstrap'
 import Row from 'react-bootstrap/Row';
+import { Container } from 'react-bootstrap'
 import { Routes, Route } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import './App.css'
 import NavbarMain from './components/NavbarMain';
-import { useState, useEffect } from 'react';
 import ParticlesBackground from "./components/ParticlesBackground";
+import { ThreeCircles } from 'react-loader-spinner';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import './App.css'
 
 function App() {
   const [logged, setLogged] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    console.log(isLoading)
+  },[isLoading])
   
   return (
     <>
-      <ParticlesBackground />
-      <Container fluid>
-        <NavbarMain logged={logged} />
-        <Row
+      <GoogleOAuthProvider clientId="243357289852-s807hi6ior999l811crverov3lenloi7.apps.googleusercontent.com">
+        <ThreeCircles
+          height="100%"
+          width="20%"
+          color="crimson"
+          wrapperStyle={{}}
+          wrapperClass="threee-circles-wrapper"
+          visible={isLoading}
+          ariaLabel="three-circles-rotating"
+          outerCircleColor=""
+          innerCircleColor=""
+          middleCircleColor=""
+        />
+        <ParticlesBackground style={{ filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }} />
+        <Container fluid style={{ filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }}>
+          <NavbarMain logged={logged} />
+          <Row
           // style={{ background: "linear-gradient(#E14242, #F7D098)" }}
-        >
+          >
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register setSpinner={setIsLoading} />} />
+              <Route path="/login" element={<Login setSpinner={setIsLoading} />} />
             </Routes>
-        </Row>
-      </Container>
+          </Row>
+        </Container>
+      </GoogleOAuthProvider>
     </>
   )
 }

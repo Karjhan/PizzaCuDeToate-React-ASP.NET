@@ -41,3 +41,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.threee-circles-wrapper {
+  position: fixed;
+  width: 50%;
+  z-index: 9999;
+  top: 30%;
+  left: 45%;
+  background-color: transparent;
+}
