@@ -19,7 +19,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/pizza" element={<Pizza/>}/>
+              <Route path="/menu" element={<Pizza/>}/>
             </Routes>
           </Col>
         </Row>
