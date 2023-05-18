@@ -1,12 +1,9 @@
-import Row from 'react-bootstrap/Row';
 import { Container } from 'react-bootstrap'
 import { Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import NavbarMain from './components/NavbarMain';
-import ParticlesBackground from "./components/ParticlesBackground";
 import { ThreeCircles } from 'react-loader-spinner';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import './App.css'
@@ -34,18 +31,14 @@ function App() {
           innerCircleColor=""
           middleCircleColor=""
         />
-        <ParticlesBackground style={{ filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }} />
+        
         <Container fluid style={{ filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }}>
-          <NavbarMain logged={logged} />
-          <Row
-          // style={{ background: "linear-gradient(#E14242, #F7D098)" }}
-          >
+          {/* <NavbarMain logged={logged} /> */}
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/register" element={<Register setSpinner={setIsLoading} />} />
+              <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading}/>} />
               <Route path="/login" element={<Login setSpinner={setIsLoading} />} />
             </Routes>
-          </Row>
         </Container>
       </GoogleOAuthProvider>
     </>

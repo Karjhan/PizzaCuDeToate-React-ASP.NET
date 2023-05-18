@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
+import Row from 'react-bootstrap/Row';
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -12,8 +13,9 @@ import KebabSaladCanvas from '../components/KebabSaladCanvas';
 import HorizLineWithText from '../components/HorizLineWithText';
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from '@react-oauth/google';
+import ParticlesBackground from "../components/ParticlesBackground";
 
-const Register = (props: { setSpinner: (arg0: boolean) => void; }) => {
+const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolean}) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [successStatus, setSuccessStatus] = useState(false);
   const [formData, setFormData] = useState({
@@ -156,6 +158,14 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; }) => {
           setStatusMessage(data.error);
         } else if ("success" in data) {
           setStatusMessage(data.success);
+          setFormData({
+            username: formData.username,
+            email: data.email,
+            password: formData.password,
+            address: formData.address,
+            phoneNumber: formData.phoneNumber,
+            confirmedPassword: formData.confirmedPassword
+          })
           setSuccessStatus(true);
         }
         props.setSpinner(false);
@@ -208,175 +218,178 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; }) => {
 
   return (
     <>
-      <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
-        <PizzaCanvas/>
-      </Col>
-      <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="d-flex justify-content-center px-lg-0 px-4">
-        <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1 }} className="align-self-center">
-          <Card
-            border="danger"
-            bg="dark"
-            text="white"
-            style={{
-              marginTop: "2rem",
-              marginBottom: "2rem",
-              border: "1rem",
-              paddingTop: "1rem",
-              paddingBottom: "1rem",
-            }}
-            className="d-flex flex-column"
-          >
-            {successStatus && <>
-              <Card.Body>
-                <p>{`Redirecting you to home in ${timer} seconds...`}</p>
-                <Card.Img
-                  variant="top"
-                  src={registerSuccessLogo}
-                  style={{ width: "50%" }}
-                />
-                <Card.Title style={{ textAlign: "center", marginBottom: "2rem", marginTop: "2rem" }}>
-                  <h3>User created successfully</h3>
-                </Card.Title>
-                <p>Confirmation email sent to <i>{formData.email}</i></p>
-              </Card.Body>
-            </>}
-            {!successStatus && <>
-              <motion.div animate={controls}>
-                <Card.Img
-                  variant="top"
-                  src={formLogo}
-                  style={{ width: "50%" }}
-                />
-              </motion.div>
-              <Card.Body>
-                <Card.Title style={{ textAlign: "center", marginBottom: "2rem" }}>
-                  <h2>SignUp Form</h2>
-                </Card.Title>
-                <Form className='d-flex flex-column'>
+      <ParticlesBackground style={{ filter: props.loading ? "blur(10px)" : "none", pointerEvents: props.loading ? "none" : "auto" }} />
+      <Row>
+        <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
+          <PizzaCanvas />
+        </Col>
+        <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="d-flex justify-content-center px-lg-0 px-4">
+          <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1 }} className="align-self-center">
+            <Card
+              border="danger"
+              bg="dark"
+              text="white"
+              style={{
+                marginTop: "2rem",
+                marginBottom: "2rem",
+                border: "1rem",
+                paddingTop: "1rem",
+                paddingBottom: "1rem",
+              }}
+              className="d-flex flex-column"
+            >
+              {successStatus && <>
+                <Card.Body>
+                  <p>{`Redirecting you to home in ${timer} seconds...`}</p>
+                  <Card.Img
+                    variant="top"
+                    src={registerSuccessLogo}
+                    style={{ width: "50%" }}
+                  />
+                  <Card.Title style={{ textAlign: "center", marginBottom: "2rem", marginTop: "2rem" }}>
+                    <h3>User created successfully</h3>
+                  </Card.Title>
+                  <p>Confirmation email sent to <i>{formData.email}</i></p>
+                </Card.Body>
+              </>}
+              {!successStatus && <>
+                <motion.div animate={controls}>
+                  <Card.Img
+                    variant="top"
+                    src={formLogo}
+                    style={{ width: "50%" }}
+                  />
+                </motion.div>
+                <Card.Body>
+                  <Card.Title style={{ textAlign: "center", marginBottom: "2rem" }}>
+                    <h2>SignUp Form</h2>
+                  </Card.Title>
+                  <Form className='d-flex flex-column'>
 
-                  <div className='d-flex flex-md-row flex-column justify-content-around'>
-                    <div className="px-2">
-                      <Form.Group className="mb-3" controlId="formBasicUsername">
-                        <Form.Label>Username</Form.Label>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                          <Form.Control
-                            onChange={(event) =>
-                              changeCredential("username", event.target.value)
-                            }
-                            type="text"
-                            placeholder="Enter username"
-                          />
-                        </motion.div>
-                        <Form.Text className="text-muted">
-                          Choose your prefered username.
-                        </Form.Text>
-                      </Form.Group>
+                    <div className='d-flex flex-md-row flex-column justify-content-around'>
+                      <div className="px-2">
+                        <Form.Group className="mb-3" controlId="formBasicUsername">
+                          <Form.Label>Username</Form.Label>
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                            <Form.Control
+                              onChange={(event) =>
+                                changeCredential("username", event.target.value)
+                              }
+                              type="text"
+                              placeholder="Enter username"
+                            />
+                          </motion.div>
+                          <Form.Text className="text-muted">
+                            Choose your prefered username.
+                          </Form.Text>
+                        </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email</Form.Label>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                          <Form.Control
-                            onChange={(event) =>
-                              changeCredential("email", event.target.value)
-                            }
-                            type="email"
-                            placeholder="Enter email"
-                          />
-                        </motion.div>
-                        <Form.Text className="text-muted">
-                          We'll never share your email with anyone else.
-                        </Form.Text>
-                      </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                          <Form.Label>Email</Form.Label>
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                            <Form.Control
+                              onChange={(event) =>
+                                changeCredential("email", event.target.value)
+                              }
+                              type="email"
+                              placeholder="Enter email"
+                            />
+                          </motion.div>
+                          <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                          </Form.Text>
+                        </Form.Group>
 
-                      <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                          <Form.Control
-                            onChange={(event) =>
-                              changeCredential("password", event.target.value)
-                            }
-                            type="password"
-                            placeholder="Enter password"
-                          />
-                        </motion.div>
-                        <Form.Text className="text-muted">
-                          At least: 1 uppercase, 1 alphanumeric and 1 digit.
-                        </Form.Text>
-                      </Form.Group>
-                      <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
-                        <Form.Label>Confirm Password</Form.Label>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                          <Form.Control
-                            onChange={(event) =>
-                              changeCredential("confirmedPassword", event.target.value)
-                            }
-                            type="password"
-                            placeholder="Confirm password"
-                          />
-                        </motion.div>
-                        <Form.Text className="text-muted">
-                          Confirm previous password
-                        </Form.Text>
-                      </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                          <Form.Label>Password</Form.Label>
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                            <Form.Control
+                              onChange={(event) =>
+                                changeCredential("password", event.target.value)
+                              }
+                              type="password"
+                              placeholder="Enter password"
+                            />
+                          </motion.div>
+                          <Form.Text className="text-muted">
+                            At least: 1 uppercase, 1 alphanumeric and 1 digit.
+                          </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+                          <Form.Label>Confirm Password</Form.Label>
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                            <Form.Control
+                              onChange={(event) =>
+                                changeCredential("confirmedPassword", event.target.value)
+                              }
+                              type="password"
+                              placeholder="Confirm password"
+                            />
+                          </motion.div>
+                          <Form.Text className="text-muted">
+                            Confirm previous password
+                          </Form.Text>
+                        </Form.Group>
+                      </div>
+
+                      <div className="px-2">
+                        <Form.Group className="mb-3" controlId="formBasicAddress">
+                          <Form.Label>Address</Form.Label>
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                            <Form.Control
+                              as="textarea"
+                              style={{ resize: "none", height: "9.25em" }}
+                              onChange={(event) =>
+                                changeCredential("confirmedPassword", event.target.value)
+                              }
+                              type="text"
+                              placeholder="Enter address"
+                            />
+                          </motion.div>
+                          <Form.Text className="text-muted">
+                            Town/County, Street, Street Nr, Residence, Postal Code
+                          </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
+                          <Form.Label>Phone Number</Form.Label>
+                          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                            <Form.Control
+                              onChange={(event) =>
+                                changeCredential("phoneNumber", event.target.value)
+                              }
+                              type="text"
+                              placeholder="Enter phone number"
+                            />
+                          </motion.div>
+                          <Form.Text className="text-muted">
+                            Your phone number for delivery calls
+                          </Form.Text>
+                        </Form.Group>
+                      </div>
                     </div>
-
-                    <div className="px-2">
-                      <Form.Group className="mb-3" controlId="formBasicAddress">
-                        <Form.Label>Address</Form.Label>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                          <Form.Control
-                            as="textarea"
-                            style={{ resize: "none", height: "9.25em" }}
-                            onChange={(event) =>
-                              changeCredential("confirmedPassword", event.target.value)
-                            }
-                            type="text"
-                            placeholder="Enter address"
-                          />
-                        </motion.div>
-                        <Form.Text className="text-muted">
-                          Town/County, Street, Street Nr, Residence, Postal Code
-                        </Form.Text>
-                      </Form.Group>
-                      <Form.Group className="mb-3" controlId="formBasicPhoneNumber">
-                        <Form.Label>Phone Number</Form.Label>
-                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                          <Form.Control
-                            onChange={(event) =>
-                              changeCredential("phoneNumber", event.target.value)
-                            }
-                            type="text"
-                            placeholder="Enter phone number"
-                          />
-                        </motion.div>
-                        <Form.Text className="text-muted">
-                          Your phone number for delivery calls
-                        </Form.Text>
-                      </Form.Group>
-                    </div>
-                  </div>
-                  <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                    <Button variant="primary" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => handleRegister(event)}>
-                      Sign Up
-                    </Button>
-                  </motion.div>
-                  <HorizLineWithText text={"Or"} />
-                  <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                    <Button variant="danger" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => { event.preventDefault(); googleRegister(); }}>
-                      <img src={googleLogo} alt="" style={{width:"1.5rem", marginRight:"0.5rem"}}></img>
-                      Register with Google
-                    </Button>
-                  </motion.div>
-                </Form>
-                {statusMessage !== "" && <p className="mt-4" style={{whiteSpace:"pre-wrap", color:"red"}}>{statusMessage}</p>}
-              </Card.Body>
-            </>}
-          </Card>
-        </motion.div>
-      </Col>
-      <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
-        <KebabSaladCanvas />                
-      </Col>
+                    <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                      <Button variant="primary" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => handleRegister(event)}>
+                        Sign Up
+                      </Button>
+                    </motion.div>
+                    <HorizLineWithText text={"Or"} />
+                    <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
+                      <Button variant="danger" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => { event.preventDefault(); googleRegister(); }}>
+                        <img src={googleLogo} alt="" style={{ width: "1.5rem", marginRight: "0.5rem" }}></img>
+                        Register with Google
+                      </Button>
+                    </motion.div>
+                  </Form>
+                  {statusMessage !== "" && <p className="mt-4" style={{ whiteSpace: "pre-wrap", color: "red" }}>{statusMessage}</p>}
+                </Card.Body>
+              </>}
+            </Card>
+          </motion.div>
+        </Col>
+        <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
+          <KebabSaladCanvas />
+        </Col>
+      </Row>
     </>
   )
 }

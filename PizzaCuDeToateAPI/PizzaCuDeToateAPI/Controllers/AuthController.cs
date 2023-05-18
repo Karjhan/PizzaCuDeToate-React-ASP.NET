@@ -75,7 +75,8 @@ namespace PizzaCuDeToateAPI.Controllers
                 _emailService.SendEmail(message);
                 var responseJson = new
                 {
-                    success = $"User created successfully and confirmation email sent to {newUser.Email}!"
+                    success = $"User created successfully and confirmation email sent to {newUser.Email}!",
+                    email = newUser.Email
                 };
                 return Ok(JsonConvert.SerializeObject(responseJson));
             }
