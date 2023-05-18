@@ -12,7 +12,7 @@ function PizzaNavBar(props: {totalItems:number; totalPrice:number}) {
         <nav className={navToggle ? "show" : ""}  style={{background:'#cf2e2e',width:'100%'}}>
             <ul>
                 <li className="logo" style={{fontSize:'25px'}}>
-                    <a id="logo" href="#">
+                    <a id="logo" href="/">
                         PizzaCuDeToate
                     </a>
                 </li>
