@@ -1,0 +1,58 @@
+.logo {
+  top: 0;
+  // position:fixed;
+  align-items: center;
+}
+.wrapper {
+  width: 100%;
+  font-family: "Alfa Slab One", sans-serif;
+  margin: 0 auto;
+  height: 100%;
+  backface-visibility: hidden;
+}
+.wrapper {
+  border: none;
+  background-color: rgba($color: #000000, $alpha: 0);
+}
+.wrapper h1 {
+  text-transform: uppercase;
+  transform: translate(-50%, -50%) skew(-10deg, 0);
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  font-size: 10vw;
+  font-weight: 400;
+  white-space: nowrap;
+  color: #f25826;
+  letter-spacing: 2vw;
+  z-index: 1;
+}
+.wrapper h1::after,
+.wrapper h1::before {
+  transition: all 250ms ease;
+  backface-visibility: hidden;
+  content: attr(data-heading);
+  position: absolute;
+}
+.wrapper h1::after {
+  left: -15px;
+  top: -15px;
+  z-index: 2;
+  -webkit-text-stroke: 3px #fece35;
+  -webkit-text-fill-color: transparent;
+}
+.wrapper h1::before {
+  z-index: -1;
+  left: 15px;
+  top: 15px;
+  color: #f68722;
+}
+.wrapper h1:hover::after {
+  left: -20px;
+  top: -20px;
+}
+.wrapper h1:hover::before {
+  left: 20px;
+  top: 20px;
+}

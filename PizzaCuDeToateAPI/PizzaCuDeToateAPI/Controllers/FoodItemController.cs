@@ -13,7 +13,6 @@ using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
-    [Authorize(Roles = "Admin,User")]
     [Route("api/foodItems")]
     [ApiController]
     public class FoodItemController : ControllerBase
@@ -23,7 +22,28 @@ namespace PizzaCuDeToateAPI.Controllers
         {
             _foodItemRepository = foodItemRepository;
         }
-        
+
+        [HttpGet]
+        [Route("/pizzas")]
+        public async Task<IActionResult> GetOnlyPizzas()
+        {
+            var shawarmaSubstring = "shawarma";
+            var result = _foodItemRepository.GetAll();
+            if (result.Count() == 0)
+            {
+                return NoContent();
+            }
+
+            var final = result.Where(foodItem => !foodItem.Name.ToLower().Contains(shawarmaSubstring)).Select(pizza =>
+            {
+                var showPizza = new JSONFoodItemDTO();
+                showPizza.GetFromFoodItem(pizza);
+                return showPizza;
+            });
+
+            return Ok(final);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetAllFoodItems()
         {
