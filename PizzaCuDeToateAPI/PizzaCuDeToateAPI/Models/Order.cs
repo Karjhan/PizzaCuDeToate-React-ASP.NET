@@ -16,11 +16,13 @@ public class Order
 
     public ApplicationUser Customer { get; set; }
 
+    public PaymentType PaymentType { get; set; }
+
     public Order()
     {
     }
 
-    public Order(string firstName, string lastName, string address,string phoneNumber, DateTime orderPlacedTime, ApplicationUser customer)
+    public Order(string firstName, string lastName, string address, string phoneNumber, DateTime orderPlacedTime, ApplicationUser customer, PaymentType paymentType)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -28,5 +30,6 @@ public class Order
         PhoneNumber = phoneNumber;
         OrderPlacedTime = orderPlacedTime;
         Customer = customer;
+        PaymentType = paymentType;
     }
 }

@@ -13,7 +13,6 @@ using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
-    // [Authorize(Roles = "Admin,User")]
     [Route("api/foodItems")]
     [ApiController]
     public class FoodItemController : ControllerBase

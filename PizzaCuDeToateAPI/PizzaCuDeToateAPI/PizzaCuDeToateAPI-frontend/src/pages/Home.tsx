@@ -10,14 +10,14 @@ const Home = () => {
       className="justify-content-center "
         src="src\Images\logo.png">
       </img></div> */}
+      <div style={{overflow:'hidden'}}>
       <div className="main">
         <span className="webdev">PIZZA</span>
         <span className="socod">CU DE TOATE</span>
       </div>
       <NavbarPizza />
       <NavbarShawarma />
-
-
+</div>
     </>
   )
 }

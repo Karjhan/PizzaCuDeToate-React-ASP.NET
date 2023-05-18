@@ -1,4 +1,6 @@
 ﻿
+using PizzaCuDeToateAPI.Models;
+
 namespace PizzaCuDeToateAPI.DTOClasses;
 
 public class AddOrderDTO
@@ -14,5 +16,6 @@ public class AddOrderDTO
     public DateTime OrderPlacedTime { get; set; }
 
     public string UserEmail { get; set; } = string.Empty;
-    
+
+    public PaymentType PaymentType { get; set; }
 }

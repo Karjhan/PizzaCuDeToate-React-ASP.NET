@@ -1,29 +1,28 @@
-
 .nav-wrapper-right {
-    overflow: hidden;
-    border: 0;
-    background-color: rgba($color: #000000, $alpha: 0);
-    position: fixed;
-    top: 1;
-    right: 0;
-    z-index: 100;
+  overflow: hidden;
+  border: 0;
+  background-color: rgba($color: #000000, $alpha: 0);
+  position: fixed;
+  top: 1;
+  right: 0;
+  z-index: 100;
 }
 
 .nav-body-right {
-    overflow: hidden;
-    position: absolute;
-    right: -30rem;
-    width: 50vw;
-    height: 100%;
-    top: 0;
-    z-index: 99;
-    //background: linear-gradient(90deg, #B35E55, #D8B6A4)  
-    background: linear-gradient(90deg, #BF7B6F, #D8B6A4) 
+  overflow: hidden;
+  position: absolute;
+  right: -40rem;
+  width: 50vw;
+  height: 100%;
+  top: 0;
+  z-index: 99;
+  //background: linear-gradient(90deg, #B35E55, #D8B6A4)
+  background: linear-gradient(90deg, #bf7b6f, #d8b6a4);
 }
 
 .kebapImg {
-    position: fixed;
-    width: 12rem;
-    top:0;
-    right: 0;
+  position: fixed;
+  width: 12rem;
+  top: 0;
+  right: 0;
 }
