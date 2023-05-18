@@ -2,15 +2,19 @@
   transition: all 250ms;
 }
 
-body{
+body {
   background-color: rgb(20, 19, 19);
 }
 
+#root {
+  position: relative;
+}
 nav {
-  position: fixed;
-  top:0;
-  left:0;
-  width: 100%;  
+  // position: fixed;
+  // position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 
   ul {
     @extend %transition;
@@ -27,6 +31,10 @@ nav {
       flex-basis: calc(100% / 7);
     }
 
+    &:first-of-type li {
+      margin-top: 5%;
+    }
+
     li {
       @extend %transition;
       &.toggle {
@@ -35,8 +43,7 @@ nav {
         right: 0;
       }
 
-      &:not(.logo){
-        margin-top: 5%;
+      &:not(.logo) {
         font-size: 20px;
       }
 
@@ -45,42 +52,44 @@ nav {
         color: white;
       }
 
-      a{
+      a {
         text-decoration: none;
         color: white;
       }
 
-      a:hover{
+      a:hover {
         text-decoration: none;
-        color:lightgray;
+        color: lightgray;
       }
 
-            .dropdown-options {
-              display: none;
-              position: absolute;
-              overflow: auto;
-              background-color: white;
-              width: 70%;
-              margin-left: 15%;
+      .dropdown-options {
+        display: none;
+        position: absolute;
+        overflow: auto;
+        background-color: white;
+        width: 70%;
+        margin-left: 15%;
 
-              
-                  border-top: 2px solid green;
-                  // background: linear-gradient(135deg, #1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b);
-                  -webkit-mask:
-                    conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 50%/10px 100%;
-              
-            }
-      
-            .dropdown:hover .dropdown-options {
-              display: block;
-            }
+        border-top: 2px solid green;
+        // background: linear-gradient(135deg, #1f005c, #5b0060, #870160, #ac255e, #ca485c, #e16b5c, #f39060, #ffb56b);
+        -webkit-mask: conic-gradient(
+            from -45deg at bottom,
+            #0000,
+            #000 1deg 89deg,
+            #0000 90deg
+          )
+          50%/10px 100%;
+      }
+
+      .dropdown:hover .dropdown-options {
+        display: block;
+      }
     }
   }
 
   @media screen and (width <=39rem) {
     &:not(.show) ul:nth-of-type(2) {
       transform: translateX(-100%);
-      
     }
 
     ul {
@@ -107,30 +116,30 @@ nav {
   }
 }
 
-  .logo {
-    width: 100%;
-    height: 100%;
+.logo {
+  width: 100%;
+  height: 100%;
+}
+
+.allPizzas {
+  height: 100%;
+  border-radius: 2rem;
+  gap: 0.5rem;
+
+  .col-md-3 {
+    @media (min-width: 768px) {
+      width: 24%;
+    }
   }
+}
 
-      #table {
-       
-      }
+// .buttons {
+//   text-align: center;
+//   display: flex;
+//   justify-content: center;
+// }
 
-            .buttons {
-              text-align: center;
-              display: flex;
-              justify-content: center;
-            }
-      
-            .minus {
-              border-radius: 2rem;
-            }
-      
-            .plus {
-              border-radius: 2rem;
-            }
-      
-            .input {
-              margin-top: auto;
-              text-align: center;
-            }
+// .input {
+//   margin-top: auto;
+//   text-align: center;
+// }

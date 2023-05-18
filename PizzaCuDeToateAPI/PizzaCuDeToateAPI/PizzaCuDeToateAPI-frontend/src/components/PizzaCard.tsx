@@ -1,6 +1,6 @@
 
-import {useState,useEffect} from 'react';
-// import Button from 'react-bootstrap/Button';
+import {useState} from 'react';
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function PizzaCard(props: {pizzas:Array<{id:number,name:string,description:string, unitPrice:number,logo:string, ingredients:[number]}>}){
@@ -40,9 +40,10 @@ const [message, setMessage] = useState("");
   }
 
   return(
-  <div id="table">
+    <div className="allPizzas row mt-3">
             {props.pizzas.map((pizza, index) => (
-              <Card key={pizza.name} style={{ width: "20%" }}>
+              <div key={pizza.name} className="col-md-3">
+              <Card className="h-100">
                 <Card.Img variant={top} src={pizza.logo} fluid="true" />
                 <Card.Body>
                   <Card.Title>{pizza.name}</Card.Title>
@@ -52,12 +53,11 @@ const [message, setMessage] = useState("");
                   {/* <Card.Text>{}</Card.Text> */}
                   <Card.Text>Price: {pizza.unitPrice} RON</Card.Text>
                   <div className="input">
-                    <div className="counter">
-                      <button
+                      <Button
                         className="minus"
                         onClick={() => handleMinusClick()}>
                         -
-                      </button>
+                      </Button>
                       <input
                         type="text"
                         min="1"
@@ -66,21 +66,19 @@ const [message, setMessage] = useState("");
                         onChange={(e) => handleInputValueChange(e)}
                         style={{ width: "20%", textAlign: "center" }}
                       />
-                      <button
+                      <Button
                         className="plus"
                         onClick={() => handlePlusClick()}>
                         +
-                      </button>
-                    </div>
-                    <br />
-                    {message}
-                    <br />
-                    <button className="AddBtn">
+                      </Button>
+                    {message}                    
+                    <Button className="AddBtn">
                       Add
-                    </button>
+                    </Button>
                   </div>
                 </Card.Body>
               </Card>
+              </div>
             ))}
           </div>);
 }

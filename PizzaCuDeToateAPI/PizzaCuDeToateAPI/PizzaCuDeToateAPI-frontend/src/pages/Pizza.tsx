@@ -15,10 +15,12 @@ const Pizza = () => {
 
 
   return (
-    <div>
+    <>
       <Header/>
+      <div className='container'>
       <PizzaCard pizzas={pizzas}/>
-    </div>
+      </div>
+    </>
   )
 }
 

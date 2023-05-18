@@ -5,25 +5,21 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import './App.css'
+// import './App.css'
 import Pizza from './pages/Pizza';
 
 function App() {
   
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col>
+      {/* <Container className="d-flex flex-column"> */}
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/menu" element={<Pizza/>}/>
             </Routes>
-          </Col>
-        </Row>
-      </Container>
+      {/* </Container> */}
     </>
   )
 }
