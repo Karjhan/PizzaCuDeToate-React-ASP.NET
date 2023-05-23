@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from '@react-oauth/google';
 import { motion } from "framer-motion"
+import jwtDecode from "jwt-decode";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -13,6 +14,7 @@ import CokeDrinkCanvas from '../components/CokeDrinkCanvas';
 import DessertCanvas from '../components/DessertCanvas';
 import ParticlesBackground from "../components/ParticlesBackground";
 import HorizLineWithText from '../components/HorizLineWithText';
+import registerSuccessLogo from "../images/registerSuccessTick.gif"
 
 const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean }) => {
   const [statusMessage, setStatusMessage] = useState("");
@@ -58,13 +60,72 @@ const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean })
 
   const handleLogin = function (event: any): any{
     event.preventDefault();
+    props.setSpinner(true);
+    setStatusMessage("");
+    fetch("https://localhost:44388/api/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify({
+        email: formData.email,
+        password: formData.password
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        if ("error" in data) {
+          setStatusMessage(data.error);
+        } else if ("errors" in data) {
+          setStatusMessage("User doesn't exist, or invalid credentials!");
+        } else if ("token" in data) {
+          setSuccessStatus(true);
+          localStorage.setItem("jwt", data.token)
+          var decoded = jwtDecode(data.token);
+          setStatusMessage(`Greetings ${decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"].toLowerCase()} ${decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]} !`)
+        }
+        props.setSpinner(false);
+      })
   }
 
   const googleLogin = useGoogleLogin({
     onSuccess: tokenResponse => {
-      console.log(tokenResponse)
+      props.setSpinner(true)
+      fetch(`https://localhost:44388/api/auth/login/google/${tokenResponse.access_token}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if ("error" in data) {
+            setStatusMessage(data.error);
+          } else if ("token" in data) {
+            setSuccessStatus(true);
+            localStorage.setItem("jwt", data.token)
+            var decoded = jwtDecode(data.token);
+            setStatusMessage(`Greetings ${decoded["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"].toLowerCase()} ${decoded["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]} !`)
+          }
+          props.setSpinner(false);
+        })
     }
   });
+
+  useEffect(() => {
+    if (successStatus && timer > 0) {
+      const interval = setInterval(() => setTimer(timer - 1), 1000);
+
+      return () => clearInterval(interval);
+    } else if (successStatus && timer === 0) {
+      reset();
+      handleGoMenu();
+    }
+  }, [successStatus, timer]);
 
   useEffect(() => {
     setLogoOrder((logoOrder + 1)%logoList.length)
@@ -93,7 +154,17 @@ const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean })
               className="d-flex flex-column"
             >
               {successStatus && <>
-              
+                <Card.Body>
+                  <p>{`Redirecting you to menu page in ${timer} seconds...`}</p>
+                  <Card.Img
+                    variant="top"
+                    src={registerSuccessLogo}
+                    style={{ width: "50%" }}
+                  />
+                  <Card.Title style={{ textAlign: "center", marginBottom: "2rem", marginTop: "2rem" }}>
+                    <h3>{statusMessage}</h3>
+                  </Card.Title>
+                </Card.Body>
               </>}
               {!successStatus && <>
                 <Card.Img

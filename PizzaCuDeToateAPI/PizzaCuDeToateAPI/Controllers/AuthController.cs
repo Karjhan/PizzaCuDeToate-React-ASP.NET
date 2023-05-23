@@ -142,14 +142,64 @@ namespace PizzaCuDeToateAPI.Controllers
             var findUser = await _userManager.FindByEmailAsync(request.Email);
             if (findUser is not null && await _userManager.CheckPasswordAsync(findUser, request.Password))
             {
-                var response = await _jwtService.CreateToken(findUser);
-                return Ok(response);
+                if (findUser.EmailConfirmed)
+                {
+                    var response = await _jwtService.CreateToken(findUser);
+                    return Ok(response);
+                }
+                else
+                {
+                    var response = new
+                    {
+                        error = "Email not confirmed!"
+                    };
+                    return Unauthorized(JsonConvert.SerializeObject(response));
+                }
             }
             var responseJson = new
             {
-                error = "Invalid credentials!"
+                error = "User doesn't exist, or invalid credentials!"
             };
             return Unauthorized(JsonConvert.SerializeObject(responseJson));
+        }
+        
+        [HttpGet("login/google/{tokenId}")]
+        public async Task<IActionResult> GoogleLogin([FromRoute]string tokenId)
+        {
+            try
+            {
+                var payload = await _googleService.GetUserData(tokenId);
+                var findUser = await _userManager.FindByEmailAsync(payload.email);
+                if (findUser is not null)
+                {
+                    if (findUser.EmailConfirmed)
+                    {
+                        var response = await _jwtService.CreateToken(findUser);
+                        return Ok(response);
+                    }
+                    else
+                    {
+                        var response = new
+                        {
+                            error = "Email not confirmed!"
+                        };
+                        return Unauthorized(JsonConvert.SerializeObject(response));
+                    }
+                }
+                var responseJson = new
+                {
+                    error = "User doesn't exist!"
+                };
+                return Unauthorized(JsonConvert.SerializeObject(responseJson));
+            }
+            catch (Exception e)
+            {
+                var response = new
+                {
+                    error = "Something went wrong with Google authentication!"
+                };
+                return BadRequest(JsonConvert.SerializeObject(response));
+            }
         }
         
         [HttpGet("username={username}")]
@@ -240,6 +290,7 @@ namespace PizzaCuDeToateAPI.Controllers
                         success = "Email verified successfully!"
                     };
                     return Ok(JsonConvert.SerializeObject(responseJson));
+                    // return Redirect($"{_configuration["Frontend_Url"]}/home");
                 }
             }
             var response = new
