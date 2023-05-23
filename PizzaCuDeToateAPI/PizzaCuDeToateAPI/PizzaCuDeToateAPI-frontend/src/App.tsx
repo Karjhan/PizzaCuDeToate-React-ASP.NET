@@ -37,7 +37,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading}/>} />
-              <Route path="/login" element={<Login setSpinner={setIsLoading} />} />
+              <Route path="/login" element={<Login setSpinner={setIsLoading} loading={isLoading}/>} />
               <Route path="/menu" element={<Pizza/>}/>
             </Routes>
         </Container>
