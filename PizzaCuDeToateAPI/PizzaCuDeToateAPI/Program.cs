@@ -13,6 +13,7 @@ using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 using PizzaCuDeToateAPI.Repositories.FoodItemRepository;
 using PizzaCuDeToateAPI.Repositories.StockItemRepository;
 using PizzaCuDeToateAPI.Services;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -115,6 +116,13 @@ builder.Services.AddAuthentication(options =>
 // });
 builder.Services.AddScoped<IJWTService, JWTService>();
 builder.Services.AddScoped<IGoogleService, GoogleService>();
+
+//Add stripe services and configuration
+StripeConfiguration.ApiKey = builder.Configuration.GetValue<string>("StripeSettings:SecretKey");
+builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<ChargeService>();
+builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<IStripeAppService, StripeAppService>();
 
 //Add email configuration
 var emailConfig = builder.Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>();
