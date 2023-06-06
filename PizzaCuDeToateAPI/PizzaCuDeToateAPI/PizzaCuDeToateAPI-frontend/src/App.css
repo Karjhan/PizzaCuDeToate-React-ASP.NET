@@ -58,4 +58,14 @@
     width: 100%;
     height: 100%;
   }
+  #emailConfirmWidth{
+    width: 100% !important;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  #mailBox {
+    width:30% !important;
+    margin-left: 7rem;
+  }
 }

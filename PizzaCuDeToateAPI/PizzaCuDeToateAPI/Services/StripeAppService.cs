@@ -46,7 +46,8 @@ public class StripeAppService : IStripeAppService
 
     public async Task<StripePayment> AddStripePaymentAsync(AddStripePaymentDTO payment, CancellationToken cancellationToken)
     {
-        ChargeCreateOptions paymentOptions = new ChargeCreateOptions {
+        ChargeCreateOptions paymentOptions = new ChargeCreateOptions
+        {
             Customer = payment.CustomerId,
             ReceiptEmail = payment.ReceiptEmail,
             Description = payment.Description,

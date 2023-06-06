@@ -8,6 +8,7 @@ import { ThreeCircles } from 'react-loader-spinner';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import Pizza from './pages/Pizza';
 import './App.css'
+import EmailConfirmed from './pages/EmailConfirmed';
 
 function App() {
   const [logged, setLogged] = useState(false);
@@ -33,11 +34,12 @@ function App() {
           middleCircleColor=""
         />
         
-        <Container fluid style={{ filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }}>
+        <Container fluid style={{ padding:"0", filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }}>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading}/>} />
               <Route path="/login" element={<Login setSpinner={setIsLoading} loading={isLoading}/>} />
+              <Route path="/emailConfirmed/:email/:username" element={<EmailConfirmed/>} />
               <Route path="/menu" element={<Pizza/>}/>
             </Routes>
         </Container>

@@ -289,8 +289,8 @@ namespace PizzaCuDeToateAPI.Controllers
                     {
                         success = "Email verified successfully!"
                     };
-                    return Ok(JsonConvert.SerializeObject(responseJson));
-                    // return Redirect($"{_configuration["Frontend_Url"]}/home");
+                    // return Ok(JsonConvert.SerializeObject(responseJson));
+                    return Redirect($"{_configuration["Frontend_Url"]}/emailConfirmed/{email}/{user.UserName}");
                 }
             }
             var response = new
