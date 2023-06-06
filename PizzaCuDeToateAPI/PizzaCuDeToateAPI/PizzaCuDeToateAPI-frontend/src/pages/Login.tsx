@@ -15,6 +15,8 @@ import DessertCanvas from '../components/DessertCanvas';
 import ParticlesBackground from "../components/ParticlesBackground";
 import HorizLineWithText from '../components/HorizLineWithText';
 import registerSuccessLogo from "../images/registerSuccessTick.gif"
+import NavbarMain from "../components/NavbarMain";
+import Footer from "../components/Footer";
 
 const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean }) => {
   const [statusMessage, setStatusMessage] = useState("");
@@ -135,23 +137,24 @@ const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean })
     <>
       <ParticlesBackground style={{ filter: props.loading ? "blur(10px)" : "none", pointerEvents: props.loading ? "none" : "auto" }} />
       <Row>
+        <NavbarMain />
+      </Row>
+      <Row>
         <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
           <CokeDrinkCanvas />
         </Col>
-        <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="d-flex justify-content-center px-lg-0 px-4">
-          <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1 }} className="align-self-center">
+        <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="d-flex justify-content-center px-lg-0 px-4" id="col-small-format">
+          <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1 }} className="align-self-center" id="col-small-format">
             <Card
               border="danger"
               bg="dark"
               text="white"
               style={{
-                marginTop: "2rem",
-                marginBottom: "2rem",
                 border: "1rem",
                 paddingTop: "1rem",
                 paddingBottom: "1rem",
               }}
-              className="d-flex flex-column"
+              className="d-flex flex-column mt-sm-5 mt-0 mb-sm-5 mb-0"
             >
               {successStatus && <>
                 <Card.Body>
@@ -232,6 +235,9 @@ const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean })
         <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
           <DessertCanvas />
         </Col>
+      </Row>
+      <Row>
+        <Footer />
       </Row>
     </>
   )

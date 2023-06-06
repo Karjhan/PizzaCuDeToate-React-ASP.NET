@@ -1,38 +1,62 @@
-import React from 'react'
-import Row from 'react-bootstrap/Row';
+import { useState } from 'react'
 import Col from "react-bootstrap/Col";
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Container } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import { motion } from "framer-motion";
+import navbarLogo from '../images/navbarLogo.png'
+import '../NavbarMain.css'
 
 const NavbarMain = (props: { logged: boolean; }) => {
+  const [active, setActive] = useState("")
+  const [toggle, setToggle] = useState(false)
+
   return (
-    <Row>
       <Col style={{ padding: "0", width: "100%" }}>
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar collapseOnSelect expand="lg" style={{ backgroundImage:"radial-gradient(circle, rgba(230,0,0,1) 70%, rgba(147,1,1,1) 100%)"}}>
           <Container>
-            <Link to="/">
-              <Navbar.Brand className="d-block d-lg-none">Home</Navbar.Brand>
-            </Link>
+            <Navbar.Brand className='d-flex align-items-center'>
+            <img src={navbarLogo} alt="logo" style={{ width: "4.5rem", marginRight:"1rem" }} />
+            <h2 style={{ fontFamily: "poppins", fontStyle: "italic", color: "#DFD3C3", textShadow: "0px 0px 8px black" }}>PizzaCuDeToate</h2>
+            </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto gap-1 w-100" id="main-nav">
-                {!props.logged && <>
-                  <Link to="/register">
-                    <Nav.Link eventKey={1} as={Button} size="lg">Sign Up</Nav.Link>{' '}
-                  </Link>
-                  <Link to="/login">
-                    <Nav.Link eventKey={2} as={Button} size="lg">Sign In</Nav.Link>{' '}
-                  </Link>
-                </>}
+                <ul className="d-flex flex-lg-row flex-column ">
+                  <li className="mt-0">
+                    <motion.button style={{minWidth:"9rem", backgroundColor:"transparent", border:"0rem"}} whileHover={{
+                      textShadow: "0px 0px 8px white",
+                    }}>
+                      <a href="/about" style={{color: "#DFD3C3", fontFamily:"poppins", fontSize:"1.5rem"}}>About Us</a>
+                    </motion.button>
+                  </li>
+                  <li className="mt-0">
+                    <motion.button style={{minWidth:"9rem", backgroundColor:"transparent", border:"0rem"}} whileHover={{
+                      textShadow: "0px 0px 8px white"
+                    }}>
+                      <a href="/menu" style={{color: "#DFD3C3", fontFamily:"poppins", fontSize:"1.5rem"}}>Menu</a>
+                    </motion.button>
+                  </li>
+                  <li className="mt-0">
+                    <motion.button style={{minWidth:"9rem", backgroundColor:"transparent", border:"0rem"}} whileHover={{
+                      textShadow: "0px 0px 8px white"
+                    }}>
+                      <a href="/register" style={{color: "#DFD3C3", fontFamily:"poppins", fontSize:"1.5rem"}}>Sign Up</a>
+                    </motion.button>
+                  </li>
+                  <li className="mt-0">
+                    <motion.button style={{minWidth:"9rem", backgroundColor:"transparent", border:"0rem"}} whileHover={{
+                      textShadow: "0px 0px 8px white"
+                    }}>
+                      <a href="/login" style={{color: "#DFD3C3", fontFamily:"poppins", fontSize:"1.5rem"}}>Sign In</a>
+                    </motion.button>
+                  </li>
+                </ul>
               </Nav>
             </Navbar.Collapse>
           </Container>
         </Navbar>
       </Col>
-    </Row>
   )
 }
 

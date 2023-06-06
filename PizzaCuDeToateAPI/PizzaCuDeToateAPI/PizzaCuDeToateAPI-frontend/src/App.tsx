@@ -14,8 +14,8 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    console.log(isLoading)
-  },[isLoading])
+    console.log(window.location.href)
+  }, [window.location.href]);
   
   return (
     <>

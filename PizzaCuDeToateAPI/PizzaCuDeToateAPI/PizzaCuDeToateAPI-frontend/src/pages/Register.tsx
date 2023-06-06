@@ -14,6 +14,8 @@ import HorizLineWithText from '../components/HorizLineWithText';
 import { useNavigate } from "react-router-dom";
 import { useGoogleLogin } from '@react-oauth/google';
 import ParticlesBackground from "../components/ParticlesBackground";
+import NavbarMain from "../components/NavbarMain";
+import Footer from "../components/Footer";
 
 const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolean }) => {
   const [statusMessage, setStatusMessage] = useState("");
@@ -220,23 +222,24 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolea
     <>
       <ParticlesBackground style={{ filter: props.loading ? "blur(10px)" : "none", pointerEvents: props.loading ? "none" : "auto" }} />
       <Row>
+        <NavbarMain />
+      </Row>
+      <Row>
         <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
           <PizzaCanvas />
         </Col>
-        <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="d-flex justify-content-center px-lg-0 px-4">
-          <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1 }} className="align-self-center">
+        <Col xxl={{ span: 4, offset: 0 }} xl={{ span: 6, offset: 0 }} lg={{ span: 6, offset: 3 }} xs={{ span: 10, offset: 1 }} className="d-flex justify-content-center px-lg-0 px-4" id="col-small-format">
+          <motion.div animate={{ scale: 1 }} initial={{ scale: 0 }} transition={{ delay: 0.5, duration: 1 }} className="align-self-center" id="col-small-format">
             <Card
               border="danger"
               bg="dark"
               text="white"
               style={{
-                marginTop: "2rem",
-                marginBottom: "2rem",
                 border: "1rem",
                 paddingTop: "1rem",
                 paddingBottom: "1rem",
               }}
-              className="d-flex flex-column"
+              className="d-flex flex-column mt-sm-5 mt-0 mb-sm-5 mb-0"
             >
               {successStatus && <>
                 <Card.Body>
@@ -261,10 +264,10 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolea
                   />
                 </motion.div>
                 <Card.Body>
-                  <Card.Title style={{ textAlign: "center", marginBottom: "2rem" }}>
+                  <Card.Title style={{ textAlign: "center", marginBottom: "2rem", color: "#DFD3C3" }}>
                     <h2>SignUp Form</h2>
                   </Card.Title>
-                  <Form className='d-flex flex-column'>
+                  <Form className='d-flex flex-column' style={{ color: "#DFD3C3" }}>
 
                     <div className='d-flex flex-md-row flex-column justify-content-around'>
                       <div className="px-2">
@@ -368,13 +371,13 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolea
                       </div>
                     </div>
                     <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                      <Button variant="primary" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => handleRegister(event)}>
+                      <Button variant="primary" type="submit" style={{ marginTop: "1rem", width: "100%", color: "#DFD3C3" }} onClick={(event) => handleRegister(event)}>
                         Sign Up
                       </Button>
                     </motion.div>
                     <HorizLineWithText text={"Or"} />
                     <motion.div className="d-flex justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.9 }}>
-                      <Button variant="danger" type="submit" style={{ marginTop: "1rem", width: "100%" }} onClick={(event) => { event.preventDefault(); googleRegister(); }}>
+                      <Button variant="danger" type="submit" style={{ marginTop: "1rem", width: "100%", color: "#DFD3C3" }} onClick={(event) => { event.preventDefault(); googleRegister(); }}>
                         <img src={googleLogo} alt="" style={{ width: "1.5rem", marginRight: "0.5rem" }}></img>
                         Register with Google
                       </Button>
@@ -389,6 +392,9 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading : boolea
         <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
           <KebabSaladCanvas />
         </Col>
+      </Row>
+      <Row>
+        <Footer />                      
       </Row>
     </>
   )
