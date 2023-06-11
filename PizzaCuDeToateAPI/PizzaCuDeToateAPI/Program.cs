@@ -122,6 +122,8 @@ StripeConfiguration.ApiKey = builder.Configuration.GetValue<string>("StripeSetti
 builder.Services.AddScoped<CustomerService>();
 builder.Services.AddScoped<ChargeService>();
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<InvoiceService>();
+builder.Services.AddScoped<InvoiceItemService>();
 builder.Services.AddScoped<IStripeAppService, StripeAppService>();
 
 //Add email configuration

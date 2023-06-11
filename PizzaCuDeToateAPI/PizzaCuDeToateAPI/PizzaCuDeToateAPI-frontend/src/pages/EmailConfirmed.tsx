@@ -26,14 +26,16 @@ const EmailConfirmed = () => {
                         <br></br>
                         <h5>Welcome in our family, <span style={{ fontStyle: "italic", fontSize: "1.7rem", textDecoration: "wavy underline" }}>{username}</span> !</h5>
                         <p>Thank you for choosing our food & delivery services. We hope you'll have a great experience with us.</p>
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.9 }}
-                            style={{ width: "50%", color: "#DFD3C3", marginTop: "4.5rem", backgroundColor: "rgba(180,10,10,1)", borderColor: "rgba(232,184,193,1)", borderWidth: "0.15rem", borderRadius:"0.5rem" }}
-                            id="emailConfirmWidth"
-                        >
-                                <a href="/login" style={{ color: "#DFD3C3", fontFamily: "Segoe UI", fontSize: "1.1rem", textDecoration:"none", fontWeight:"400" }}>Go to Login</a>
-                        </motion.button>
+                        <a href="/login">
+                            <motion.button
+                                whileHover={{ scale: 1.1 }}
+                                whileTap={{ scale: 0.9 }}
+                                style={{ width: "50%", color: "#DFD3C3", marginTop: "4.5rem", backgroundColor: "rgba(180,10,10,1)", borderColor: "rgba(232,184,193,1)", borderWidth: "0.15rem", borderRadius: "0.5rem" }}
+                                id="emailConfirmWidth"
+                            >
+                                <span style={{ color: "#DFD3C3", fontFamily: "Segoe UI", fontSize: "1.1rem", textDecoration: "none", fontWeight: "400" }}>Go to Login</span>
+                            </motion.button>
+                        </a>
                     </Card.Body>
                 </Card>
             </Col>

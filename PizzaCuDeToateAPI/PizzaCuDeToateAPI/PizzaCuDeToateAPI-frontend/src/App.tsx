@@ -9,14 +9,11 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import Pizza from './pages/Pizza';
 import './App.css'
 import EmailConfirmed from './pages/EmailConfirmed';
+import Customize from './pages/Customize';
 
 function App() {
   const [logged, setLogged] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    console.log(window.location.href)
-  }, [window.location.href]);
   
   return (
     <>
@@ -37,9 +34,10 @@ function App() {
         <Container fluid style={{ padding:"0", filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading}/>} />
-              <Route path="/login" element={<Login setSpinner={setIsLoading} loading={isLoading}/>} />
+              <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading} logged={logged}/>} />
+              <Route path="/login" element={<Login setSpinner={setIsLoading} loading={isLoading} logged={logged}/>} />
               <Route path="/emailConfirmed/:email/:username" element={<EmailConfirmed/>} />
+              <Route path="/customize" element={<Customize setSpinner={setIsLoading} loading={isLoading} logged={logged}/>}/>
               <Route path="/menu" element={<Pizza/>}/>
             </Routes>
         </Container>

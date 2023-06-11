@@ -87,6 +87,23 @@ namespace PizzaCuDeToateAPI.Controllers
             return Ok(final);
         }
         
+        [HttpGet("category={category}")]
+        public async Task<IActionResult> GetFoodItemsByCategory([FromRoute] string category)
+        {
+            var result = _foodItemRepository.GetAll().Where(foodItem => foodItem.Category.Name == category);
+            if (result is null)
+            {
+                return NotFound($"Couldn't find food item in category {category} in database!");
+            }
+            var final = result.Select(foodItem =>
+            {
+                var show = new JSONFoodItemDTO();
+                show.GetFromFoodItem(foodItem);
+                return show;
+            });
+            return Ok(final);
+        }
+        
         [HttpPost]
         public async Task<IActionResult> AddFoodItem(AddFoodItemDTO request)
         {

@@ -18,7 +18,7 @@ import registerSuccessLogo from "../images/registerSuccessTick.gif"
 import NavbarMain from "../components/NavbarMain";
 import Footer from "../components/Footer";
 
-const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean }) => {
+const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: boolean; }) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [successStatus, setSuccessStatus] = useState(false);
   const [formData, setFormData] = useState({
@@ -137,7 +137,7 @@ const Login = (props: { setSpinner: (arg0: boolean) => void; loading: boolean })
     <>
       <ParticlesBackground style={{ filter: props.loading ? "blur(10px)" : "none", pointerEvents: props.loading ? "none" : "auto" }} />
       <Row>
-        <NavbarMain />
+        <NavbarMain logged={props.logged} />
       </Row>
       <Row>
         <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
