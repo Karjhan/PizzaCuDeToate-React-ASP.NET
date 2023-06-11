@@ -21,6 +21,17 @@ namespace PizzaCuDeToateAPI.Controllers
             _stripeService = stripeService;
         }
         
+        [HttpGet("customer/name={name}&email={email}")]
+        public async Task<ActionResult<StripeCustomer>> AddStripeCustomer([FromRoute] string name, [FromRoute] string email, CancellationToken cancellationToken)
+        {
+            StripeCustomer? foundCustomer = await _stripeService.FindByNameAndEmailAsync(name, email, cancellationToken);
+            if (foundCustomer is null)
+            {
+                return NotFound();
+            }
+            return Ok(foundCustomer);
+        }
+        
         [HttpPost("customer")]
         public async Task<ActionResult<StripeCustomer>> AddStripeCustomer([FromBody] AddStripeCustomerDTO customer, CancellationToken cancellationToken)
         {
@@ -39,6 +50,10 @@ namespace PizzaCuDeToateAPI.Controllers
         public async Task<ActionResult<StripeInvoiceItem>> AddStripeInvoiceItem([FromBody] AddStripeInvoiceItemDTO itemToAdd, CancellationToken cancellationToken)
         {
             StripeInvoiceItem createdInvoiceItem = await _stripeService.AddStripeInvoiceItemAsync(itemToAdd, cancellationToken);
+            if (createdInvoiceItem is null)
+            {
+                return NotFound("Either food item doesn't exist, or invoice item creation has failed!");
+            }
             return Ok(createdInvoiceItem);
         }
         

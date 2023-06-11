@@ -10,4 +10,5 @@ public interface IStripeAppService
     Task<StripeInvoiceItem> AddStripeInvoiceItemAsync(AddStripeInvoiceItemDTO itemToAdd, CancellationToken cancellationToken);
     Task<StripeInvoice> AddInvoiceAsync(AddStripeInvoiceDTO invoice, CancellationToken cancellationToken);
     Task<StripeInvoice> FinalizeInvoiceAsync(string invoiceId, CancellationToken cancellationToken);
+    Task<StripeCustomer> FindByNameAndEmailAsync(string name, string email, CancellationToken cancellationToken);
 }

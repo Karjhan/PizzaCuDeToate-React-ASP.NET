@@ -6,7 +6,7 @@ public class AddStripeInvoiceItemDTO
 
     public string Currency { get; set; }
 
-    public int FoodItemId { get; set; }
+    public string FoodItemName { get; set; }
 
     public bool Discountable { get; set; }
 

@@ -76,7 +76,7 @@ public class StripeAppService : IStripeAppService
 
     public async Task<StripeInvoiceItem> AddStripeInvoiceItemAsync(AddStripeInvoiceItemDTO itemToAdd, CancellationToken cancellationToken)
     {
-        var foodItemToBuy = _foodItemRepository.GetSingle(foodItem => foodItem.Id == itemToAdd.FoodItemId);
+        var foodItemToBuy = _foodItemRepository.GetSingle(foodItem => foodItem.Name == itemToAdd.FoodItemName);
         if (foodItemToBuy is null)
         {
             return null;
@@ -128,5 +128,24 @@ public class StripeAppService : IStripeAppService
             createdInvoice.HostedInvoiceUrl,
             createdInvoice.InvoicePdf
         ); 
+    }
+
+    public async Task<StripeCustomer> FindByNameAndEmailAsync(string name, string email, CancellationToken cancellationToken)
+    {
+        var searchOptions = new CustomerSearchOptions
+        {
+            Query = $"name:'{name}' AND email:'{email}'",
+            Limit = 1
+        };
+        var foundCustomer = await _customerService.SearchAsync(searchOptions, null, cancellationToken);
+        if (foundCustomer.Data.Count < 1)
+        {
+            return null;
+        }
+        return new StripeCustomer(
+            foundCustomer.Data[0].Name,
+            foundCustomer.Data[0].Email,
+            foundCustomer.Data[0].Id
+        );
     }
 }
