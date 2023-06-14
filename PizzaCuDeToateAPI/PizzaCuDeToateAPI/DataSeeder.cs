@@ -45,54 +45,65 @@ public static class DataSeeder
 
         var categoryMeat =
             new Category( "Meat",
-                "Animal flesh that is eaten as food", "");
+                "Animal flesh that is eaten as food", "https://drive.google.com/uc?export=view&id=1IxxFAUdIcQ8KBV-tQgxJRIsJC_7SBwfi");
         var categoryCheese =
             new Category( "Cheese",
                 "Cheese is a dairy product produced in wide ranges of flavors, textures, and forms by coagulation of the milk protein casein",
-                "");
+                "https://drive.google.com/uc?export=view&id=1UWqiRkILqTLCxLbA2pdbbmH8x5JdJzhk");
         var categorySauce =
             new Category( "Sauce",
-                "Liquid or semiliquid mixture that is added to a food as it cooks or that is served with it", "");
+                "Liquid or semiliquid mixture that is added to a food as it cooks or that is served with it", "https://drive.google.com/uc?export=view&id=1DEiXwKW3aHww1cg6u556cY21VmD7REyf");
         var categoryVegetables =
             new Category( "Vegetables",
-                "The edible portion of a plant", "");
+                "The edible portion of a plant", "https://drive.google.com/uc?export=view&id=1hfzaAYA6suFaC1_sVDEzdXNHiXwBlk6w");
         var categoryPastry =
             new Category( "Pastry",
-                "A type of dough made with flour, water and shortening", "");
+                "A type of dough made with flour, water and shortening", "https://drive.google.com/uc?export=view&id=1xYpFIxVa68ruHyECD8sCeQzqrahs6fG7");
         var categoryPizza =
             new Category( "Pizza",
-                "It must have dough, tomato sauce and cheese", "");
+                "It must have dough, tomato sauce and cheese", "https://drive.google.com/uc?export=view&id=1tjWiglPgpSPOfHlqP25IvMI13ovM8lgN");
         var categoryShawarma =
             new Category( "Shawarma",
                 "Is a popular Middle Eastern dish that originated in the Ottoman Empire, consisting of meat cut into thin slices",
-                "");
+                "https://drive.google.com/uc?export=view&id=1-7adfBq7AlXH5aK67s3k82jS-ghy3DOh");
+        var categoryDessert =
+            new Category( "Dessert", "A dessert is a type of sweet food that is eaten after lunch or dinner, and sometimes after a light meal or snack", 
+                "https://drive.google.com/uc?export=view&id=1RB-iEYBWXKJf3xzYR9hFqvLT6TQEyOWu");
+        var categoryBeverage =
+            new Category( "Beverage", "Any potable liquid, especially one other than water, as tea, coffee, beer, or milk.", "https://drive.google.com/uc?export=view&id=12umZs3jOWV6RSZ53f2k4EROu2Rx1zvkG");
 
         //Food Items
 
         var foodItemPizzaCalifornia =
-            new FoodItem( "California", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "California", categoryPizza, "A light chicken pizza, inspired from the summers of California", 41.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1nyiX5SVe8OT3X-FBdJYdIdVPKQyf2anq");
         var foodItemPizzaVeggieMozzarella =
-            new FoodItem( "Veggie & Mozzarella", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Veggie & Mozzarella", categoryPizza, "Vegetarian pizza is richer in nutrients and you need it", 39.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1dvnTkYaq-E6I3SHlTMaaR6zKsp7aTyaQ");
         var foodItemPizzaSuprema =
-            new FoodItem( "Suprema", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Suprema", categoryPizza, "Pork and beef combine excellently to offer the rich taste of meat", 49, new List<string>(), "https://drive.google.com/uc?export=view&id=1ro_T4BNAGpf9YuCYvg2l1MOcr_c_bV2s");
         var foodItemPizzaPepperoni =
-            new FoodItem( "Pepperoni", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Pepperoni", categoryPizza, "Pepperoni includes one of the country's most beloved toppings: pepperoni salami", 44.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1JihSU72Gc87hdc65jAzZJnFe8ZEobEYo");
         var foodItemPizzaAmericanSpicy =
-            new FoodItem( "American Spicy", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "American Spicy", categoryPizza, "A spicy night with our fresh jalapenos and Samourai sauce", 44.5, new List<string>(), "https://drive.google.com/uc?export=view&id=19wgvl16GewjSLpqc0-M0GIt9PpV1acqa");
         var foodItemPizzaChickenCorn =
-            new FoodItem( "Chicken & Corn", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Chicken & Corn", categoryPizza, "Chicken & Corn pizza is a delicious pizza that combines the flavors of tender chicken and sweet corn.", 44.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1JVGLbt7l576M96TPee9R8f-agycWSnee");
         var foodItemPizzaPepperoniFeta =
-            new FoodItem( "Pepperoni & Feta", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Pepperoni & Feta", categoryPizza, "A delicious combination of flavors that brings together the spiciness of pepperoni and the tanginess of feta cheese.", 43.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1R2l08dy69345ABonwrEIsmu1ZxNrj8ol");
         var foodItemPizzaQuattroFormaggi =
-            new FoodItem( "Quattro Formaggi", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Quattro Formaggi", categoryPizza, "Mozzarella, Gorgonzola, Fontina, and Parmesan form a classic and beloved Italian resort in your mouth.", 49, new List<string>(), "https://drive.google.com/uc?export=view&id=1-wax65upHuM2MXXCT840LouF4WDNbBMS");
         var foodItemPizzaMeatLovers =
-            new FoodItem( "Meat Lovers", categoryPizza, "", 25, new List<string>(), "");
+            new FoodItem( "Meat Lovers", categoryPizza, "It is known for its indulgent and savory flavor profile, making it a favorite choice for meat enthusiasts.", 49, new List<string>(), "https://drive.google.com/uc?export=view&id=1PPJ4-Oh6tBn4ABgnNMmJAW7b3WmntJ7w");
         var foodItemShawarmaComfortShaorma =
-            new FoodItem( "Comfort Shawarma", categoryShawarma, "", 25, new List<string>(), "");
+            new FoodItem( "Comfort Shawarma", categoryShawarma, "Chicken, pickles, potatoes and mayo in a simple wrap. No complicated stuff, we leave the complexities aside in this dish.", 38, new List<string>(), "https://drive.google.com/uc?export=view&id=1LNUjcnDOBzQmLLGKDY62SILvp-8aJ3m9");
         var foodItemShawarmaShaormaCuCeva =
-            new FoodItem( "Shawarma cu ceva", categoryShawarma, "", 25, new List<string>(), "");
+            new FoodItem( "Shawarma With Something", categoryShawarma, "Enter in a realm of mysteries born from our shawarma taste innovations.", 41, new List<string>(), "https://drive.google.com/uc?export=view&id=1-zhzoSpqWx9XopKofr6Mm0AyhsOpMQwM");
         var foodItemShawarmaShaormaSaracului =
-            new FoodItem( "Shawarma Saracului", categoryShawarma, "", 25, new List<string>(), "");
+            new FoodItem( "Shawarma Saracului", categoryShawarma, "You don't have a lot of money on you, but want to experience the classic taste of a shawarma? Look no more!", 15, new List<string>(), "https://drive.google.com/uc?export=view&id=1mctK5by_Lak3YaVT_5nYdNmuwSvos_GQ");
+        var foodItemShawarmaChicken = 
+            new FoodItem("Chicken Shawarma", categoryShawarma, "Chicken shawarma is a popular Middle Eastern dish known for its flavorful and succulent grilled or roasted chicken.", 38.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1BsaTFEvY5vWZoBn0JHNd1cLpRzT2RyB4");
+        var foodItemShawarmaBeef = 
+            new FoodItem("Beef Shawarma", categoryShawarma, "Beef shawarma is a popular Middle Eastern dish made with thinly sliced marinated beef that is typically slow-roasted on a vertical spit.", 48.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1C8vPSjv_Hzu6ozNToLzGRNNe9ebvhEJk");
+        var foodItemShawarmaMix =
+            new FoodItem("Mix Shawarma", categoryShawarma, "A normal shawarma except the meat, which is a combination of beef and chicken: the best of both worlds.", 43.5, new List<string>(), "https://drive.google.com/uc?export=view&id=104-2ZSSfH3AfJPewTHPZmCB1X6V8oshw");
 
         //Stock Items
 
@@ -111,7 +122,7 @@ public static class DataSeeder
         var stockItemMayonnaise =
             new StockItem( "Mozzarella", categorySauce, true, "50g", 5, 10, "");
         var stockItemKetchup =
-            new StockItem( "ketchup", categorySauce, true, "50g", 5, 10, "");
+            new StockItem( "Ketchup", categorySauce, true, "50g", 5, 10, "");
         var stockItemSpicyMayonnaise =
             new StockItem( "Spicy Mayonnaise", categorySauce, true, "50g", 5, 10, "");
         var stockItemSamuraiSauce =
@@ -223,8 +234,26 @@ public static class DataSeeder
         List<StockItem> shawarmaShawarmaSaraculuiIngredients =
             new()
             {
-                stockItemBigPita, stockItemBeef, stockItemTomatoes,
+                stockItemSmallPita, stockItemBeef, stockItemTomatoes,
                 stockItemSalad, stockItemPickles, stockItemKetchup
+            };
+        List<StockItem> shawarmaShawarmaChickenIngredients =
+            new()
+            {
+                stockItemBigPita, stockItemChicken, stockItemTomatoes, stockItemSalad, 
+                stockItemPickles, stockItemKetchup, stockItemMayonnaise, stockItemPotatoes
+            };
+        List<StockItem> shawarmaShawarmaBeefIngredients =
+            new()
+            {
+                stockItemBigPita, stockItemBeef, stockItemTomatoes, stockItemSalad, 
+                stockItemPickles, stockItemKetchup, stockItemMayonnaise, stockItemPotatoes
+            };
+        List<StockItem> shawarmaShawarmaMixIngredients =
+            new()
+            {
+                stockItemBigPita, stockItemBeef, stockItemTomatoes, stockItemSalad, stockItemChicken,
+                stockItemPickles, stockItemKetchup, stockItemMayonnaise, stockItemPotatoes
             };
 
         //food item list corresponding to each ingredient
@@ -253,9 +282,9 @@ public static class DataSeeder
                 foodItemPizzaMeatLovers
             };
         List<FoodItem> mayonnaiseContainingFoodItems =
-            new() { foodItemShawarmaShaormaCuCeva, foodItemShawarmaComfortShaorma };
+            new() { foodItemShawarmaShaormaCuCeva, foodItemShawarmaComfortShaorma, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
         List<FoodItem> ketchupContainingFoodItems =
-            new() { foodItemShawarmaComfortShaorma, foodItemShawarmaShaormaSaracului };
+            new() { foodItemShawarmaComfortShaorma, foodItemShawarmaShaormaSaracului, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
         List<FoodItem> spicyMayonnaiseContainingFoodItems =
             new() { foodItemShawarmaShaormaCuCeva };
         List<FoodItem> samuraiSauceContainingFoodItems =
@@ -264,13 +293,13 @@ public static class DataSeeder
             new()
             {
                 foodItemShawarmaComfortShaorma, foodItemPizzaChickenCorn, foodItemPizzaCalifornia,
-                foodItemPizzaMeatLovers
+                foodItemPizzaMeatLovers, foodItemShawarmaChicken, foodItemShawarmaMix
             };
         List<FoodItem> beefContainingFoodItems =
             new()
             {
                 foodItemShawarmaShaormaSaracului, foodItemShawarmaShaormaCuCeva, foodItemPizzaSuprema,
-                foodItemPizzaMeatLovers
+                foodItemPizzaMeatLovers, foodItemShawarmaBeef, foodItemShawarmaMix
             };
         List<FoodItem> pepperoniContainingFoodItems =
             new()
@@ -283,7 +312,7 @@ public static class DataSeeder
         List<FoodItem> smallPitaContainingFoodItems =
             new() { foodItemShawarmaComfortShaorma };
         List<FoodItem> bigPitaContainingFoodItems =
-            new() { foodItemShawarmaShaormaCuCeva, foodItemShawarmaShaormaSaracului };
+            new() { foodItemShawarmaShaormaCuCeva, foodItemShawarmaShaormaSaracului, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
         List<FoodItem> pepperContainingFoodItems =
             new()
             {
@@ -297,7 +326,7 @@ public static class DataSeeder
             new()
             {
                 foodItemShawarmaShaormaCuCeva, foodItemShawarmaShaormaSaracului, foodItemPizzaVeggieMozzarella,
-                foodItemPizzaAmericanSpicy, foodItemPizzaChickenCorn
+                foodItemPizzaAmericanSpicy, foodItemPizzaChickenCorn, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix
             };
         List<FoodItem> cornContainingFoodItems =
             new() { foodItemPizzaCalifornia, foodItemPizzaVeggieMozzarella, foodItemPizzaChickenCorn };
@@ -312,11 +341,11 @@ public static class DataSeeder
         List<FoodItem> redCabbageContainingFoodItems =
             new() { foodItemShawarmaShaormaCuCeva };
         List<FoodItem> potatoesContainingFoodItems =
-            new() { foodItemShawarmaShaormaCuCeva, foodItemShawarmaComfortShaorma };
+            new() { foodItemShawarmaShaormaCuCeva, foodItemShawarmaComfortShaorma, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
         List<FoodItem> picklesContainingFoodItems =
-            new() { foodItemShawarmaShaormaSaracului, foodItemShawarmaComfortShaorma };
+            new() { foodItemShawarmaShaormaSaracului, foodItemShawarmaComfortShaorma, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
         List<FoodItem> saladContainingFoodItems =
-            new() { foodItemShawarmaShaormaSaracului };
+            new() { foodItemShawarmaShaormaSaracului, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
 
         //adding ingredient lists to food items
 
@@ -332,6 +361,9 @@ public static class DataSeeder
         foodItemShawarmaComfortShaorma.Ingredients = shawarmaComfortShawarmaIngredients;
         foodItemShawarmaShaormaCuCeva.Ingredients = shawarmaShawarmaCuCevaIngredients;
         foodItemShawarmaShaormaSaracului.Ingredients = shawarmaShawarmaSaraculuiIngredients;
+        foodItemShawarmaChicken.Ingredients = shawarmaShawarmaChickenIngredients;
+        foodItemShawarmaBeef.Ingredients = shawarmaShawarmaBeefIngredients;
+        foodItemShawarmaMix.Ingredients = shawarmaShawarmaMixIngredients;
 
         //adding food items lists to ingredients
         stockItemMozzarella.Meals = mozzarellaContainingFoodItems;
@@ -378,6 +410,8 @@ public static class DataSeeder
             context.Categories.Add(categoryPastry);
             context.Categories.Add(categoryPizza);
             context.Categories.Add(categoryShawarma);
+            context.Categories.Add(categoryDessert);
+            context.Categories.Add(categoryBeverage);
         }
         //adding food items to database
 
@@ -396,6 +430,9 @@ public static class DataSeeder
             context.FoodItems.Add(foodItemShawarmaComfortShaorma);
             context.FoodItems.Add(foodItemShawarmaShaormaCuCeva);
             context.FoodItems.Add(foodItemShawarmaShaormaSaracului);
+            context.FoodItems.Add(foodItemShawarmaChicken);
+            context.FoodItems.Add(foodItemShawarmaBeef);
+            context.FoodItems.Add(foodItemShawarmaMix);
         }   
         //adding stock items to database
 

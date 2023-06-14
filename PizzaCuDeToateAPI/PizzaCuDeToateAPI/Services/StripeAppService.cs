@@ -89,7 +89,8 @@ public class StripeAppService : IStripeAppService
             Discountable = itemToAdd.Discountable,
             Invoice = itemToAdd.InvoiceId,
             Currency = itemToAdd.Currency,
-            Description = foodItemToBuy.Description,
+            Description = foodItemToBuy.Name
+            // Description = $"{foodItemToBuy.Name} - {foodItemToBuy.Description}",
         };
         var createdInvoiceItem = await _invoiceItemService.CreateAsync(invoiceItemOptions, null, cancellationToken);
         return new StripeInvoiceItem(
