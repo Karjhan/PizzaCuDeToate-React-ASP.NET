@@ -20,27 +20,33 @@ const NavbarMain = (props: { logged: boolean; }) => {
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto gap-1 w-100" id="main-nav">
                 <ul className="d-flex flex-lg-row flex-column ">
-                  <li className="mt-0">
-                    <motion.button style={{minWidth:"9rem", backgroundColor:"transparent", border:"0rem", textShadow:"unset"}} whileHover={{
-                      textShadow: "0px 0px 8px white",
-                    }}>
-                      <a href="/about" style={{color: "#DFD3C3", fontFamily:"poppins", fontSize:"1.5rem"}}>About Us</a>
-                    </motion.button>
-                  </li>
-                  <li className="mt-0">
-                    <motion.button style={{minWidth:"9rem", backgroundColor:"transparent", border:"0rem",textShadow:"unset"}} whileHover={{
-                      textShadow: "0px 0px 8px white"
-                    }}>
-                      <a href="/menu" style={{color: "#DFD3C3", fontFamily:"poppins", fontSize:"1.5rem"}}>Menu</a>
-                    </motion.button>
-                  </li>
-                  <li className="mt-0">
-                    <motion.button style={{ minWidth: "9rem", backgroundColor: "transparent", border: "0rem", textShadow: "unset" }} whileHover={{
-                      textShadow: "0px 0px 8px white"
-                    }}>
-                      <a href="/customize" style={{ color: "#DFD3C3", fontFamily: "poppins", fontSize: "1.5rem" }}>Customize</a>
-                    </motion.button>
-                  </li>
+                  {(window.location.pathname != "/about") && <>
+                    <li className="mt-0">
+                      <motion.button style={{ minWidth: "9rem", backgroundColor: "transparent", border: "0rem", textShadow: "unset" }} whileHover={{
+                        textShadow: "0px 0px 8px white",
+                      }}>
+                        <a href="/about" style={{ color: "#DFD3C3", fontFamily: "poppins", fontSize: "1.5rem" }}>About Us</a>
+                      </motion.button>
+                    </li>
+                  </>}
+                  {(window.location.pathname != "/menu") && <>
+                    <li className="mt-0">
+                      <motion.button style={{minWidth:"9rem", backgroundColor:"transparent", border:"0rem",textShadow:"unset"}} whileHover={{
+                        textShadow: "0px 0px 8px white"
+                      }}>
+                        <a href="/menu" style={{color: "#DFD3C3", fontFamily:"poppins", fontSize:"1.5rem"}}>Menu</a>
+                      </motion.button>
+                    </li>
+                  </>} 
+                  {(window.location.pathname != "/customize") && <>
+                    <li className="mt-0">
+                      <motion.button style={{ minWidth: "9rem", backgroundColor: "transparent", border: "0rem", textShadow: "unset" }} whileHover={{
+                        textShadow: "0px 0px 8px white"
+                      }}>
+                        <a href="/customize" style={{ color: "#DFD3C3", fontFamily: "poppins", fontSize: "1.5rem" }}>Customize</a>
+                      </motion.button>
+                    </li>
+                  </>}
                   {(window.location.pathname != "/register" && !props.logged) && <>
                     <li className="mt-0">
                       <motion.button style={{ minWidth: "9rem", backgroundColor: "transparent", border: "0rem", textShadow: "unset" }} whileHover={{

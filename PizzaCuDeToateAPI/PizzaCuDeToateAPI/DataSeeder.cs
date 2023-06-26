@@ -53,6 +53,10 @@ public static class DataSeeder
         var categorySauce =
             new Category( "Sauce",
                 "Liquid or semiliquid mixture that is added to a food as it cooks or that is served with it", "https://drive.google.com/uc?export=view&id=1DEiXwKW3aHww1cg6u556cY21VmD7REyf");
+        var categoryFruits =
+            new Category("Fruits",
+                "A fruit is the sweet, or not sweet (even sour) tasting produce of a specific plant (e.g., a peach, pear or lemon)",
+                "https://drive.google.com/uc?export=view&id=1lqJkcUe0mwaSY__fKL_G2vH27e5a_RlG");
         var categoryVegetables =
             new Category( "Vegetables",
                 "The edible portion of a plant", "https://drive.google.com/uc?export=view&id=1hfzaAYA6suFaC1_sVDEzdXNHiXwBlk6w");
@@ -71,6 +75,7 @@ public static class DataSeeder
                 "https://drive.google.com/uc?export=view&id=1RB-iEYBWXKJf3xzYR9hFqvLT6TQEyOWu");
         var categoryBeverage =
             new Category( "Beverage", "Any potable liquid, especially one other than water, as tea, coffee, beer, or milk.", "https://drive.google.com/uc?export=view&id=12umZs3jOWV6RSZ53f2k4EROu2Rx1zvkG");
+        
 
         //Food Items
 
@@ -95,7 +100,7 @@ public static class DataSeeder
         var foodItemShawarmaComfortShaorma =
             new FoodItem( "Comfort Shawarma", categoryShawarma, "Chicken, pickles, potatoes and mayo in a simple wrap. No complicated stuff, we leave the complexities aside in this dish.", 38, new List<string>(), "https://drive.google.com/uc?export=view&id=1LNUjcnDOBzQmLLGKDY62SILvp-8aJ3m9");
         var foodItemShawarmaShaormaCuCeva =
-            new FoodItem( "Shawarma With Something", categoryShawarma, "Enter in a realm of mysteries born from our shawarma taste innovations.", 41, new List<string>(), "https://drive.google.com/uc?export=view&id=1-zhzoSpqWx9XopKofr6Mm0AyhsOpMQwM");
+            new FoodItem( "Shawarma Cu Ceva", categoryShawarma, "Enter in a realm of mysteries born from our shawarma taste innovations.", 41, new List<string>(), "https://drive.google.com/uc?export=view&id=1-zhzoSpqWx9XopKofr6Mm0AyhsOpMQwM");
         var foodItemShawarmaShaormaSaracului =
             new FoodItem( "Shawarma Saracului", categoryShawarma, "You don't have a lot of money on you, but want to experience the classic taste of a shawarma? Look no more!", 15, new List<string>(), "https://drive.google.com/uc?export=view&id=1mctK5by_Lak3YaVT_5nYdNmuwSvos_GQ");
         var foodItemShawarmaChicken = 
@@ -104,6 +109,20 @@ public static class DataSeeder
             new FoodItem("Beef Shawarma", categoryShawarma, "Beef shawarma is a popular Middle Eastern dish made with thinly sliced marinated beef that is typically slow-roasted on a vertical spit.", 48.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1C8vPSjv_Hzu6ozNToLzGRNNe9ebvhEJk");
         var foodItemShawarmaMix =
             new FoodItem("Mix Shawarma", categoryShawarma, "A normal shawarma except the meat, which is a combination of beef and chicken: the best of both worlds.", 43.5, new List<string>(), "https://drive.google.com/uc?export=view&id=104-2ZSSfH3AfJPewTHPZmCB1X6V8oshw");
+        var foodItemChocolateSundae =
+            new FoodItem("Chocolate Sundae", categoryDessert, "A classic dessert featuring creamy vanilla ice cream topped with rich chocolate sauce and a cherry on top.", 13.5, new List<string>(), "https://drive.google.com/uc?export=view&id=1a2jrTZ5kjZvUR_QcfiqLviFfqCxWoH3Z");
+        var foodItemApplePie =
+            new FoodItem("Apple Pie", categoryDessert, "A warm and comforting treat consisting of a flaky pastry crust filled with sweet, cinnamon-spiced apples.", 15, new List<string>(), "https://drive.google.com/uc?export=view&id=15tJNbDqaqJ7TkvuEuPVZyyZtKSLR7ma0");
+        var foodItemBeverageTuborg =
+            new FoodItem("Tuborg Beer", categoryBeverage, "Join our discovery journey with a Tuborg beer in your hand and great music in your ears.", 8, new List<string>(), "https://drive.google.com/uc?export=view&id=1MzwPuiiUtK1EOIMCErh9WIeC4qG2MOOix");
+        var foodItemBeverageCarlsberg =
+            new FoodItem("Carlsberg Beer", categoryBeverage, "A crisp, refreshing, perfectly balanced beer that has a full flavor and hoppy aroma.", 9, new List<string>(), "https://drive.google.com/uc?export=view&id=1X9vS3TutfCvVetzUL5486U5GQOtxPtKG");
+        var foodItemBeverageUrsus =
+            new FoodItem("Ursus Beer", categoryBeverage, "Ursus is the King of Beer in Romania, a slightly bitter lager with a distinctive taste, perfect for epic fun with friends.", 8, new List<string>(), "https://drive.google.com/uc?export=view&id=1EyNgpwYbOVpsfKy_H48153ISDv-rD_Ho");
+        var foodItemBeverageDornaPlata =
+            new FoodItem("Dorna Still Water", categoryBeverage, "Non-carbonated and fresh water from Dorna.", 6, new List<string>(), "https://drive.google.com/uc?export=view&id=1gmZ_3E6fyNVIZg-E58eZvLfsbXx_NniG");
+        var foodItemBeverageDornaMinerala =
+            new FoodItem("Dorna Mineral Water", categoryBeverage, "A bubbly experience of fresh mineral water from Dorna.", 6, new List<string>(), "https://drive.google.com/uc?export=view&id=1b7wVDjUuKv_Q_8bLBu9Bqju4NSymQv_g");
 
         //Stock Items
 
@@ -165,6 +184,32 @@ public static class DataSeeder
             new StockItem( "Pickles", categoryVegetables, true, "50g", 5, 10, "");
         var stockItemSalad =
             new StockItem( "Salad", categoryVegetables, true, "50g", 5, 10, "");
+        var stockItemVanillaIceCream =
+            new StockItem("Vanilla Ice Cream", categoryDessert, true, "50g", 5, 10, "");
+        var stockItemChocolateSauce =
+            new StockItem("Chocolate Sauce", categorySauce, true, "50g", 5, 10, "");
+        var stockItemWhippedCream =
+            new StockItem("Whipped Cream", categoryDessert, true, "50g", 5, 10, "");
+        var stockItemCherries =
+            new StockItem("Cherries", categoryFruits, true, "50g", 5, 10, "");
+        var stockItemPastryCrust =
+            new StockItem("Pastry Crust", categoryPastry, true, "50g", 5, 10, "");
+        var stockItemApples =
+            new StockItem("Apples", categoryFruits, true, "50g", 5, 10, "");
+        var stockItemLemonJuice =
+            new StockItem("Lemon Juice", categoryFruits, true, "50g", 5, 10, "");
+        var stockItemCinnamon =
+            new StockItem("Cinammon", categoryDessert, true, "50g", 5, 10, "");
+        var stockItemDornaPlata =
+            new StockItem("Dorna Still Water", categoryBeverage, true, "500ml", 6, 10, "");
+        var stockItemDornaMinerala =
+            new StockItem("Dorna Mineral Water", categoryBeverage, true, "500ml", 6, 10, "");
+        var stockItemTuborg =
+            new StockItem("Tuborg Beer", categoryBeverage, true, "500ml", 8, 10, "");
+        var stockItemCarlsberg =
+            new StockItem("Carlsberg Beer", categoryBeverage, true, "500ml", 9, 10, "");
+        var stockItemUrsus =
+            new StockItem("Ursus Beer", categoryBeverage, true, "500ml", 8, 10, "");
 
         //Ingredient List
 
@@ -254,6 +299,16 @@ public static class DataSeeder
             {
                 stockItemBigPita, stockItemBeef, stockItemTomatoes, stockItemSalad, stockItemChicken,
                 stockItemPickles, stockItemKetchup, stockItemMayonnaise, stockItemPotatoes
+            };
+        List<StockItem> dessertChocolateSundaeIngredients =
+            new()
+            {
+                stockItemChocolateSauce, stockItemVanillaIceCream, stockItemWhippedCream, stockItemCherries
+            };
+        List<StockItem> dessertApplePieIngredients =
+            new()
+            {
+                stockItemPastryCrust, stockItemApples, stockItemCinnamon, stockItemLemonJuice
             };
 
         //food item list corresponding to each ingredient
@@ -346,6 +401,22 @@ public static class DataSeeder
             new() { foodItemShawarmaShaormaSaracului, foodItemShawarmaComfortShaorma, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
         List<FoodItem> saladContainingFoodItems =
             new() { foodItemShawarmaShaormaSaracului, foodItemShawarmaChicken, foodItemShawarmaBeef, foodItemShawarmaMix };
+        List<FoodItem> chocolateSauceContainingFoodItems =
+            new() { foodItemChocolateSundae };
+        List<FoodItem> vanillaIceCreamContainingFoodItems =
+            new() { foodItemChocolateSundae };
+        List<FoodItem> whippedCreamContainingFoodItems =
+            new() { foodItemChocolateSundae };
+        List<FoodItem> cherriesContainingFoodItems =
+            new() { foodItemChocolateSundae };
+        List<FoodItem> pastryCrustContainingFoodItems =
+            new() { foodItemApplePie };
+        List<FoodItem> applesContainingFoodItems =
+            new() { foodItemApplePie };
+        List<FoodItem> lemonJuiceContainingFoodItems =
+            new() { foodItemApplePie };
+        List<FoodItem> cinnamonContainingFoodItems =
+            new() { foodItemApplePie };
 
         //adding ingredient lists to food items
 
@@ -364,6 +435,13 @@ public static class DataSeeder
         foodItemShawarmaChicken.Ingredients = shawarmaShawarmaChickenIngredients;
         foodItemShawarmaBeef.Ingredients = shawarmaShawarmaBeefIngredients;
         foodItemShawarmaMix.Ingredients = shawarmaShawarmaMixIngredients;
+        foodItemApplePie.Ingredients = dessertApplePieIngredients;
+        foodItemChocolateSundae.Ingredients = dessertChocolateSundaeIngredients;
+        foodItemBeverageDornaMinerala.Ingredients = new List<StockItem>(){ stockItemDornaMinerala };
+        foodItemBeverageDornaPlata.Ingredients = new List<StockItem>() { stockItemDornaPlata };
+        foodItemBeverageTuborg.Ingredients = new List<StockItem>() { stockItemTuborg };
+        foodItemBeverageCarlsberg.Ingredients = new List<StockItem>() { stockItemCarlsberg };
+        foodItemBeverageUrsus.Ingredients = new List<StockItem>() { stockItemUrsus };
 
         //adding food items lists to ingredients
         stockItemMozzarella.Meals = mozzarellaContainingFoodItems;
@@ -394,6 +472,19 @@ public static class DataSeeder
         stockItemPotatoes.Meals = potatoesContainingFoodItems;
         stockItemPickles.Meals = picklesContainingFoodItems;
         stockItemSalad.Meals = saladContainingFoodItems;
+        stockItemChocolateSauce.Meals = chocolateSauceContainingFoodItems;
+        stockItemVanillaIceCream.Meals = vanillaIceCreamContainingFoodItems;
+        stockItemWhippedCream.Meals = whippedCreamContainingFoodItems;
+        stockItemCherries.Meals = cherriesContainingFoodItems;
+        stockItemPastryCrust.Meals = pastryCrustContainingFoodItems;
+        stockItemApples.Meals = applesContainingFoodItems;
+        stockItemLemonJuice.Meals = lemonJuiceContainingFoodItems;
+        stockItemCinnamon.Meals = cinnamonContainingFoodItems;
+        stockItemDornaPlata.Meals = new List<FoodItem>() { foodItemBeverageDornaPlata };
+        stockItemDornaMinerala.Meals = new List<FoodItem>() { foodItemBeverageDornaMinerala };
+        stockItemTuborg.Meals = new List<FoodItem>() { foodItemBeverageTuborg };
+        stockItemCarlsberg.Meals = new List<FoodItem>() { foodItemBeverageCarlsberg };
+        stockItemUrsus.Meals = new List<FoodItem>() { foodItemBeverageUrsus };
 
         // database
 
@@ -406,6 +497,7 @@ public static class DataSeeder
             context.Categories.Add(categoryMeat);
             context.Categories.Add(categoryCheese);
             context.Categories.Add(categorySauce);
+            context.Categories.Add(categoryFruits);
             context.Categories.Add(categoryVegetables);
             context.Categories.Add(categoryPastry);
             context.Categories.Add(categoryPizza);
@@ -433,6 +525,13 @@ public static class DataSeeder
             context.FoodItems.Add(foodItemShawarmaChicken);
             context.FoodItems.Add(foodItemShawarmaBeef);
             context.FoodItems.Add(foodItemShawarmaMix);
+            context.FoodItems.Add(foodItemChocolateSundae);
+            context.FoodItems.Add(foodItemApplePie);
+            context.FoodItems.Add(foodItemBeverageDornaPlata);
+            context.FoodItems.Add(foodItemBeverageDornaMinerala);
+            context.FoodItems.Add(foodItemBeverageTuborg);
+            context.FoodItems.Add(foodItemBeverageCarlsberg);
+            context.FoodItems.Add(foodItemBeverageUrsus);
         }   
         //adding stock items to database
 
@@ -468,6 +567,19 @@ public static class DataSeeder
             context.StockItems.Add(stockItemPotatoes);
             context.StockItems.Add(stockItemPickles);
             context.StockItems.Add(stockItemSalad);
+            context.StockItems.Add(stockItemChocolateSauce);
+            context.StockItems.Add(stockItemVanillaIceCream);
+            context.StockItems.Add(stockItemWhippedCream);
+            context.StockItems.Add(stockItemCherries);
+            context.StockItems.Add(stockItemPastryCrust);
+            context.StockItems.Add(stockItemApples);
+            context.StockItems.Add(stockItemLemonJuice);
+            context.StockItems.Add(stockItemCinnamon);
+            context.StockItems.Add(stockItemDornaPlata);
+            context.StockItems.Add(stockItemDornaMinerala);
+            context.StockItems.Add(stockItemTuborg);
+            context.StockItems.Add(stockItemCarlsberg);
+            context.StockItems.Add(stockItemUrsus);
         }
 
         context.SaveChanges();

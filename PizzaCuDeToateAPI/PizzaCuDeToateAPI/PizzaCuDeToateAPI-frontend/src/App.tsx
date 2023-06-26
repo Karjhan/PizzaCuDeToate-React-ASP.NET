@@ -6,7 +6,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import { ThreeCircles } from 'react-loader-spinner';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import Pizza from './pages/Pizza';
+import Menu from './pages/Menu';
 import './App.css'
 import EmailConfirmed from './pages/EmailConfirmed';
 import Customize from './pages/Customize';
@@ -38,7 +38,7 @@ function App() {
               <Route path="/login" element={<Login setSpinner={setIsLoading} loading={isLoading} logged={logged}/>} />
               <Route path="/emailConfirmed/:email/:username" element={<EmailConfirmed/>} />
               <Route path="/customize" element={<Customize setSpinner={setIsLoading} loading={isLoading} logged={logged}/>}/>
-              <Route path="/menu" element={<Pizza/>}/>
+              <Route path="/menu" element={<Menu setSpinner={setIsLoading} loading={isLoading} logged={logged} />} />
             </Routes>
         </Container>
       </GoogleOAuthProvider>

@@ -16,6 +16,8 @@ public class JSONFoodItemDTO
 
     public List<int> IngredientIds { get; set; } = new List<int>();
 
+    public List<string> IngredientNames { get; set; } = new List<string>();
+
     public List<string> Images { get; set; } = new List<string>();
 
     public string Logo { get; set; } = string.Empty;
@@ -30,5 +32,6 @@ public class JSONFoodItemDTO
         Images = origin.Images;
         CategoryId = origin.Category.Id;
         IngredientIds = origin.Ingredients.Select(ingredient => ingredient.Id).ToList();
+        IngredientNames = origin.Ingredients.Select(ingredient => ingredient.Name).ToList();
     }
 }

@@ -24,24 +24,11 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpGet]
-        [Route("/pizzas")]
-        public async Task<IActionResult> GetOnlyPizzas()
+        [Route("categories")]
+        public async Task<IActionResult> GetFoodItemCategories()
         {
-            var shawarmaSubstring = "shawarma";
-            var result = _foodItemRepository.GetAll();
-            if (result.Count() == 0)
-            {
-                return NoContent();
-            }
-
-            var final = result.Where(foodItem => !foodItem.Name.ToLower().Contains(shawarmaSubstring)).Select(pizza =>
-            {
-                var showPizza = new JSONFoodItemDTO();
-                showPizza.GetFromFoodItem(pizza);
-                return showPizza;
-            });
-
-            return Ok(final);
+            var result = _foodItemRepository.GetAll().Select(foodItem => foodItem.Category.Name).ToHashSet();
+            return Ok(result);
         }
 
         [HttpGet]
