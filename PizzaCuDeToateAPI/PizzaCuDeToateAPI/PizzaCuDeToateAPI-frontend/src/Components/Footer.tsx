@@ -27,25 +27,25 @@ const Footer = () => {
             <Card.Title style={{textAlign:"left", fontSize:"2rem"}}>Keep Connected</Card.Title>
             <div className="d-flex align-items-center">
               <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }}>
-                <ImFacebook2 className="mb-2 mt-2" style={{ width: "1.5rem", height: "1.5rem" }} />
+                <ImFacebook2 className="mb-2 mt-2" style={{ width: "1.5rem", height: "1.5rem", cursor:"pointer" }} />
               </motion.div>
               <p style={{marginBottom:"0px", marginLeft:"0.5rem"}}>Like us on Facebook</p>
             </div>
             <div className="d-flex align-items-center">
               <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }}>
-                <ImInstagram className="mb-2 mt-2" style={{ width: "1.5rem", height: "1.5rem" }} />
+                <ImInstagram className="mb-2 mt-2" style={{ width: "1.5rem", height: "1.5rem", cursor:"pointer"  }} />
               </motion.div>
               <p style={{ marginBottom: "0px", marginLeft: "0.5rem" }}>Follow us on Instagram</p>
             </div>
             <div className="d-flex align-items-center">
               <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }}>
-                <ImTwitter className="mb-2 mt-2" style={{ width: "1.5rem", height: "1.5rem" }} />
+                <ImTwitter className="mb-2 mt-2" style={{ width: "1.5rem", height: "1.5rem", cursor:"pointer"  }} />
               </motion.div>
               <p style={{ marginBottom: "0px", marginLeft: "0.5rem" }}>Follow us on Twitter</p>
             </div>
             <div className="d-flex align-items-center">
               <motion.div whileHover={{ scale: 1.5 }} whileTap={{ scale: 0.9 }}>
-                <ImGooglePlus2 className="mt-2" style={{ width: "1.5rem", height: "1.5rem" }} />
+                <ImGooglePlus2 className="mt-2" style={{ width: "1.5rem", height: "1.5rem", cursor:"pointer"  }} />
               </motion.div> 
               <p style={{ marginBottom: "0px", marginLeft: "0.5rem" }}>Add us on Google Plus</p>
             </div>

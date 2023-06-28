@@ -29,3 +29,51 @@
 .navbar .navbar-toggler-icon:active {
     border: none !important;
 }
+
+.badge:after {
+    content: attr(value);
+    font-size: 20px;
+    color: black;
+    background: wheat;
+    border-radius: 15%;
+    padding: 0 5px;
+    position: relative;
+    left: -5px;
+    top: -12px;
+    opacity: 0.9;
+}
+
+.nav-cart-element {
+    margin: 0rem;
+    padding: 0rem;
+    width: 100%;
+}
+
+.nav-cart-element button{
+    padding: 0.3rem;
+    border-radius: 0rem;
+    padding-left: 0.3rem;
+    padding-right: 1.2rem;
+    background-color: rgba(104, 15, 15, 0.55);
+    border-color: transparent;
+    width: 100%;
+}
+
+.nav-cart-element:hover button
+{
+    border-color: transparent;
+}
+
+@media only screen and (min-width: 992px) {
+    .nav-cart-element{
+        margin-left: auto;
+    }
+    .nav-cart-element{
+        width: auto;
+    }
+    .nav-cart-element button{
+        width: auto;
+        border-radius: 0.6rem;
+    }
+}
+

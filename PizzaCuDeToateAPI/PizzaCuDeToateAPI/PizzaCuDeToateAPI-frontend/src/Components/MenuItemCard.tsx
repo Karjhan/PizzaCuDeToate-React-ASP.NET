@@ -3,7 +3,7 @@ import { Image, Button } from 'react-bootstrap'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 
-const MenuItemCard = (props: { menuItem: { id: number, name: string, categoryId: number, description: string, ingredientIds: number[], ingredientNames: string[], logo: string, unitPrice: number, images: string[] }, basket : {id: number, name: string, amount: number}[], setBasket : any }) => {
+const MenuItemCard = (props: { menuItem: { id: number, name: string, categoryId: number, description: string, ingredientIds: number[], ingredientNames: string[], logo: string, unitPrice: number, images: string[] }, basket: {logo: string, unitPrice: number, name: string, amount: number}[], setBasket : any }) => {
     const [selectedAmount, setSelectedAmount] = useState(0);
     const [cartButtonClicked, setCartButtonClicked] = useState(false);
 
@@ -15,9 +15,9 @@ const MenuItemCard = (props: { menuItem: { id: number, name: string, categoryId:
     }
     const handleCartClick = async () => {
         setCartButtonClicked(!cartButtonClicked);
-        const indexOfItem = props.basket.findIndex((item) => item.name == props.menuItem.name && item.id == props.menuItem.id);
+        const indexOfItem = props.basket.findIndex((item) => item.name == props.menuItem.name && item.unitPrice == props.menuItem.unitPrice);
         if (indexOfItem === -1) {
-            props.setBasket([...props.basket, { id: props.menuItem.id, name: props.menuItem.name, amount: selectedAmount }]);
+            props.setBasket([...props.basket, { logo: props.menuItem.logo, unitPrice: props.menuItem.unitPrice, name: props.menuItem.name, amount: selectedAmount }]);
         } else {
             let tempArray = [...props.basket];
             tempArray[indexOfItem].amount += selectedAmount;
@@ -44,6 +44,7 @@ const MenuItemCard = (props: { menuItem: { id: number, name: string, categoryId:
                             :
                             <div className="menu-ingredients">
                                 <h3>500 ML</h3>
+                                <span style={{ fontSize: "20px" }}>{props.menuItem.unitPrice} RON</span>
                             </div>
                         }
                         <div className="menu-quantity" style={{ marginTop: "1rem" }}>

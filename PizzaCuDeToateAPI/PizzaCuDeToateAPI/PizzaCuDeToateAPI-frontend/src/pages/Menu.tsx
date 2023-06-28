@@ -11,11 +11,10 @@ import { RiCake3Line } from "react-icons/ri";
 import { TbBottle } from "react-icons/tb";
 import Carousel from 'react-bootstrap/Carousel';
 
-const Menu = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: boolean; }) => {
+const Menu = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: object; setLogged: any; basket: { logo: string, unitPrice: number, name: string, amount: number }[]; setBasket: any }) => {
     const [categories, setCategories] = useState([]);
     const [foodItems, setFoodItems] = useState({});
     const [selectedCategory, setSelectedCategory] = useState("Pizza");
-    const [basket, setBasket] = useState([]);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
@@ -66,11 +65,11 @@ const Menu = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; lo
         <>
             <ParticlesBackground style={{ filter: props.loading ? "blur(10px)" : "none", pointerEvents: props.loading ? "none" : "auto" }} />
             <Row>
-                <NavbarMain logged={props.logged}/>
+                <NavbarMain logged={props.logged} basket={props.basket} setBasket={props.setBasket} setLogged={props.setLogged} setSpinner={props.setSpinner} loading={props.loading} />
             </Row>
-            <Row style={{ backgroundImage: "radial-gradient(circle, rgba(230,0,0,1) 70%, rgba(147,1,1,1) 100%)", position: "relative", boxShadow: "0px -4px 3px rgba(50, 50, 50, 0.75)" }}>
+            <Row style={{ backgroundImage: `${Object.keys(foodItems).length > 1 ? "radial-gradient(circle, rgba(230,0,0,1) 70%, rgba(147,1,1,1) 100%)" : "transparent"}`, position: "relative", boxShadow: "0px -4px 3px rgba(50, 50, 50, 0.75)" }}>
                 <Col className="d-flex flex-row justify-content-around" style={{ padding: "0", width: "100%" }}>
-                    {Object.keys(foodItems).length > 1 && (
+                    {Object.keys(foodItems).length > 1 ? (
                         isMobile ?
                             <Carousel style={{width: "100%"}} indicators={false}>
                                 {categories.map((category, index) => {
@@ -143,14 +142,19 @@ const Menu = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; lo
                                 }
                                 )}
                             </>
-                    )}
+                    )
+                    :
+                    (
+                        <div style={{width: "100%", height:"70vh", backgroundColor:"transparent"}}/>
+                    )
+                    }
                 </Col>
             </Row>
             <Row style={{padding:"2rem"}}>
                 {Object.keys(foodItems).length > 1 && (
                     foodItems[selectedCategory].map((foodItem, index) =>
                         <Col xs={12} md={6} lg={4} xl={3} className="d-flex justify-content-center" key={index}>
-                            <MenuItemCard menuItem={foodItem} basket={basket} setBasket={setBasket}/>
+                            <MenuItemCard menuItem={foodItem} basket={props.basket} setBasket={props.setBasket}/>
                         </Col>
                     )
                 )}

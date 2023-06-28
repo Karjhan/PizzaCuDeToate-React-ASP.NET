@@ -114,7 +114,7 @@ public static class DataSeeder
         var foodItemApplePie =
             new FoodItem("Apple Pie", categoryDessert, "A warm and comforting treat consisting of a flaky pastry crust filled with sweet, cinnamon-spiced apples.", 15, new List<string>(), "https://drive.google.com/uc?export=view&id=15tJNbDqaqJ7TkvuEuPVZyyZtKSLR7ma0");
         var foodItemBeverageTuborg =
-            new FoodItem("Tuborg Beer", categoryBeverage, "Join our discovery journey with a Tuborg beer in your hand and great music in your ears.", 8, new List<string>(), "https://drive.google.com/uc?export=view&id=1MzwPuiiUtK1EOIMCErh9WIeC4qG2MOOix");
+            new FoodItem("Tuborg Beer", categoryBeverage, "Join our discovery journey with a Tuborg beer in your hand and great music in your ears.", 8, new List<string>(), "https://drive.google.com/uc?export=view&id=1MzwPuiiUtK1EOIMCErh9WIeC4qG2MOOi");
         var foodItemBeverageCarlsberg =
             new FoodItem("Carlsberg Beer", categoryBeverage, "A crisp, refreshing, perfectly balanced beer that has a full flavor and hoppy aroma.", 9, new List<string>(), "https://drive.google.com/uc?export=view&id=1X9vS3TutfCvVetzUL5486U5GQOtxPtKG");
         var foodItemBeverageUrsus =
