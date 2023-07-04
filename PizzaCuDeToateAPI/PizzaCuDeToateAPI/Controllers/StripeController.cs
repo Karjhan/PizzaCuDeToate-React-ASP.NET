@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using PizzaCuDeToateAPI.DTOClasses;
 using PizzaCuDeToateAPI.Models;
 using PizzaCuDeToateAPI.Services;
+using Stripe;
 
 namespace PizzaCuDeToateAPI.Controllers
 {
@@ -15,10 +16,12 @@ namespace PizzaCuDeToateAPI.Controllers
     public class StripeController : ControllerBase
     {
         private readonly IStripeAppService _stripeService;
+        private readonly IConfiguration _configuration;
 
-        public StripeController(IStripeAppService stripeService)
+        public StripeController(IStripeAppService stripeService, IConfiguration configuration)
         {
             _stripeService = stripeService;
+            _configuration = configuration;
         }
         
         [HttpGet("customer/name={name}&email={email}")]
@@ -27,7 +30,7 @@ namespace PizzaCuDeToateAPI.Controllers
             StripeCustomer? foundCustomer = await _stripeService.FindByNameAndEmailAsync(name, email, cancellationToken);
             if (foundCustomer is null)
             {
-                return NotFound();
+                return NotFound(new {result = "Not found"});
             }
             return Ok(foundCustomer);
         }
@@ -70,6 +73,70 @@ namespace PizzaCuDeToateAPI.Controllers
         {
             StripeInvoice finalizedInvoice = await _stripeService.FinalizeInvoiceAsync(invoiceId, cancellationToken);
             return Ok(finalizedInvoice);
+        }
+        
+        [HttpPost("webhook")]
+        public async Task<IActionResult> StripeWebhook()
+        {
+            try
+            {
+                var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
+
+                
+                // validate webhook called by stripe only
+                var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _configuration["StripeSettings:WebhookSecret"]);
+                Console.WriteLine(stripeEvent);
+                switch (stripeEvent.Type)
+                {
+                    case "customer.created":
+                        var customer = stripeEvent.Data.Object as Customer;
+                        // do work
+                        Console.WriteLine("Customer created");
+                        break;
+
+                    case "customer.subscription.created":
+                    case "customer.subscription.updated":
+                    case "customer.subscription.deleted":
+                    case "customer.subscription.trial_will_end":
+                        var subscription = stripeEvent.Data.Object as Subscription;
+                        // do work
+                        Console.WriteLine("Customer modified");
+                        break;
+
+                    case "invoice.created":
+                        var newinvoice = stripeEvent.Data.Object as Invoice;
+                        // do work
+                        Console.WriteLine("Invoice created");
+                        break;
+
+                    case "invoice.upcoming":
+                    case "invoice.payment_succeeded":
+                    case "invoice.payment_failed":
+                        var invoice = stripeEvent.Data.Object as Invoice;
+                        // do work
+                        Console.WriteLine("Invoice modified");
+                        break;
+
+                    case "coupon.created":
+                    case "coupon.updated":
+                    case "coupon.deleted":
+                        var coupon = stripeEvent.Data.Object as Coupon;
+                        // do work
+                        Console.WriteLine("Coupon modified");
+                        break;
+                }
+                return Ok();
+            }
+            catch (StripeException ex)
+            {
+                //_logger.LogError(ex, $"StripWebhook: {ex.Message}");
+                return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                //_logger.LogError(ex, $"StripWebhook: {ex.Message}");
+                return BadRequest();
+            }
         }
     }
 }

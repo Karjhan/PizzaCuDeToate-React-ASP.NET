@@ -91,6 +91,9 @@
   #emailConfirmWidth{
     width: 100% !important;
   }
+  .smallHidden{
+    display: none !important;
+  }
 }
 
 @media only screen and (min-width: 992px) {
@@ -98,4 +101,58 @@
     width:30% !important;
     margin-left: 7rem;
   }
+}
+
+
+/* CUSTOM WIDTHS */
+.w-25, .w-xs-25 { width: 25%!important; }
+.w-50, .w-xs-50 { width: 50%!important; }
+.w-75, .w-xs-75 { width: 75%!important; }
+.w-100, .w-xs-100 { width: 100%!important;}
+
+/* BREAKPOINTS */
+
+/* SM breakpoint */
+@media (min-width: 576px) {
+    /* CUSTOM WIDTHS */
+    .w-sm-25 { width: 25%!important; }
+    .w-sm-50 { width: 50%!important; }
+    .w-sm-75 { width: 75%!important; }
+    .w-xs-100 { width: 100% !important;}
+}
+
+/* MD breakpoint*/
+@media (min-width: 768px) {
+    /* CUSTOM WIDTHS */
+    .w-md-25 { width: 25%!important; }
+    .w-md-50 { width: 50%!important; }
+    .w-md-75 { width: 75%!important; }
+    .w-xs-100 { width: 100% !important;}
+}
+
+/* LG breakpoint */
+@media (min-width: 992px) {
+    /* CUSTOM WIDTHS */
+    .w-lg-25 { width: 25%!important; }
+    .w-lg-50 { width: 50%!important; }
+    .w-lg-75 { width: 75%!important; }
+    .w-xs-100 { width: 100% !important;}
+}
+
+.go-back-button{
+  color: #DFD3C3;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+  border-width: 0.15rem;
+  border-color: rgba(104, 15, 15, 0.75) !important;
+  border-radius: 0.5rem;
+  /* background-color: rgba(104, 15, 15, 0.75); */
+  background: linear-gradient(to right, rgba(104, 15, 15, 0.75) 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .5s ease-out;
+}
+
+.go-back-button:hover{
+  background-position: left bottom;
 }

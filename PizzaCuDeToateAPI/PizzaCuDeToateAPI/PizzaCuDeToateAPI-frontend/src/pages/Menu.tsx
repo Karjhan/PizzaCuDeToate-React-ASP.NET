@@ -11,7 +11,7 @@ import { RiCake3Line } from "react-icons/ri";
 import { TbBottle } from "react-icons/tb";
 import Carousel from 'react-bootstrap/Carousel';
 
-const Menu = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: object; setLogged: any; basket: { logo: string, unitPrice: number, name: string, amount: number }[]; setBasket: any }) => {
+const Menu = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: object; setLogged: any; basket: { logo: string, unitPrice: number, name: string, amount: number }[]; setBasket: any; notify: (arg0: string, arg1: boolean) => void; }) => {
     const [categories, setCategories] = useState([]);
     const [foodItems, setFoodItems] = useState({});
     const [selectedCategory, setSelectedCategory] = useState("Pizza");
@@ -65,7 +65,7 @@ const Menu = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; lo
         <>
             <ParticlesBackground style={{ filter: props.loading ? "blur(10px)" : "none", pointerEvents: props.loading ? "none" : "auto" }} />
             <Row>
-                <NavbarMain logged={props.logged} basket={props.basket} setBasket={props.setBasket} setLogged={props.setLogged} setSpinner={props.setSpinner} loading={props.loading} />
+                <NavbarMain logged={props.logged} basket={props.basket} setBasket={props.setBasket} setLogged={props.setLogged} setSpinner={props.setSpinner} loading={props.loading} notify={props.notify} />
             </Row>
             <Row style={{ backgroundImage: `${Object.keys(foodItems).length > 1 ? "radial-gradient(circle, rgba(230,0,0,1) 70%, rgba(147,1,1,1) 100%)" : "transparent"}`, position: "relative", boxShadow: "0px -4px 3px rgba(50, 50, 50, 0.75)" }}>
                 <Col className="d-flex flex-row justify-content-around" style={{ padding: "0", width: "100%" }}>

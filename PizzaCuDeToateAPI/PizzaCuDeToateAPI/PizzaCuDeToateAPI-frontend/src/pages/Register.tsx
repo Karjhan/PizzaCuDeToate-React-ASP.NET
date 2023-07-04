@@ -17,7 +17,7 @@ import ParticlesBackground from "../components/ParticlesBackground";
 import NavbarMain from "../components/NavbarMain";
 import Footer from "../components/Footer";
 
-const Register = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: object; setLogged: any; basket: { logo: string, unitPrice: number, name: string, amount: number }[]; setBasket: any }) => {
+const Register = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: object; setLogged: any; basket: { logo: string, unitPrice: number, name: string, amount: number }[]; setBasket: any; notify: (arg0: string, arg1: boolean) => void; }) => {
   const [statusMessage, setStatusMessage] = useState("");
   const [successStatus, setSuccessStatus] = useState(false);
   const [formData, setFormData] = useState({
@@ -201,7 +201,6 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading: boolean
     },
   });
 
-
   useEffect(() => {
     if (successStatus && timer > 0) {
       const interval = setInterval(() => setTimer(timer - 1), 1000);
@@ -222,7 +221,7 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading: boolean
     <>
       <ParticlesBackground style={{ filter: props.loading ? "blur(10px)" : "none", pointerEvents: props.loading ? "none" : "auto" }} />
       <Row>
-        <NavbarMain logged={props.logged} basket={props.basket} setBasket={props.setBasket} setLogged={props.setLogged} setSpinner={props.setSpinner} loading={props.loading} />
+        <NavbarMain logged={props.logged} basket={props.basket} setBasket={props.setBasket} setLogged={props.setLogged} setSpinner={props.setSpinner} loading={props.loading} notify={props.notify}/>
       </Row>
       <Row>
         <Col className="p-0 d-none d-xl-block" lg={{ span: 4, offset: 4 }} xl={{ span: 3, offset: 0 }} xxl={{ span: 4, offset: 0 }}>
@@ -343,7 +342,7 @@ const Register = (props: { setSpinner: (arg0: boolean) => void; loading: boolean
                               as="textarea"
                               style={{ resize: "none", height: "9.25em" }}
                               onChange={(event) =>
-                                changeCredential("confirmedPassword", event.target.value)
+                                changeCredential("address", event.target.value)
                               }
                               type="text"
                               placeholder="Enter address"

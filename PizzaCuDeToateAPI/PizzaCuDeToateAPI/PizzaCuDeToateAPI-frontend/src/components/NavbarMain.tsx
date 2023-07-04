@@ -5,23 +5,30 @@ import { motion } from "framer-motion";
 import navbarLogo from '../images/navbarLogo.png';
 import '../NavbarMain.css'
 import { Container } from "react-bootstrap";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Image from 'react-bootstrap/Image';
+import { useNavigate } from "react-router";
 
-const NavbarMain = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; logged: object; basket: { logo: string, unitPrice: number, name: string, amount: number }[]; setBasket: any; setLogged: any; }) => {
+const NavbarMain = (props: {setSpinner: (arg0: boolean) => void; loading: boolean; logged: object; basket: { logo: string, unitPrice: number, name: string, amount: number }[]; setBasket: any; setLogged: any; notify: (arg0: string, arg1: boolean) => void;}) => {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if(props.basket.length == 0){
+    if(props.basket.length === 0){
       setShow(false);
     }
-  },[props.basket])
+  }, [props.basket])
+  
+  const navigate = useNavigate();
+  const handleGoOrder = useCallback(
+    () => navigate("/order", { replace: true }),
+    [navigate]
+  );
 
   return (
       <Col style={{ padding: "0", width: "100%" }}>
-        <Navbar collapseOnSelect expand="lg" style={{ backgroundImage:"radial-gradient(circle, rgba(230,0,0,1) 70%, rgba(147,1,1,1) 100%)"}}>
+        <Navbar collapseOnSelect expand="lg" style={{ backgroundImage:"radial-gradient(circle, rgba(230,0,0,1) 70%, rgba(147,1,1,1) 100%)" }}>
           <Container fluid className="p-lg-2 p-0">
             <Navbar.Brand className='d-flex align-items-center px-sm-4 px-3 mx-0'>
               <img src={navbarLogo} alt="logo" style={{ width: "4.5rem", marginRight:"1rem" }} />
@@ -86,12 +93,12 @@ const NavbarMain = (props: { setSpinner: (arg0: boolean) => void; loading: boole
                     </li>
                   </>}
                   <li className="mt-lg-0 mt-3 nav-cart-element">
-                    <motion.button disabled={!(props.basket.length > 0)} className="d-flex align-items-center justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }} onClick={(e) => {setShow(true)}}>
+                    <motion.button className="d-flex align-items-center justify-content-center" whileHover={{ scale: 1.05 }} whileTap={{ scale: 1 }} onClick={(e) => { setShow(true); if(!(props.basket.length > 0)){props.notify("🍕 Oops, basket is empty...", true);}}}>
                       {props.logged["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] !== undefined && <span className="px-2" style={{ color: "#DFD3C3", fontFamily: "poppins", fontSize: "1.3rem" }}>{`${props.logged["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"]}`}</span>}
                       <i className="fa badge fa-lg" value={props.basket.length} style={{fontSize:"150%", margin:"0px"}}>&#xf290;</i>
                       <span style={{ color: "#DFD3C3", fontFamily: "poppins", fontSize: "1.3rem" }}>{`${props.basket.reduce((a,b) => {return a + b.amount*b.unitPrice},0)} RON`}</span>
                     </motion.button>
-                    <Modal show={show} onHide={() => { setShow(false) }} backdrop="static" centered aria-labelledby="contained-modal-title-vcenter">
+                    <Modal show={show && (props.basket.length > 0)} onHide={() => { setShow(false) }} backdrop="static" centered aria-labelledby="contained-modal-title-vcenter">
                       <Modal.Header closeButton style={{backgroundColor:"rgba(34,34,34,1)", border:"0px"}}>
                         <Modal.Title className="d-flex align-items-center">
                           <img src={navbarLogo} alt="logo" style={{ width: "2.5rem", marginRight:"1rem" }} />
@@ -130,7 +137,13 @@ const NavbarMain = (props: { setSpinner: (arg0: boolean) => void; loading: boole
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.9 }}
                           className="modal-checkout-button"
-                          onClick={(e) => { setShow(false) }}
+                          onClick={(e) => { if (props.logged["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"] === undefined || props.logged["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"] === undefined || props.logged["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"] === undefined){
+                              props.notify("🍝 Please sign in for checkout...", true);
+                            } else {
+                              props.setSpinner(true); 
+                              setTimeout(() => {setShow(false); handleGoOrder(); props.setSpinner(false)},3000)
+                            }
+                          }}
                         >
                           Checkout
                         </motion.button>

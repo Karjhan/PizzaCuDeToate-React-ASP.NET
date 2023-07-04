@@ -22,7 +22,7 @@ const EmailConfirmed = () => {
                 <Card style={{ background: "rgba(0,0,0,0.9)", border: "none" }} className="d-flex flex-lg-row flex-column align-items-center align-self-center w-75" id="emailConfirmWidth">
                     <Card.Img src={mailBoxGif} style={{ width:"50%"}} className='mb-5' id="mailBox"/>
                     <Card.Body style={{ color: "#DFD3C3", padding:"0rem", width:"100%" }}>
-                        <h2 style={{ color: "#DFD3C3", textShadow: "0px 0px 8px black" }}>Email confirmed: <span style={{ fontStyle: "italic", fontSize:"1.7rem", textDecoration:"wavy underline" }}>{email}</span></h2>
+                        <h2 style={{ color: "#DFD3C3", textShadow: "0px 0px 8px black" }}>Email confirmed: <span style={{ fontStyle: "italic", fontSize:"1.5rem", textDecoration:"wavy underline" }}>{email}</span></h2>
                         <br></br>
                         <h5>Welcome in our family, <span style={{ fontStyle: "italic", fontSize: "1.7rem", textDecoration: "wavy underline" }}>{username}</span> !</h5>
                         <p>Thank you for choosing our food & delivery services. We hope you'll have a great experience with us.</p>

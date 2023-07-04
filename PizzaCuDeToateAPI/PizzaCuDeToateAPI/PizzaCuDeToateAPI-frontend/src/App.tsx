@@ -12,6 +12,8 @@ import EmailConfirmed from './pages/EmailConfirmed';
 import Customize from './pages/Customize';
 import { encryptData, decryptData } from './scripts/utils.ts'
 import Order from './pages/Order.tsx';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // window.onbeforeunload = function () {
 //   localStorage.clear();
@@ -54,8 +56,33 @@ function App() {
     } else {
       didMountJwt.current = true;
     }
-    console.log(decryptData("jwt")["http://schemas.microsoft.com/ws/2008/06/identity/claims/name"])
   }, [logged])
+
+  const notify = (message: string, isError: boolean) => {
+    if(isError){
+      toast.error(message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }else{
+      toast(message, {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  }
 
   return (
     <>
@@ -75,14 +102,28 @@ function App() {
         <Container fluid style={{ padding:"0", filter: isLoading ? "blur(10px)" : "none", pointerEvents: isLoading ? "none" : "auto" }}>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged}/>} />
-              <Route path="/login" element={<Login setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged}/>} />
+              <Route path="/register" element={<Register setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged} notify={notify}/>} />
+              <Route path="/login" element={<Login setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged} notify={notify}/>} />
               <Route path="/emailConfirmed/:email/:username" element={<EmailConfirmed/>} />
-              <Route path="/customize" element={<Customize setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged}/>}/>
-              <Route path="/menu" element={<Menu setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged}/>} />
-              <Route path="/order" element={<Order setSpinner={setIsLoading} loading={isLoading} basket={basket} setBasket={setBasket} setLogged={setLogged}/>}/>
+              <Route path="/customize" element={<Customize setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged} notify={notify}/>}/>
+              <Route path="/menu" element={<Menu setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged} notify={notify}/>} />
+              <Route path="/order" element={<Order setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} notify={notify}/>}/>
             </Routes>
         </Container>
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          limit={1}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          // toastStyle={{ backgroundColor: "crimson" }}
+        />
       </GoogleOAuthProvider>
     </>
   )
