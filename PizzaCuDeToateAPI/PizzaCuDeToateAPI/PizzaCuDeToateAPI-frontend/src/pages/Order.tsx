@@ -37,8 +37,74 @@ const Order = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; l
     };
   }, []);
 
-  const handleCheckout = () => {
-
+  const handleCheckout = async () => {
+    props.setSpinner(true);
+    let customerId : string;
+    let invoiceId : string;
+    const findCustomerResponse = await fetch(`https://localhost:44388/api/stripe/customer/name=${formData.firstName + formData.lastName}&email=${formData.email}`);
+    const findCustomerData = await findCustomerResponse.json();
+    if (findCustomerData.error) {
+      const createdCustomerResponse = await fetch("https://localhost:44388/api/stripe/customer", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify({
+          name: formData.firstName + formData.lastName,
+          email: formData.email,
+          creditCard: {
+            name: formData.firstName + formData.lastName,
+            expirationYear: "2024",
+            expirationMonth: "12",
+            cvc: "999",
+            cardNumber: "4242424242424242"
+          }
+        }),
+      });
+      const createdCustomerData = await createdCustomerResponse.json();
+      customerId = createdCustomerData.customerId;
+    } else {
+      customerId = findCustomerData.customerId;
+    }
+    const createdInvoiceResponse = await fetch("https://localhost:44388/api/stripe/invoice", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify({
+        customerId: customerId,
+        address: formData.address,
+        phone: formData.phoneNumber,
+        description: formData.description,
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        appUserName: props.logged["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"],
+        appUserEmail: props.logged["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"]
+      }),
+    });
+    const createdInvoiceData = await createdInvoiceResponse.json();
+    invoiceId = createdInvoiceData.invoiceId;
+    await Promise.all(props.basket.map((item, index) => fetch("https://localhost:44388/api/stripe/invoiceItem", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*"
+      },
+      body: JSON.stringify({
+        customerId: customerId,
+        invoiceId: invoiceId,
+        currency: "RON",
+        discountable: false,
+        foodItemName: item.name,
+        quantity: item.amount
+      }),
+    })));
+    const finalizedInvoiceResponse = await fetch(`https://localhost:44388/api/stripe/invoice/finalize/id=${invoiceId}`);
+    const finalizedInvoiceData = await finalizedInvoiceResponse.json();
+    window.location.replace(finalizedInvoiceData.hostedStringURL);
+    props.setSpinner(false);
   };
 
   const navigate = useNavigate();
@@ -125,7 +191,6 @@ const Order = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; l
           description: formData.description,
           termsAgreed: !formData.termsAgreed
         })
-        console.log(formData)
         break;
     }
   }
@@ -349,7 +414,8 @@ const Order = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; l
                       type="submit"
                       style={{ marginTop: "1rem", width: "100%", color: "#DFD3C3" }}
                       className="modal-checkout-button"
-                      onClick={(event) => handleCheckout(event)}
+                      disabled={!formData.termsAgreed}
+                      onClick={(event) => {event.preventDefault(); formData.termsAgreed ? handleCheckout() : props.notify("Accept terms and agreement 🚫", true)}}
                     >
                       Checkout
                     </Button>

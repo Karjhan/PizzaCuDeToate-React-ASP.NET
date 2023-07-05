@@ -4,17 +4,11 @@ public class StripeInvoiceItem
 {
     public string InvoiceItemId { get; set; }
     public string CustomerId { get; set; }
-
     public string InvoiceId { get; set; }
-
     public string Description { get; set; }
-
     public long Amount { get; set; }
-
     public long Quantity { get; set; }
-
     public bool Discountable { get; set; }
-
     public string Currency { get; set; }
 
     public StripeInvoiceItem()

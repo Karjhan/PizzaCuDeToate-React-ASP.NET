@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PizzaCuDeToateAPI.DTOClasses;
 using PizzaCuDeToateAPI.Models;
@@ -17,20 +18,24 @@ namespace PizzaCuDeToateAPI.Controllers
     {
         private readonly IStripeAppService _stripeService;
         private readonly IConfiguration _configuration;
+        private readonly IEmailService _emailService;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public StripeController(IStripeAppService stripeService, IConfiguration configuration)
+        public StripeController(IStripeAppService stripeService, IConfiguration configuration, IEmailService emailService, UserManager<ApplicationUser> userManager)
         {
             _stripeService = stripeService;
             _configuration = configuration;
+            _emailService = emailService;
+            _userManager = userManager;
         }
         
         [HttpGet("customer/name={name}&email={email}")]
-        public async Task<ActionResult<StripeCustomer>> AddStripeCustomer([FromRoute] string name, [FromRoute] string email, CancellationToken cancellationToken)
+        public async Task<ActionResult<StripeCustomer>> FindStripeCustomer([FromRoute] string name, [FromRoute] string email, CancellationToken cancellationToken)
         {
             StripeCustomer? foundCustomer = await _stripeService.FindByNameAndEmailAsync(name, email, cancellationToken);
             if (foundCustomer is null)
             {
-                return NotFound(new {result = "Not found"});
+                return NotFound(new {error = "Customer not found"});
             }
             return Ok(foundCustomer);
         }
@@ -68,11 +73,20 @@ namespace PizzaCuDeToateAPI.Controllers
         }
 
         [HttpGet("invoice/finalize/id={invoiceId}")]
-
         public async Task<ActionResult<StripeInvoice>> FinalizeInvoice([FromRoute] string invoiceId, CancellationToken cancellationToken)
         {
             StripeInvoice finalizedInvoice = await _stripeService.FinalizeInvoiceAsync(invoiceId, cancellationToken);
+            var message = new MailMessage(new[] { finalizedInvoice.CustomerEmail }, "Confirmation email link",
+                $"Prepare for a world of tastes, {finalizedInvoice.CustomerName}!. Your order will start as soon as the payment is completed.\nClick on the following link to download your invoice: {finalizedInvoice.InvoicePDF!}");
+            _emailService.SendEmail(message);
             return Ok(finalizedInvoice);
+        }
+
+        [HttpGet("invoice/id={invoiceId}")]
+        public async Task<ActionResult<StripeInvoice>> FindStripeInvoice([FromRoute] string invoiceId, CancellationToken cancellationToken)
+        {
+            StripeInvoice foundInvoice = await _stripeService.FindInvoiceById(invoiceId, cancellationToken);
+            return Ok(foundInvoice);
         }
         
         [HttpPost("webhook")]
@@ -81,60 +95,23 @@ namespace PizzaCuDeToateAPI.Controllers
             try
             {
                 var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
-
                 
-                // validate webhook called by stripe only
-                var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _configuration["StripeSettings:WebhookSecret"]);
-                Console.WriteLine(stripeEvent);
+                var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], "whsec_8873d176c622f839fa896e04ef5a282888ce6d8e3d6995c7e2b711caf8908ddb");
+                Console.WriteLine("ceva");
                 switch (stripeEvent.Type)
                 {
-                    case "customer.created":
-                        var customer = stripeEvent.Data.Object as Customer;
-                        // do work
-                        Console.WriteLine("Customer created");
-                        break;
-
-                    case "customer.subscription.created":
-                    case "customer.subscription.updated":
-                    case "customer.subscription.deleted":
-                    case "customer.subscription.trial_will_end":
-                        var subscription = stripeEvent.Data.Object as Subscription;
-                        // do work
-                        Console.WriteLine("Customer modified");
-                        break;
-
-                    case "invoice.created":
-                        var newinvoice = stripeEvent.Data.Object as Invoice;
-                        // do work
-                        Console.WriteLine("Invoice created");
-                        break;
-
-                    case "invoice.upcoming":
                     case "invoice.payment_succeeded":
-                    case "invoice.payment_failed":
-                        var invoice = stripeEvent.Data.Object as Invoice;
-                        // do work
-                        Console.WriteLine("Invoice modified");
-                        break;
-
-                    case "coupon.created":
-                    case "coupon.updated":
-                    case "coupon.deleted":
-                        var coupon = stripeEvent.Data.Object as Coupon;
-                        // do work
-                        Console.WriteLine("Coupon modified");
+                        Console.WriteLine(stripeEvent);
                         break;
                 }
                 return Ok();
             }
             catch (StripeException ex)
             {
-                //_logger.LogError(ex, $"StripWebhook: {ex.Message}");
                 return BadRequest();
             }
             catch (Exception ex)
             {
-                //_logger.LogError(ex, $"StripWebhook: {ex.Message}");
                 return BadRequest();
             }
         }

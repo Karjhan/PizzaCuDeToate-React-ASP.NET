@@ -110,13 +110,18 @@ public class StripeAppService : IStripeAppService
         var invoiceOptions = new InvoiceCreateOptions
         {
             Customer = invoice.CustomerId,
+            ShippingDetails = {Name = invoice.Address, Phone = invoice.Phone},
+            Description = invoice.Description.Length > 0 ? invoice.Description : null,
+            Metadata = new Dictionary<string, string>(){{"FirstName", invoice.FirstName}, {"LastName", invoice.LastName}, {"AppUserName", invoice.AppUserName}, {"AppUserEmail", invoice.AppUserEmail}}
         };
         var createdInvoice = await _invoiceService.CreateAsync(invoiceOptions, null, cancellationToken);
         return new StripeInvoice(
             createdInvoice.Id,
             createdInvoice.CustomerId,
             createdInvoice.HostedInvoiceUrl,
-            createdInvoice.InvoicePdf
+            createdInvoice.InvoicePdf,
+            createdInvoice.CustomerEmail,
+            createdInvoice.CustomerName
         );
     }
 
@@ -127,7 +132,22 @@ public class StripeAppService : IStripeAppService
             createdInvoice.Id,
             createdInvoice.CustomerId,
             createdInvoice.HostedInvoiceUrl,
-            createdInvoice.InvoicePdf
+            createdInvoice.InvoicePdf,
+            createdInvoice.CustomerEmail,
+            createdInvoice.CustomerName
+        ); 
+    }
+
+    public async Task<StripeInvoice> FindInvoiceById(string invoiceId, CancellationToken cancellationToken)
+    {
+        var foundInvoice = await _invoiceService.GetAsync(invoiceId, null, null, cancellationToken);
+        return new StripeInvoice(
+            foundInvoice.Id,
+            foundInvoice.CustomerId,
+            foundInvoice.HostedInvoiceUrl,
+            foundInvoice.InvoicePdf,
+            foundInvoice.CustomerEmail,
+            foundInvoice.CustomerName
         ); 
     }
 

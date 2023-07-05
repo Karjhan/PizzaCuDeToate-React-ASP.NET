@@ -143,6 +143,9 @@ builder.Services.AddCors(options =>
     });
 });
 
+//Add startup hosted service (background tasks)
+builder.WebHost.ConfigureServices(services => services.AddHostedService<StartupHostedService>());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
