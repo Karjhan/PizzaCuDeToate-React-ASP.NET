@@ -364,7 +364,7 @@ const Order = (props: { setSpinner: (arg0: boolean) => void; loading: boolean; l
                       />
                     </motion.div>
                     <Form.Text className="text-muted">
-                      Town/County, Street, Street Nr, Residence, Postal Code
+                      State, City, Postal Code, Street, Residence ( if necessary )
                     </Form.Text>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPhoneNumber">

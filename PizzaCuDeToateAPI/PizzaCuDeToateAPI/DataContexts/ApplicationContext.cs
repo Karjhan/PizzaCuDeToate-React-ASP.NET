@@ -27,6 +27,10 @@ public class ApplicationContext : IdentityDbContext<ApplicationUser>
         base.OnModelCreating(builder);
         builder.UseSerialColumns();
         SeedRoles(builder);
+        builder.Entity<Order>()
+            .HasMany(o => o.OrderDetails)
+            .WithOne(od => od.Order)
+            .HasForeignKey(od => od.OrderId);
     }
 
     private void SeedRoles(ModelBuilder builder)

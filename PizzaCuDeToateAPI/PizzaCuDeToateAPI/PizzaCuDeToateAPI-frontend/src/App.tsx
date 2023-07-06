@@ -14,6 +14,7 @@ import { encryptData, decryptData } from './scripts/utils.ts'
 import Order from './pages/Order.tsx';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import OrderConfirmed from './pages/OrderConfirmed.tsx';
 
 // window.onbeforeunload = function () {
 //   localStorage.clear();
@@ -108,6 +109,7 @@ function App() {
               <Route path="/customize" element={<Customize setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged} notify={notify}/>}/>
               <Route path="/menu" element={<Menu setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} setLogged={setLogged} notify={notify}/>} />
               <Route path="/order" element={<Order setSpinner={setIsLoading} loading={isLoading} logged={logged} basket={basket} setBasket={setBasket} notify={notify}/>}/>
+              <Route path="/orderConfirmed/:orderId/:username" element={<OrderConfirmed/>} />
             </Routes>
         </Container>
         <ToastContainer

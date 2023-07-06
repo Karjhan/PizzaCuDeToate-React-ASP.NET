@@ -6,6 +6,8 @@ public static class CommandRunner
 {
     private static Process cmdProcess;
 
+    public static int WebHookCount = 0;
+
     public static void StartCmd(string folderPath, string command)
     {
         var processStartInfo = new ProcessStartInfo

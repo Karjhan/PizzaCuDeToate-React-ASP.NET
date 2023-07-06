@@ -9,6 +9,7 @@ using Microsoft.OpenApi.Models;
 using PizzaCuDeToateAPI;
 using PizzaCuDeToateAPI.DataContexts;
 using PizzaCuDeToateAPI.Models;
+using PizzaCuDeToateAPI.Repositories;
 using PizzaCuDeToateAPI.Repositories.CategoryRepository;
 using PizzaCuDeToateAPI.Repositories.FoodItemRepository;
 using PizzaCuDeToateAPI.Repositories.StockItemRepository;
@@ -52,6 +53,7 @@ builder.Services.AddSwaggerGen(options =>
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<IFoodItemRepository, FoodItemRepository>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 //Add entity dbContext for app, option to stop looping over cyclic reference data, add postgresql connection for dbContext
 builder.Services.AddTransient<DbContext, ApplicationContext>();

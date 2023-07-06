@@ -19,17 +19,33 @@ public static class DataSeeder
     private static void ResetIdSequences(ApplicationContext context, string connectionString)
     {
         var condition = context.Categories.FirstOrDefault() is null && context.StockItems.FirstOrDefault() is null && context.FoodItems.FirstOrDefault() is null;
-
+        var connectionSource = NpgsqlDataSource.Create(connectionString);
+        
         if (condition)
         {
-            var connectionSource = NpgsqlDataSource.Create(connectionString);
-            string[] queries = new[]
+            string[] foodQueries = new[]
             {
                 "ALTER SEQUENCE \"StockItems_Id_seq\" RESTART WITH 1", 
                 "ALTER SEQUENCE \"FoodItems_Id_seq\" RESTART WITH 1",
                 "ALTER SEQUENCE \"Categories_Id_seq\" RESTART WITH 1"
             };
-            foreach (var query in queries)
+            foreach (var query in foodQueries)
+            {
+                using (var command = connectionSource.CreateCommand(query))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        if (context.Orders.FirstOrDefault() is null)
+        {
+            string[] orderQueries = new[]
+            {
+                "ALTER SEQUENCE \"Orders_Id_seq\" RESTART WITH 1",
+                "ALTER SEQUENCE \"OrderDetails_Id_seq\" RESTART WITH 1",
+            };
+            foreach (var query in orderQueries)
             {
                 using (var command = connectionSource.CreateCommand(query))
                 {

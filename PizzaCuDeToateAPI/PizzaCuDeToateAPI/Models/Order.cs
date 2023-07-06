@@ -18,17 +18,19 @@ public class Order
 
     public PaymentType PaymentType { get; set; }
 
+    public List<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
+
     public Order()
     {
     }
 
-    public Order(string firstName, string lastName, string address, string phoneNumber, DateTime orderPlacedTime, ApplicationUser customer, PaymentType paymentType)
+    public Order(string firstName, string lastName, string address, string phoneNumber, ApplicationUser customer, PaymentType paymentType)
     {
         FirstName = firstName;
         LastName = lastName;
         Address = address;
         PhoneNumber = phoneNumber;
-        OrderPlacedTime = orderPlacedTime;
+        OrderPlacedTime = DateTime.Now.ToUniversalTime();
         Customer = customer;
         PaymentType = paymentType;
     }

@@ -30,6 +30,21 @@ public class OrderRepository: IOrderRepository
             Context.Orders.Add(elemToAdd);
             Context.SaveChanges();
             return elemToAdd;
+            // var ordersByPerson = Context.Orders.Where((order) => order.LastName == elemToAdd.LastName && order.FirstName == elemToAdd.FirstName);
+            // if (ordersByPerson.Count() == 0)
+            // {
+            //     Context.Orders.Add(elemToAdd);
+            //     Context.SaveChanges();
+            //     return elemToAdd;
+            // }
+            // var lastDate = ordersByPerson.Max(order => order.OrderPlacedTime);
+            // if ((DateTime.Now - lastDate).TotalSeconds > 30)
+            // {
+            //     Context.Orders.Add(elemToAdd);
+            //     Context.SaveChanges();
+            //     return elemToAdd;
+            // }
+            // return ordersByPerson.FirstOrDefault((order) => order.OrderPlacedTime == lastDate);
         }
         catch (Exception e)
         {

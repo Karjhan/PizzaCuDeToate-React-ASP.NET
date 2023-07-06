@@ -85,7 +85,7 @@ public class StripeAppService : IStripeAppService
         {
             Customer = itemToAdd.CustomerId,
             Quantity = itemToAdd.Quantity,
-            UnitAmount = (long?)foodItemToBuy.UnitPrice,
+            UnitAmount = (long?)foodItemToBuy.UnitPrice*100,
             Discountable = itemToAdd.Discountable,
             Invoice = itemToAdd.InvoiceId,
             Currency = itemToAdd.Currency,
@@ -107,11 +107,25 @@ public class StripeAppService : IStripeAppService
 
     public async Task<StripeInvoice> AddInvoiceAsync(AddStripeInvoiceDTO invoice, CancellationToken cancellationToken)
     {
+        var address = invoice.Address.Split(",").Select((word) => word.Trim()).ToArray();
         var invoiceOptions = new InvoiceCreateOptions
         {
             Customer = invoice.CustomerId,
-            ShippingDetails = {Name = invoice.Address, Phone = invoice.Phone},
-            Description = invoice.Description.Length > 0 ? invoice.Description : null,
+            ShippingDetails = new InvoiceShippingDetailsOptions()
+            {
+                Name = $"{invoice.FirstName}'s Hideout", 
+                Phone = invoice.Phone.Trim(), 
+                Address = new AddressOptions()
+                {
+                    Country = "Romania",
+                    State = address[0], 
+                    City = address[1], 
+                    PostalCode = address[2], 
+                    Line1 = address[3],
+                    Line2 = address[4]
+                }
+            },
+            Description = invoice.Description.Length > 0 ? invoice.Description.Trim() : null,
             Metadata = new Dictionary<string, string>(){{"FirstName", invoice.FirstName}, {"LastName", invoice.LastName}, {"AppUserName", invoice.AppUserName}, {"AppUserEmail", invoice.AppUserEmail}}
         };
         var createdInvoice = await _invoiceService.CreateAsync(invoiceOptions, null, cancellationToken);
