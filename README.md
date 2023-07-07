@@ -176,7 +176,7 @@ For personal type checking, you can modify the *tsconfig.node.json* file in the 
 
 ![SS-RegisterPage-4](./screenshots/SS-RegisterPage-4.png)
 ### Email Confirmation page
-![SS-OrderConfirmPage](./screenshots/SS-OrderConfirmPage.png)
+![SS-EmailConfirmPage](./screenshots/SS-EmailConfirmPage.png)
 ### Login page
 ![SS-LoginPage-1](./screenshots/SS-LoginPage-1.png)
 
