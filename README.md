@@ -122,7 +122,8 @@ For more detailed information check: [Safe storage of app secrets in development
 
 #### Frontend Note
 Unfortunately, depending on the generated port for backend, you may need to replace the frontend->backend request strings 
-in the frontend source code, as they are static. A refactoring of the frontend side is in progress!
+in the frontend source code, as they are static. A refactoring of the frontend side is in progress! In the backend, please
+check the *StartupHostedService* class and replace the url in the command as necesary.
 
 
 ## Starting Commands
@@ -148,4 +149,44 @@ For personal type checking, you can modify the *tsconfig.node.json* file in the 
 
 ## Visuals
 
+### Web UI of the backend API with Swagger
+![SS-BackendAPI-Swagger](./screenshots/SS-BackendAPI-Swagger.png)
+### Landing page
+![SS-LandingPage-1](./screenshots/SS-LandingPage-1.png)
+![SS-LandingPage-2](./screenshots/SS-LandingPage-2.png)
+![SS-LandingPage-3](./screenshots/SS-LandingPage-3.png)
+### Register page
+![SS-RegisterPage-1](./screenshots/SS-RegisterPage-1.png)
+![SS-RegisterPage-2](./screenshots/SS-RegisterPage-2.png)
+![SS-RegisterPage-3](./screenshots/SS-RegisterPage-3.png)
+![SS-RegisterPage-4](./screenshots/SS-RegisterPage-4.png)
+### Email Confirmation page
+![SS-OrderConfirmPage](./screenshots/SS-OrderConfirmPage.png)
+### Login page
+![SS-LoginPage-1](./screenshots/SS-LoginPage-1.png)
+![SS-LoginPage-2](./screenshots/SS-LoginPage-2.png)
+![SS-LoginPage-3](./screenshots/SS-LoginPage-3.png)
+### Menu page 
+![SS-MenuPage-1](./screenshots/SS-MenuPage-1.png)
+![SS-MenuPage-2](./screenshots/SS-MenuPage-2.png)
+![SS-MenuPage-3](./screenshots/SS-MenuPage-3.png)
+### Order page
+![SS-OrderPage-1](./screenshots/SS-OrderPage-1.png)
+![SS-OrderPage-2](./screenshots/SS-OrderPage-2.png)
+![SS-OrderPage-3](./screenshots/SS-OrderPage-3.png)
+### Stripe payment
+![SS-StripePayPage-1](./screenshots/SS-StripePayPage-1.png)
+![SS-StripePayPage-2](./screenshots/SS-StripePayPage-2.png)
+![SS-StripePayPage-3](./screenshots/SS-StripePayPage-3.png)
+![SS-StripePayPage-4](./screenshots/SS-StripePayPage-4.png)
 
+## Past intents
+The pages *About us* and *Customize* are unfinished. The first one was meant to be a static page about the
+restaurant and the creators. The second one was meant to be an integration of the OpenAI's chatGPT for 
+development purposes for customization of pizzas and shawarmas.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Contact
+Feel free to contact me at: karjhan1999@gmail.com
