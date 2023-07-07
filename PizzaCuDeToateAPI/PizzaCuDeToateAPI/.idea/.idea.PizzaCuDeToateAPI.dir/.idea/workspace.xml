@@ -9,45 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="[ ioana ] merged with Horia's branch;">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/dictionaries" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/projectSettingsUpdater.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CommandRunner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CommandRunner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/AuthController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/AuthController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/StripeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/StripeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTOClasses/AddFoodItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/AddFoodItemDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTOClasses/AddOrderDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/AddOrderDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTOClasses/JSONFoodItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/JSONFoodItemDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTOClasses/JSONStockItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/JSONStockItemDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DTOClasses/StockItemDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DTOClasses/StockItemDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataSeeder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/DataSeeder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/AuthenticationResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/AuthenticationResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/FoodItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/FoodItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/MailMessage.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/MailMessage.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Order.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/StockItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/StockItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/CategoryRepository/CategoryRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/CategoryRepository/CategoryRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/FoodItemRepository/FoodItemRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/FoodItemRepository/FoodItemRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/IRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/IRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/OrderRepository/OrderRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/OrderRepository/OrderRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/Repository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/Repository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Repositories/StockItemRepository/StockRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Repositories/StockItemRepository/StockRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/EmailService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/EmailService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/GoogleService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/GoogleService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/IGoogleService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/IGoogleService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/IJWTService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/IJWTService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/IStripeAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/IStripeAppService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/JWTService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/JWTService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/StartupHostedService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/StartupHostedService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/StripeAppService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/StripeAppService.cs" afterDir="false" />
-    </list>
+    <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -184,7 +146,7 @@
       <workItem from="1683104624911" duration="1594000" />
       <workItem from="1683111828908" duration="1485000" />
       <workItem from="1683181100922" duration="8540000" />
-      <workItem from="1688702366412" duration="5893000" />
+      <workItem from="1688702366412" duration="10240000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
@@ -263,7 +225,15 @@
       <option name="project" value="LOCAL" />
       <updated>1684433586039</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="[ alex ] import references">
+      <option name="closed" value="true" />
+      <created>1688729958570</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1688729958570</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +277,7 @@
     <MESSAGE value="Merged with Development;" />
     <MESSAGE value="[ horia ] deleted extra files from node modules" />
     <MESSAGE value="[ ioana ] merged with Horia's branch;" />
-    <option name="LAST_COMMIT_MESSAGE" value="[ ioana ] merged with Horia's branch;" />
+    <MESSAGE value="[ alex ] import references" />
+    <option name="LAST_COMMIT_MESSAGE" value="[ alex ] import references" />
   </component>
 </project>
