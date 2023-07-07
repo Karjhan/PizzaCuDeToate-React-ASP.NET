@@ -41,6 +41,43 @@ cd PizzaCuDeToateAPI
 
 nuget restore PizzaCuDeToateAPI.sln
 ```
-or if your IDE has something like NuGet Restore, you can use it, for example in Rider:
+or if your IDE has something like NuGet Restore, you can use it, for example in Rider: 
 ![Register](./screenshots/SS-NuGet-Restore.png)
 
+In adition to that, the following data is required for the application to function correctly and it can be required from any of the original developers. Send a request to a contact info of one of the developers, asking for the following fields:
+
+<ul>
+    <li>ConnectionStrings</li>
+    <ul>
+        <li>PizzaCuDeToate_Db</li>
+    </ul>
+    <li>Frontend_Url -> (check your generated url)</li>
+    <li>EmailConfiguration</li>
+    <ul>
+        <li>From</li>
+        <li>SmtpServer</li>
+        <li>Port</li>
+        <li>Username</li>
+        <li>Password</li>
+    </ul>
+    <li>JWT</li>
+    <ul>
+        <li>ValidAudience</li>
+        <li>ValidIssuer</li>
+        <li>Secret</li>
+        <li>Subject</li>
+    </ul>
+    <li>Google</li>
+    <ul>
+        <li>ClientId</li>
+        <li>ClientSecret</li>
+    </ul>
+    <li>StripeSettings</li>
+    <ul>
+        <li>SecretKey</li>
+        <li>WebhookSecret</li>
+        <li>AccountID</li>
+    </ul>
+</ul>
+
+### After obtaining the required information 
