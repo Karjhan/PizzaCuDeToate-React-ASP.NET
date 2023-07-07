@@ -86,7 +86,7 @@ following fields:
 
 ### After obtaining the required information 
 
-You can put them in the appsettings.json(backend) in the following format
+You can put them in the *appsettings.json*(backend) in the following format
 ```
   "ConnectionStrings": {
     "PizzaCuDeToate_Db": ""
@@ -116,5 +116,36 @@ You can put them in the appsettings.json(backend) in the following format
     "AccountID": ""
   }
 ```
-, or initialize a secret.json local file (it will be checked at runtime) and put all the appsettings.json content in there. 
-For more detailed information check: [Safe storage of app secrets in development in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-7.0&tabs=windows)
+Or initialize a secret.json local file (it will be checked at runtime) and put all the appsettings.json content in there. 
+For more detailed information check: [Safe storage of app secrets in development in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-7.0&tabs=windows).
+
+
+#### Frontend Note
+Unfortunately, depending on the generated port for backend, you may need to replace the frontend->backend request strings 
+in the frontend source code, as they are static. A refactoring of the frontend side is in progress!
+
+
+## Starting Commands
+
+To start the backend server, from the original/root directory, go to backend in a terminal and type "dotnet run"
+```bash
+cd PizzaCuDeToateAPI
+
+dotnet run
+```
+It would be ideal to setup the run configuration before. Example: In Rider IDE, I chose IIS server to set up the backend local host:
+
+![RunConfiguration](./screenshots/SS-Run-Configuration.png)
+
+To start the frontend, from the original/root directory, go to frontend in a terminal and type "npm run dev"
+```bash
+cd PizzaCuDeToateAPI\PizzaCuDeToateAPI-frontend
+
+npm run dev 
+```
+
+For personal type checking, you can modify the *tsconfig.node.json* file in the frontend.
+
+## Visuals
+
+

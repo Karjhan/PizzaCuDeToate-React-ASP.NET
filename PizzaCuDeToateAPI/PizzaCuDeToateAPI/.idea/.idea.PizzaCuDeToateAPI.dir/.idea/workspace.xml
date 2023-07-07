@@ -149,7 +149,7 @@
       <workItem from="1683111828908" duration="1485000" />
       <workItem from="1683181100922" duration="8540000" />
       <workItem from="1688702366412" duration="10240000" />
-      <workItem from="1688731304733" duration="2046000" />
+      <workItem from="1688731304733" duration="2841000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>
