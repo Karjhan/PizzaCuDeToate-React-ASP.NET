@@ -10,8 +10,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98d37f0e-a8e7-4e4f-8729-864fb7abe08e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PizzaCuDeToateAPI.dir/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/appsettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../../README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -151,7 +149,7 @@
       <workItem from="1683111828908" duration="1485000" />
       <workItem from="1683181100922" duration="8540000" />
       <workItem from="1688702366412" duration="10240000" />
-      <workItem from="1688731304733" duration="1563000" />
+      <workItem from="1688731304733" duration="2046000" />
     </task>
     <task id="LOCAL-00001" summary="added new constructors for FoodItem.cs and StockItem.cs and written foodItems, stockItems and categories in DataSeeder.cs">
       <created>1683185870799</created>

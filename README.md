@@ -20,6 +20,7 @@ as the main dishes.
 - React JS Particles and Toastify 
 - Stripe API for payments and invoices
 - Image import from GDrive
+- use of Trello for backlog and organisation
 
 ## Installation
 
@@ -42,9 +43,12 @@ cd PizzaCuDeToateAPI
 nuget restore PizzaCuDeToateAPI.sln
 ```
 or if your IDE has something like NuGet Restore, you can use it, for example in Rider: 
+
 ![Register](./screenshots/SS-NuGet-Restore.png)
 
-In adition to that, the following data is required for the application to function correctly and it can be required from any of the original developers. Send a request to a contact info of one of the developers, asking for the following fields:
+In adition to that, the following data is required for the application to function correctly and it can be required 
+from any of the original developers. Send a request to a contact info of one of the developers, asking for the 
+following fields:
 
 <ul>
     <li>ConnectionStrings</li>
@@ -81,3 +85,36 @@ In adition to that, the following data is required for the application to functi
 </ul>
 
 ### After obtaining the required information 
+
+You can put them in the appsettings.json(backend) in the following format
+```
+  "ConnectionStrings": {
+    "PizzaCuDeToate_Db": ""
+  },
+  "AllowedHosts": "*",
+  "Frontend_Url": "",
+  "EmailConfiguration": {
+    "From": "",
+    "SmtpServer": "",
+    "Port": 465,
+    "Username": "",
+    "Password": ""
+  },
+  "JWT": {
+    "ValidAudience": "",
+    "ValidIssuer": "",
+    "Secret": "",
+    "Subject": ""
+  },
+  "Google": {
+    "ClientId": "",
+    "ClientSecret": ""
+  },
+  "StripeSettings": {
+    "SecretKey": "",
+    "WebhookSecret": "",
+    "AccountID": ""
+  }
+```
+, or initialize a secret.json local file (it will be checked at runtime) and put all the appsettings.json content in there. 
+For more detailed information check: [Safe storage of app secrets in development in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-7.0&tabs=windows)
