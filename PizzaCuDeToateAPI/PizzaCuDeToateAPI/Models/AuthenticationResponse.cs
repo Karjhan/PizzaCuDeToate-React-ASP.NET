@@ -1,4 +1,6 @@
-﻿namespace PizzaCuDeToateAPI.Models;
+﻿using System;
+
+namespace PizzaCuDeToateAPI.Models;
 
 public class AuthenticationResponse
 {

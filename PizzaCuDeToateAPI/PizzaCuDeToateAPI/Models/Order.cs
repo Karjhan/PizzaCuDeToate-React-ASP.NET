@@ -1,4 +1,7 @@
-﻿namespace PizzaCuDeToateAPI.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace PizzaCuDeToateAPI.Models;
 
 public class Order
 {

@@ -1,4 +1,5 @@
-﻿using MimeKit;
+﻿using System;
+using MimeKit;
 using PizzaCuDeToateAPI.Models;
 using MailMessage = PizzaCuDeToateAPI.Models.MailMessage;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;

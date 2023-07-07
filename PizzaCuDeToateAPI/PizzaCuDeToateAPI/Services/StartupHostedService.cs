@@ -1,4 +1,8 @@
-﻿namespace PizzaCuDeToateAPI.Services;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+
+namespace PizzaCuDeToateAPI.Services;
 
 public class StartupHostedService : IHostedService
 {

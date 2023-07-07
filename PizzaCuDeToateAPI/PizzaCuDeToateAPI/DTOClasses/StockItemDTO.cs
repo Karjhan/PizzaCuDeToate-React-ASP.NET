@@ -1,4 +1,5 @@
-﻿using Microsoft.Build.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Build.Framework;
 using PizzaCuDeToateAPI.Models;
 
 namespace PizzaCuDeToateAPI.DTOClasses;

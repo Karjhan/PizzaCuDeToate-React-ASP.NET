@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using PizzaCuDeToateAPI.Models;
 
 namespace PizzaCuDeToateAPI.Services;

@@ -1,4 +1,6 @@
-﻿namespace PizzaCuDeToateAPI.DTOClasses;
+﻿using System.Collections.Generic;
+
+namespace PizzaCuDeToateAPI.DTOClasses;
 
 public class AddFoodItemDTO
 {
